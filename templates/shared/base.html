@@ -2,24 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Signup page</title>
+    {% include 'shared/header.html' %}
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-5">
 
-            <h3>Signup to website name</h3>
+            {% include 'shared/navbar.html' %}
 
+            {% block content %}{% endblock %}
 
         </div><!-- /col-md-5 Center of the site-->
         <div class="col col-lg-2"></div>
     </div><!-- /row justify-content-md-center -->
 </div><!-- /container -->
+
 </body>
 </html>
