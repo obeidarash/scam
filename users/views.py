@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm
+from django.contrib import messages
 
 
 def login_user(request):
@@ -16,8 +17,10 @@ def login_user(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
+                messages.success(request, 'your are login')
                 return redirect('home')
             else:
+                messages.error(request, 'Email or Password is wrong')
                 redirect('users:login')
 
     context = {
@@ -30,3 +33,9 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('home')
     return render(request, 'users/signup.html', context={})
+
+
+def log_out(request):
+    logout(request)
+    messages.info(request, 'You are out now')
+    return redirect('users:login')

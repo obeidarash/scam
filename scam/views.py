@@ -9,6 +9,4 @@ def index(request):
 
 
 def manifest(request):
-    if request.user.is_authenticated:
-        return redirect('manifest')
     return render(request, 'manifest.html', context={})

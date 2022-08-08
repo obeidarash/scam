@@ -15,7 +15,14 @@
         <div class="col-md-5">
 
             <h3>Login to website name</h3>
-
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Well! </strong>{{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3 row">
