@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,13 +14,38 @@
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-5">
-
             <h3>Signup to website name</h3>
-
-
+            <form method="POST" action="{% url 'users:signup' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    {{ register_form.email|add_error_class:"is-invalid" }}
+                    {% for error in register_form.email.errors %}
+                        <div id="email" class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    {{ register_form.password }}
+                </div>
+                <div class="mb-3">
+                    <label for="re_password" class="form-label">Confirm Password</label>
+                    {{ register_form.re_password }}
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div><!-- /col-md-5 Center of the site-->
         <div class="col col-lg-2"></div>
     </div><!-- /row justify-content-md-center -->
 </div><!-- /container -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+{#<script src="{% static 'js/popper.min.js' %}"></script>#}
+{#<script src="{% static 'js/bootstrap.min.js' %}"></script>#}
 </body>
 </html>
