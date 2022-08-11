@@ -14,7 +14,6 @@ class DepositManager(models.Manager):
         return False
 
 
-# todo: is_approved and is_decline cant be true in the same time (do a custom validation in admin area)
 # with this model user can charge his account
 class Deposit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
