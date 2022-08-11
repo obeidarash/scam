@@ -37,6 +37,7 @@ def signup(request):
     if register_form.is_valid():
         email = register_form.cleaned_data.get('email')
         password = register_form.cleaned_data.get('password')
+        # todo: create 3 token when user is created in another Model
         User.objects.create_user(username=email, email=email, password=password)
         messages.success(request, 'your account has ben created, please log in')
         return redirect('users:login')
