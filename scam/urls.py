@@ -8,7 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
     path('manifest', manifest, name='manifest'),
-    path('', include('users.urls', namespace='users'))
+    path('', include('users.urls', namespace='users')),
+    path('', include('financial.urls', namespace='financial'))
 ]
 
 admin.site.site_header = "Admin Area"
