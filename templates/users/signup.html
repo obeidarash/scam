@@ -27,12 +27,22 @@
                     {% endfor %}
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    {{ register_form.password }}
+                    <label for="email" class="form-label">Password</label>
+                    {{ register_form.password|add_error_class:"is-invalid" }}
+                    {% for error in register_form.password.errors %}
+                        <div id="email" class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="mb-3">
-                    <label for="re_password" class="form-label">Confirm Password</label>
-                    {{ register_form.re_password }}
+               <div class="mb-3">
+                    <label for="email" class="form-label">Confirm Password</label>
+                    {{ register_form.re_password|add_error_class:"is-invalid" }}
+                    {% for error in register_form.re_password.errors %}
+                        <div id="email" class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
                 </div>
                 <div class="mb-3 form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

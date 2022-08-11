@@ -1,4 +1,5 @@
 from django import forms
+from users.models import User
 from django.core import validators
 
 
@@ -58,7 +59,28 @@ class RegisterForm(forms.Form):
     #     }
     # ))
 
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        is_exists_user_by_username = User.objects.filter(username=username).exists()
+        if is_exists_user_by_username:
+            raise forms.ValidationError('This username exist')
+        return username
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        is_exists_email_by_email = User.objects.filter(email=email).exists()
+        if is_exists_email_by_email:
+            raise forms.ValidationError('This email exist')
+        return email
+
     def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if password != re_password:
+            raise forms.ValidationError('Passwords Doesnt match')
+        return password
+
+    def clean_password(self):
         password = self.cleaned_data.get('password')
         re_password = self.cleaned_data.get('re_password')
         if password != re_password:
