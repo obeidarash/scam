@@ -1,14 +1,29 @@
 from django.db import models
 from users.models import User
-from datetime import datetime
 
 
+class DepositManager(models.Manager):
+
+    def is_deposit_exist_approved(self, user):
+        deposit_list = Deposit.objects.filter(user__email=user)
+        for deposit in deposit_list:
+            if not deposit.is_approved and not deposit.is_decline:
+                return True
+            if deposit.is_approved:
+                return True
+        return False
+
+
+# todo: is_approved and is_decline cant be true in the same time (do a custom validation in admin area)
 # with this model user can charge his account
 class Deposit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
     hash = models.CharField(max_length=1000, verbose_name='Transaction HASH or TXID', null=True, blank=True)
     is_approved = models.BooleanField(default=False)
+    is_decline = models.BooleanField(default=False)
+
+    objects = DepositManager()
 
     def __str__(self):
         return self.user.email
