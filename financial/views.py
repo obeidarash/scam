@@ -6,6 +6,12 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/login')
+def withdraw(request):
+    context = {}
+    return render(request, 'financial/withdraw.html', context)
+
+
+@login_required(login_url='/login')
 def deposit(request):
     deposit_form = DepositForm(request.POST or None)
     is_deposit_exist_approved = Deposit.objects.is_deposit_exist_approved(request.user)
