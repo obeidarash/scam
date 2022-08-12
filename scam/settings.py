@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'financial',
     'widget_tweaks',
+    'access_token',
 ]
 
 MIDDLEWARE = [

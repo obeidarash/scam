@@ -18,35 +18,41 @@
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
+                    <label for="{{ register_form.email.id_for_label }}" class="form-label">Email address</label>
                     {{ register_form.email|add_error_class:"is-invalid" }}
                     {% for error in register_form.email.errors %}
-                        <div id="email" class="invalid-feedback">
+                        <div id="{{ register_form.email.id_for_label }}" class="invalid-feedback">
                             {{ error }}
                         </div>
                     {% endfor %}
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Password</label>
+                    <label for="{{ register_form.access_token.id_for_label }}" class="form-label">Access Token</label>
+                    {{ register_form.access_token|add_error_class:"is-invalid" }}
+                    {% for error in register_form.access_token.errors %}
+                        <div id="{{ register_form.access_token.id_for_label }}" class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="{{ register_form.password.id_for_label }}" class="form-label">Password</label>
                     {{ register_form.password|add_error_class:"is-invalid" }}
                     {% for error in register_form.password.errors %}
-                        <div id="email" class="invalid-feedback">
+                        <div id="{{ register_form.password.id_for_label }}" class="invalid-feedback">
                             {{ error }}
                         </div>
                     {% endfor %}
                 </div>
-               <div class="mb-3">
-                    <label for="email" class="form-label">Confirm Password</label>
+                <div class="mb-3">
+                    <label for="{{ register_form.re_password.id_for_label }}" class="form-label">Confirm
+                        Password</label>
                     {{ register_form.re_password|add_error_class:"is-invalid" }}
                     {% for error in register_form.re_password.errors %}
-                        <div id="email" class="invalid-feedback">
+                        <div id="{{ register_form.re_password.id_for_label }}" class="invalid-feedback">
                             {{ error }}
                         </div>
                     {% endfor %}
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>

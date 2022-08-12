@@ -1,6 +1,7 @@
 from django import forms
 from users.models import User
 from django.core import validators
+from access_token.models import AccessToken
 
 
 class LoginForm(forms.Form):
@@ -33,6 +34,15 @@ class RegisterForm(forms.Form):
         }
     ))
 
+    access_token = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': '465fh688s679',
+            'name': 'access_token',
+            'id': 'access_token',
+            'class': 'form-control'
+        }
+    ))
+
     password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
             'placeholder': '*****',
@@ -48,7 +58,7 @@ class RegisterForm(forms.Form):
             'id': 're_password',
             'class': 'form-control'
         }
-    ), required=True)
+    ))
 
     # phone = forms.CharField(widget=forms.NumberInput(
     #     attrs={
@@ -73,16 +83,24 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('This email exist')
         return email
 
-    def clean_re_password(self):
-        password = self.cleaned_data.get('password')
-        re_password = self.cleaned_data.get('re_password')
-        if password != re_password:
-            raise forms.ValidationError('Passwords Doesnt match')
-        return password
+    # check for valid token
+    def clean_access_token(self):
+        access_token = self.cleaned_data.get('access_token')
+        access_token_is_valid = AccessToken.objects.filter(access_token=access_token, is_used=False).exists()
+        if not access_token_is_valid:
+            raise forms.ValidationError('this token is not valid')
+        return access_token
 
-    def clean_password(self):
-        password = self.cleaned_data.get('password')
-        re_password = self.cleaned_data.get('re_password')
-        if password != re_password:
-            raise forms.ValidationError('Passwords Doesnt match')
-        return password
+    # def clean_password(self):
+    #     password = self.cleaned_data.get('password')
+    #     re_password = self.cleaned_data.get('re_password')
+    #     if password != re_password:
+    #         raise forms.ValidationError('Passwords Doesnt match')
+    #     return password
+
+    # def clean_re_password(self):
+    #     password = self.cleaned_data.get('password')
+    #     re_password = self.cleaned_data.get('re_password')
+    #     if re_password != password:
+    #         raise forms.ValidationError('Passwords Doesnt match')
+    #     return re_password
