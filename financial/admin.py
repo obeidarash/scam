@@ -10,7 +10,11 @@ class DepositAdmin(admin.ModelAdmin):
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
     sortable_by = ('-date',)
+
     # readonly_fields = ('hash', 'user')
+
+    # def has_delete_permission(self, request, obj=None):
+    #     return False
 
 
 @admin.register(Withdraw)
@@ -19,3 +23,4 @@ class WithdrawAdmin(admin.ModelAdmin):
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
     readonly_fields = ('user',)
+    sortable_by = ('-date',)

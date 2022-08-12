@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from .forms import DepositForm
 from .models import Deposit
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/login')
 def deposit(request):
     deposit_form = DepositForm(request.POST or None)
     is_deposit_exist_approved = Deposit.objects.is_deposit_exist_approved(request.user)
@@ -17,9 +19,13 @@ def deposit(request):
                 return redirect('financial:deposit')
 
     # todo: show deposit list to users
+    deposit_exist = Deposit.objects.filter(user__email=request.user).exists()
+    deposit_list = Deposit.objects.filter(user__email=request.user)
 
     context = {
         'is_deposit_exist_approved': is_deposit_exist_approved,
-        'deposit_form': deposit_form
+        'deposit_form': deposit_form,
+        'deposit_exist': deposit_exist,
+        'deposit_list': deposit_list,
     }
     return render(request, 'financial/deposit.html', context)
