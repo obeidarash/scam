@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'financial',
     'widget_tweaks',
+    'tinymce',
     'access_token',
 ]
 
