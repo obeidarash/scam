@@ -3,13 +3,14 @@ import uuid
 
 
 def index(request):
-    # todo: work on token generator and its model
+    if not request.user.is_authenticated:
+        return redirect('manifest')
+
+    # todo: test of token generator
+    # token app model: token, user
     for _ in range(3):
         uid = str(uuid.uuid4().hex)[:10]
         print(uid)
-
-    if not request.user.is_authenticated:
-        return redirect('manifest')
 
     return render(request, 'index.html', context={})
 

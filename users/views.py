@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import LoginForm, RegisterForm
 from django.contrib import messages
 from .models import User
+import uuid
 
 
 def login_user(request):
