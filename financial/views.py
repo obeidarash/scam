@@ -18,7 +18,7 @@ def deposit(request):
                 messages.success(request, 'Transfer has been submitted')
                 return redirect('financial:deposit')
 
-    # todo: show deposit list to users
+    # show deposit list to users
     deposit_exist = Deposit.objects.filter(user__email=request.user).exists()
     deposit_list = Deposit.objects.filter(user__email=request.user)
 
