@@ -56,6 +56,7 @@ def signup(request):
             access_token_find.save()
 
             # create 3 token when user is created in another Model
+            # todo: you can check for duplicate token in here
             for _ in range(3):
                 uid = str(uuid.uuid4().hex)[:10]
                 AccessToken.objects.create(representative=request.user, access_token=uid)

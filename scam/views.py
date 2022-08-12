@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-import uuid
 from access_token.models import AccessToken
 
 
@@ -17,4 +16,5 @@ def index(request):
 
 
 def manifest(request):
+    # todo: add text editor and database for manifest page (Tinymce package)
     return render(request, 'manifest.html', context={})

@@ -1,12 +1,16 @@
 from django.shortcuts import render, redirect
 from .forms import DepositForm
 from .models import Deposit
+from access_token.models import AccessToken
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/login')
 def withdraw(request):
+    # todo: if three of users deposit is okay, representative can submit for withdraw
+    access_tokens = AccessToken.objects.filter(representative=request.user)
+
     context = {}
     return render(request, 'financial/withdraw.html', context)
 
