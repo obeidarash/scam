@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def withdraw(request):
-    # todo: if three of users deposit is okay, representative can submit for withdraw
+    # todo: if three of users deposit is okay, representative can submit for withdraw and if deposit of user it self is okay
     access_tokens = AccessToken.objects.filter(representative=request.user)
 
     context = {}

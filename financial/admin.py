@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Withdraw, Deposit
-from .forms import DepositAdminForm
+from .forms import DepositAdminForm, WithdrawAdminForm
 
 
 @admin.register(Deposit)
@@ -10,6 +10,7 @@ class DepositAdmin(admin.ModelAdmin):
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
     sortable_by = ('-date',)
+    list_filter = ('is_approved', 'is_decline',)
 
     # readonly_fields = ('hash', 'user')
 
@@ -19,8 +20,11 @@ class DepositAdmin(admin.ModelAdmin):
 
 @admin.register(Withdraw)
 class WithdrawAdmin(admin.ModelAdmin):
-    list_display = ('user', 'date')
+    form = WithdrawAdminForm
+    list_display = ('user', 'date', 'is_payed', 'is_approved')
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
-    readonly_fields = ('user',)
     sortable_by = ('-date',)
+    list_filter = ('is_payed', 'is_approved',)
+
+    # readonly_fields = ('user',)
