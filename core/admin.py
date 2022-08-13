@@ -11,3 +11,6 @@ class ManifestAdmin(admin.ModelAdmin):
         if self.model.objects.count() >= max_objects:
             return False
         return super().has_add_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return False

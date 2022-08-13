@@ -21,6 +21,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Amount</th>
+                <th scope="col">Hash</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
             </tr>
@@ -30,6 +31,7 @@
                 <tr>
                     <th scope="row">#</th>
                     <td>100 $</td>
+                    <td>{{ deposit.hash }}</td>
                     <td>{{ deposit.date }}</td>
                     {% if deposit.is_approved and not deposit.is_decline %}
                         <td class="table-success">Confirm</td>

@@ -35,9 +35,10 @@ class Withdraw(models.Model):
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
     is_approved = models.BooleanField(default=False, help_text='Everything is ok for payment')
     is_payed = models.BooleanField(default=False, help_text='Money transfer is done')
-    wallet_id = models.CharField(max_length=1000, verbose_name='Wallet Address', null=False, blank=False)
-    # todo: add validator to admin - if is_payed is true hash cant be empty
-    hash = models.CharField(max_length=1000, verbose_name='Transaction HASH or TXID', null=True, blank=True)
+    wallet_id = models.CharField(max_length=1000, verbose_name='Wallet Address', null=False, blank=False,
+                                 help_text='Wallet ID of user')
+    hash = models.CharField(max_length=1000, verbose_name='Transaction HASH or TXID', null=True, blank=True,
+                            help_text='ID of transaction of money to the user')
 
     def __str__(self):
         return self.user.email
