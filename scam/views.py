@@ -18,7 +18,3 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
-
-def manifest(request):
-    # todo: add text editor and database for manifest page (Tinymce package)
-    return render(request, 'manifest.html', context={})

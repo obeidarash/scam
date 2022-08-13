@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index, manifest
+from .views import index
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -8,8 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', index, name='home'),
-    path('manifest', manifest, name='manifest'),
     path('', include('users.urls', namespace='users')),
+    path('', include('core.urls', namespace='core')),
     path('', include('financial.urls', namespace='financial'))
 ]
 
