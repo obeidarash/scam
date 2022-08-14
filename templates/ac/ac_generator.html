@@ -9,6 +9,14 @@
 
     <h2>Accesses Token Generator</h2>
     <hr>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ message }}</strong> hase been created
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
     <p>Click button bellow to generate new token who doesn't belong to anyone.</p>
     <form action="{% url 'ac:ac_generator' %}" method="POST">
     {% csrf_token %}

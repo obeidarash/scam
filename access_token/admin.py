@@ -10,4 +10,4 @@ class DepositAdmin(admin.ModelAdmin):
     autocomplete_fields = ('representative', 'user',)
     sortable_by = ('-date',)
     list_filter = ('by_superuser', 'is_used')
-    # readonly_fields = ('access_token',)
+    readonly_fields = ('access_token',)

@@ -4,12 +4,9 @@ from financial.models import Deposit
 
 
 def index(request):
-    if not request.user.is_authenticated:
-        return redirect('core:manifest')
-
     # show users accesses tokens
     # don't show accesses tokens if deposit of user isn't approve
-    access_tokens = AccessToken.objects.filter(representative=request.user)
+    access_tokens = AccessToken.objects.filter(representative=request.user, by_superuser=False)
     is_deposit_exist_approved = Deposit.objects.is_deposit_exist_approved(request.user)
 
     context = {
@@ -17,4 +14,3 @@ def index(request):
         'is_deposit_exist_approved': is_deposit_exist_approved,
     }
     return render(request, 'index.html', context)
-
