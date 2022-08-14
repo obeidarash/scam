@@ -1,10 +1,11 @@
 from django.db import models
 from users.models import User
+from access_token.models import AccessToken
 
 
 class DepositManager(models.Manager):
 
-    # check deposit status (paid or not paid!)
+    # check deposit status (paid or not paid!); just can be used in deposit view
     def is_deposit_exist_approved(self, user):
         deposit_list = Deposit.objects.filter(user__email=user)
         for deposit in deposit_list:
@@ -13,6 +14,15 @@ class DepositManager(models.Manager):
             if deposit.is_approved:
                 return True
         return False
+
+    # used id withdraw view
+    def check_deposit(self, user):
+        deposit_list = Deposit.objects.filter(user__email=user)
+        for deposit in deposit_list:
+            if deposit.is_approved:
+                return True
+
+
 
 
 # with this model user can charge his account

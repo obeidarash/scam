@@ -23,6 +23,8 @@ class WithdrawAdminForm(forms.ModelForm):
     def clean(self):
         if self.cleaned_data['is_payed'] and self.cleaned_data['hash'] is None:
             raise forms.ValidationError("if is paid is True, hash cant be empty")
+        if not self.cleaned_data['is_payed'] and self.cleaned_data['hash'] is not None:
+            raise forms.ValidationError("if is paid is False, hash cant be filled")
 
 
 class DepositAdminForm(forms.ModelForm):

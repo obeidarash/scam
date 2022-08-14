@@ -9,7 +9,7 @@ def index(request):
     # show users accesses tokens
     # don't show accesses tokens if deposit of user isn't approve
     access_tokens = AccessToken.objects.filter(representative=request.user, by_superuser=False)
-    is_deposit_exist_approved = Deposit.objects.is_deposit_exist_approved(request.user)
+    is_deposit_exist_approved = Deposit.objects.check_deposit(request.user)
 
     context = {
         'access_tokens': access_tokens,

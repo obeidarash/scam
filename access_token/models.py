@@ -2,6 +2,17 @@ from django.db import models
 from users.models import User
 
 
+class AccessTokenManager(models.Manager):
+
+    # check if all three user are registered
+    def check_user_status(self, user):
+        access_tokens = AccessToken.objects.filter(representative=user)
+        for at in access_tokens:
+            if at.user is None:
+                return False
+        return True
+
+
 class AccessToken(models.Model):
     access_token = models.CharField(max_length=128, verbose_name="Access Token", null=False, blank=False)
     representative = models.ForeignKey(User, on_delete=models.CASCADE,
@@ -13,6 +24,7 @@ class AccessToken(models.Model):
     by_superuser = models.BooleanField(default=False, verbose_name='Create by admin',
                                        help_text="Super user Created this Accesses token manually")
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
+    objects = AccessTokenManager()
 
     def __str__(self):
         return self.access_token

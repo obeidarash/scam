@@ -10,14 +10,19 @@ from django.contrib.auth.decorators import login_required
 def withdraw(request):
     # todo: if three of users deposit is okay, representative can submit for withdraw and if deposit of user it self is okay
 
-    # check if deposit is okay?
+    # check if deposit is okay? Done!
+    # Fetch all 3 user related. check ac token. Done!
     # check if all 3 user deposit okay?
     # and let user request a withdrawal
-    access_tokens = AccessToken.objects.filter(representative=request.user)
 
     if request.method == "POST":
-        if Deposit.objects.is_deposit_exist_approved(request.user):
-            print('okay')
+        # Check Deposit Status
+        if Deposit.objects.check_deposit(request.user):
+            # check if all three user are registered
+            users_status = AccessToken.objects.check_user_status(request.user)
+            if users_status:
+                print('ok')
+
 
     context = {}
     return render(request, 'financial/withdraw.html', context)
