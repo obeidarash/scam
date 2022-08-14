@@ -10,6 +10,8 @@ class AccessToken(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, help_text="belongs to 3 different user", null=True,
                              blank=True)
     is_used = models.BooleanField(default=False)
+    by_superuser = models.BooleanField(default=False, verbose_name='Create by admin',
+                                       help_text="Super user Created this Accesses token manually")
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
 
     def __str__(self):

@@ -5,7 +5,7 @@ from financial.models import Deposit
 
 def index(request):
     if not request.user.is_authenticated:
-        return redirect('manifest')
+        return redirect('core:manifest')
 
     # show users accesses tokens
     # don't show accesses tokens if deposit of user isn't approve

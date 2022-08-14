@@ -10,7 +10,8 @@ urlpatterns = [
     path('', index, name='home'),
     path('', include('users.urls', namespace='users')),
     path('', include('core.urls', namespace='core')),
-    path('', include('financial.urls', namespace='financial'))
+    path('', include('financial.urls', namespace='financial')),
+    path('', include('access_token.urls', namespace='ac'))
 ]
 
 admin.site.site_header = "Admin Area"

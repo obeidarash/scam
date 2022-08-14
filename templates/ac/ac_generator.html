@@ -1,1 +1,22 @@
 {# todo: generate ac, only can superuser can do this #}
+
+{% extends 'shared/base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+    Accesses Token Generator
+{% endblock %}
+{% block content %}
+
+    <h2>Accesses Token Generator</h2>
+    <hr>
+    <p>Click button bellow to generate new token who doesn't belong to anyone.</p>
+    <form action="{% url 'ac:ac_generator' %}" method="POST">
+    {% csrf_token %}
+        <button class="btn btn-lg btn-primary">
+            Generate new token
+        </button>
+    </form>
+
+
+
+{% endblock %}
