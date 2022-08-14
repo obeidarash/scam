@@ -69,6 +69,13 @@ class RegisterForm(forms.Form):
     #     }
     # ))
 
+    def clean_re_password(self):
+        password = self.cleaned_data.get('password')
+        re_password = self.cleaned_data.get('re_password')
+        if password != re_password:
+            raise forms.ValidationError("Passwords does not match")
+        return password
+
     def clean_username(self):
         username = self.cleaned_data.get('username')
         is_exists_user_by_username = User.objects.filter(username=username).exists()
@@ -90,17 +97,3 @@ class RegisterForm(forms.Form):
         if not access_token_is_valid:
             raise forms.ValidationError('this token is not valid')
         return access_token
-
-    # def clean_password(self):
-    #     password = self.cleaned_data.get('password')
-    #     re_password = self.cleaned_data.get('re_password')
-    #     if password != re_password:
-    #         raise forms.ValidationError('Passwords Doesnt match')
-    #     return password
-
-    # def clean_re_password(self):
-    #     password = self.cleaned_data.get('password')
-    #     re_password = self.cleaned_data.get('re_password')
-    #     if re_password != password:
-    #         raise forms.ValidationError('Passwords Doesnt match')
-    #     return re_password

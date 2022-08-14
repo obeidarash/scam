@@ -5,6 +5,15 @@ from django.contrib import messages
 from .models import User
 import uuid
 from access_token.models import AccessToken
+from django.contrib.auth.decorators import login_required
+
+
+@login_required(login_url='/login')
+def profile(request):
+    context = {
+
+    }
+    return render(request, 'users/profile.html', context)
 
 
 def login_user(request):
@@ -36,10 +45,10 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('home')
 
+    # Validate register form
     register_form = RegisterForm(request.POST or None)
     if request.method == "POST":
         if register_form.is_valid():
-            # todo: fix problem with clean password validator
             email = register_form.cleaned_data.get('email')
             password = register_form.cleaned_data.get('password')
             access_token = register_form.cleaned_data.get('access_token')
@@ -55,11 +64,15 @@ def signup(request):
             access_token_find.is_used = True
             access_token_find.save()
 
-            # create 3 token when user is created in another Model
-            # todo: you can check for duplicate token in here
-            for _ in range(3):
+            # create 3 token when user is created, and avoid create duplicate token
+            counter = 1
+            while counter <= 3:
                 uid = str(uuid.uuid4().hex)[:10]
-                AccessToken.objects.create(representative=request.user, access_token=uid)
+                ac_is_exist = AccessToken.objects.filter(access_token=uid).exists()
+                if not ac_is_exist:
+                    print('ok')
+                    AccessToken.objects.create(representative=request.user, access_token=uid, by_superuser=False)
+                    counter += 1
 
             messages.success(request, 'your are login')
             return redirect('home')
@@ -71,6 +84,7 @@ def signup(request):
     return render(request, 'users/signup.html', context)
 
 
+@login_required(login_url='/login')
 def log_out(request):
     logout(request)
     messages.info(request, 'You are out now')

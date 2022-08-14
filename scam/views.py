@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from access_token.models import AccessToken
 from financial.models import Deposit
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url='/login')
 def index(request):
     # show users accesses tokens
     # don't show accesses tokens if deposit of user isn't approve

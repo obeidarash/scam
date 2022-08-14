@@ -7,5 +7,14 @@
 
     <h2>Withdraw</h2>
 
+    <p>if user is okay show him the button</p>
+
+    <p>if you are eligible for withdraw you can see the button</p>
+    <form action="{% url 'financial:withdraw' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-success btn-lg">
+            Request Withdraw
+        </button>
+    </form>
 
 {% endblock %}
