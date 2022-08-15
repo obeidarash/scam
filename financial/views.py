@@ -37,15 +37,18 @@ def withdraw(request):
             return redirect('financial:withdraw')
 
     # check withdraw status to prevent user send multiple request
-    check_withdraw_status = Withdraw.objects.check_withdraw(request.user)
+    is_withdraw_exist_approved = Withdraw.objects.is_withdraw_exist_approved(request.user)
+
+
 
     # get list of withdraws
     withdraw_list = Withdraw.objects.filter(user=request.user)
 
+
     context = {
         'is_withdraw_ok': is_withdraw_ok,
         'withdraw_form': withdraw_form,
-        'check_withdraw_status': check_withdraw_status,
+        'is_withdraw_exist_approved': is_withdraw_exist_approved,
         'withdraw_list': withdraw_list
     }
 

@@ -6,17 +6,12 @@ from access_token.models import AccessToken
 class WithdrawManager(models.Manager):
 
     # to prevent user send multiple withdraw request
-    def check_withdraw(self, user):
-        withdraw_list = Withdraw.objects.filter(user=user)
-        withdraw_exist = Withdraw.objects.filter(user=user).exists()
-
-        # check if there is any request
-        # check if request is paid or not
-
-        if withdraw_exist:
-            for withdraw in withdraw_list:
-                if not withdraw.is_approved and not withdraw.is_decline:
-                    return False
+    def is_withdraw_exist_approved(self, user):
+        withdraw_list = Withdraw.objects.filter(user__email=user)
+        for withdraw in withdraw_list:
+            if not withdraw.is_approved and not withdraw.is_decline:
+                return True
+            if withdraw.is_approved:
                 return True
         return False
 
