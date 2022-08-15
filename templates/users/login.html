@@ -14,7 +14,6 @@
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-5">
-
             <h3>Login to website name</h3>
             {% if messages %}
                 {% for message in messages %}
@@ -40,13 +39,13 @@
                 </div>
                 <button class="btn btn-success" type="submit">Login</button>
             </form>
-
-            if you don't have account please click link below
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Sign up</a>
+            <hr>
+            <div class="text-center">
+                <h5>if you don't have account please click link below</h5>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Register</a>
+                </div>
             </div>
-
-
         </div><!-- /col-md-5 Center of the site-->
         <div class="col col-lg-2"></div>
     </div><!-- /row justify-content-md-center -->

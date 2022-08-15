@@ -14,6 +14,15 @@ class ProfileForm(forms.Form):
         }
     ))
 
+    fullname = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Brad Pit',
+            'name': 'fullname',
+            'id': 'fullname',
+            'class': 'form-control'
+        }
+    ), validators=[validators.MinLengthValidator(5), validators.MaxLengthValidator(30), ])
+
 
 class LoginForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(
@@ -33,8 +42,6 @@ class LoginForm(forms.Form):
             'class': 'form-control'
         }
     ))
-
-    # todo: validate user email and password in here
 
 
 class RegisterForm(forms.Form):
@@ -63,7 +70,7 @@ class RegisterForm(forms.Form):
             'id': 'password',
             'class': 'form-control'
         }
-    ))
+    ), validators=[validators.MinLengthValidator(6), validators.MaxLengthValidator(20)])
     re_password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'placeholder': '*****',
@@ -71,7 +78,7 @@ class RegisterForm(forms.Form):
             'id': 're_password',
             'class': 'form-control'
         }
-    ))
+    ), validators=[validators.MinLengthValidator(6), validators.MaxLengthValidator(20)])
 
     # phone = forms.CharField(widget=forms.NumberInput(
     #     attrs={

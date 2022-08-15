@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, ProfileForm
 from django.contrib import messages
 from .models import User
 import uuid
@@ -8,11 +8,19 @@ from access_token.models import AccessToken
 from django.contrib.auth.decorators import login_required
 
 
+# todo: develop change email
+# todo: develop change password
+# todo: develop change in other infos
+# ----------------------------------- #
+
+
 @login_required(login_url='/login')
 def profile(request):
     # todo: develop profile page
+    profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,
+                                                              'fullname': request.user.fullname})
     context = {
-
+        'profile_form': profile_form,
     }
     return render(request, 'users/profile.html', context)
 
