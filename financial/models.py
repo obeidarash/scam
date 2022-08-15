@@ -3,6 +3,24 @@ from users.models import User
 from access_token.models import AccessToken
 
 
+class WithdrawManager(models.Manager):
+
+    # to prevent user send multiple withdraw request
+    def check_withdraw(self, user):
+        withdraw_list = Withdraw.objects.filter(user=user)
+        withdraw_exist = Withdraw.objects.filter(user=user).exists()
+
+        # check if there is any request
+        # check if request is paid or not
+
+        if withdraw_exist:
+            for withdraw in withdraw_list:
+                if not withdraw.is_approved and not withdraw.is_decline:
+                    return False
+                return True
+        return False
+
+
 class DepositManager(models.Manager):
 
     # check deposit status (paid or not paid!); just can be used in deposit view
@@ -21,8 +39,7 @@ class DepositManager(models.Manager):
         for deposit in deposit_list:
             if deposit.is_approved:
                 return True
-
-
+        return False
 
 
 # with this model user can charge his account
@@ -43,12 +60,14 @@ class Deposit(models.Model):
 class Withdraw(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
-    is_approved = models.BooleanField(default=False, help_text='Everything is ok for payment')
-    is_payed = models.BooleanField(default=False, help_text='Money transfer is done')
+    is_decline = models.BooleanField(default=False, help_text='cant pay')
+
+    is_approved = models.BooleanField(default=False, help_text='Everything is ok and payed')
     wallet_id = models.CharField(max_length=1000, verbose_name='Wallet Address', null=False, blank=False,
                                  help_text='Wallet ID of user')
     hash = models.CharField(max_length=1000, verbose_name='Transaction HASH or TXID', null=True, blank=True,
                             help_text='ID of transaction of money to the user')
+    objects = WithdrawManager()
 
     def __str__(self):
         return self.user.email

@@ -6,15 +6,64 @@
 {% block content %}
 
     <h2>Withdraw</h2>
+    {% for message in messages %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Well! </strong>{{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
 
-    <p>if user is okay show him the button</p>
+    {#    todo: show user withdara status if he submited any request#}
+    {% if check_withdraw_status %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Hash</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for withdraw in withdraw_list %}
+                <tr>
+                    <th scope="row">#</th>
+                    <td>200 $</td>
+                    <td>{{ withdraw.hash }}</td>
+                    <td>{{ withdraw.date }}</td>
+                    {% if withdraw.is_approved and not withdraw.is_decline %}
+                        <td class="table-success">Confirm</td>
+                    {% elif not withdraw.is_approved and withdraw.is_decline %}
+                        <td class="table-danger">Rejected</td>
+                    {% else %}
+                        <td class="table-warning">Waiting</td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
-    <p>if you are eligible for withdraw you can see the button</p>
-    <form action="{% url 'financial:withdraw' %}" method="POST">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-outline-success btn-lg">
-            Request Withdraw
-        </button>
-    </form>
+    {% if is_withdraw_ok and not check_withdraw_status %}
+        <form action="{% url 'financial:withdraw' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="{{ withdraw_form.wallet_id.id_for_label }}" class="form-label">Wallet ID: </label>
+                {{ withdraw_form.wallet_id|add_error_class:"is-invalid" }}
+                {% for error in withdraw_form.wallet_id.errors %}
+                    <div id="{{ withdraw_form.wallet_id.id_for_label }}" class="invalid-feedback">
+                        {{ error }}
+                    </div>
+                {% endfor %}
+                <div id="hash-help" class="form-text">Please be careful with wallet ID, it's not changeable</div>
+            </div>
+            <button type="submit" class="btn btn-outline-success btn-lg">
+                Request Withdraw
+            </button>
+        </form>
+    {% else %}
+        <p>if you are eligible for withdraw you can see the button</p>
+    {% endif %}
 
 {% endblock %}

@@ -21,10 +21,10 @@ class DepositAdmin(admin.ModelAdmin):
 @admin.register(Withdraw)
 class WithdrawAdmin(admin.ModelAdmin):
     form = WithdrawAdminForm
-    list_display = ('user', 'date', 'is_payed', 'is_approved')
+    list_display = ('user', 'date', 'is_decline', 'is_approved')
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
     sortable_by = ('-date',)
-    list_filter = ('is_payed', 'is_approved',)
+    list_filter = ('is_decline', 'is_approved',)
 
     # readonly_fields = ('user',)

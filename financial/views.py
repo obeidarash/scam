@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import DepositForm
-from .models import Deposit
+from .forms import DepositForm, WithdrawForm
+from .models import Deposit, Withdraw
 from access_token.models import AccessToken
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -8,23 +8,47 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def withdraw(request):
-    # todo: if three of users deposit is okay, representative can submit for withdraw and if deposit of user it self is okay
-
     # check if deposit is okay? Done!
     # Fetch all 3 user related. check ac token. Done!
-    # check if all 3 user deposit okay?
-    # and let user request a withdrawal
+    # check if all 3 user deposit okay? Done
+    # and let user request a withdrawal Done
+    is_withdraw_ok = False
 
-    if request.method == "POST":
-        # Check Deposit Status
-        if Deposit.objects.check_deposit(request.user):
-            # check if all three user are registered
-            users_status = AccessToken.objects.check_user_status(request.user)
-            if users_status:
-                print('ok')
+    # Check representative Deposit Status
+    if Deposit.objects.check_deposit(request.user):
+        # check if all three user are registered
+        users_status = AccessToken.objects.check_user_status(request.user)
+        if users_status:
+            # Check if all 3 users deposit status is okay
+            access_tokens = AccessToken.objects.filter(representative=request.user)
+            for access_token in access_tokens:
+                access_token_user = Deposit.objects.check_deposit(access_token.user)
+                if not access_token_user:
+                    is_withdraw_ok = False
+                    break
+                is_withdraw_ok = True
 
+    withdraw_form = WithdrawForm(request.POST or None)
+    if request.method == "POST" and is_withdraw_ok:
+        if withdraw_form.is_valid():
+            wallet_id = withdraw_form.cleaned_data['wallet_id']
+            Withdraw.objects.create(user=request.user, wallet_id=wallet_id)
+            messages.success(request, 'Withdraw request hase been sent')
+            return redirect('financial:withdraw')
 
-    context = {}
+    # check withdraw status to prevent user send multiple request
+    check_withdraw_status = Withdraw.objects.check_withdraw(request.user)
+
+    # get list of withdraws
+    withdraw_list = Withdraw.objects.filter(user=request.user)
+
+    context = {
+        'is_withdraw_ok': is_withdraw_ok,
+        'withdraw_form': withdraw_form,
+        'check_withdraw_status': check_withdraw_status,
+        'withdraw_list': withdraw_list
+    }
+
     return render(request, 'financial/withdraw.html', context)
 
 

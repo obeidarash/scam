@@ -3,6 +3,17 @@ from .models import Deposit, Withdraw
 from users.models import User
 
 
+class WithdrawForm(forms.Form):
+    wallet_id = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': '',
+            'name': 'wallet_id',
+            'id': 'wallet_id',
+            'class': 'form-control',
+        }
+    ))
+
+
 class DepositForm(forms.Form):
     hash = forms.CharField(widget=forms.TextInput(
         attrs={
@@ -21,9 +32,9 @@ class WithdrawAdminForm(forms.ModelForm):
         fields: '__all__'
 
     def clean(self):
-        if self.cleaned_data['is_payed'] and self.cleaned_data['hash'] is None:
+        if self.cleaned_data['is_approved'] and self.cleaned_data['hash'] is None:
             raise forms.ValidationError("if is paid is True, hash cant be empty")
-        if not self.cleaned_data['is_payed'] and self.cleaned_data['hash'] is not None:
+        if not self.cleaned_data['is_approved'] and self.cleaned_data['hash'] is not None:
             raise forms.ValidationError("if is paid is False, hash cant be filled")
 
 
