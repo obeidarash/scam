@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'tinymce',
     'core',
     'access_token',
+    'django_countries',
 ]
 
 MIDDLEWARE = [

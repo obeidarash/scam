@@ -2,9 +2,15 @@ from django import forms
 from users.models import User
 from django.core import validators
 from access_token.models import AccessToken
+from django_countries.widgets import CountrySelectWidget
 
 
 class ProfileForm(forms.Form):
+    class Meta:
+        model: User
+        fields = ('country',)
+        widgets = {'country': CountrySelectWidget()}
+
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={
             'placeholder': 'example@gmail.com',

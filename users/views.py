@@ -11,11 +11,11 @@ from django.contrib.auth.decorators import login_required
 # todo: develop change email
 # todo: develop change password
 # todo: develop change in other infos
-# ----------------------------------- #
 
 
 @login_required(login_url='/login')
 def profile(request):
+    print(request.user.country.code)
     # todo: develop profile page
     profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,
                                                               'fullname': request.user.fullname})
