@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import ac, ac_generator
+from .views import at, at_generator
 
-app_name = 'ac'
+app_name = 'at'
 urlpatterns = [
-    path('ac', ac, name='ac'),
-    path('ac_generator', ac_generator, name='ac_generator'),
+    path('at', at, name='at'),
+    path('at_generator', at_generator, name='at_generator'),
 ]

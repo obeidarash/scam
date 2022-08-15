@@ -16,7 +16,7 @@
         {% endfor %}
     {% endif %}
     <p>Click button bellow to generate new token who doesn't belong to anyone.</p>
-    <form action="{% url 'ac:ac_generator' %}" method="POST">
+    <form action="{% url 'at:at_generator' %}" method="POST">
         {% csrf_token %}
         <button class="btn btn-lg btn-primary">
             Generate new token

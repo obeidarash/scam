@@ -5,12 +5,12 @@ from access_token.models import AccessToken
 from django.contrib import messages
 
 
-def ac(request):
-    return render(request, 'ac/ac.html', context={})
+def at(request):
+    return render(request, 'at/at.html', context={})
 
 
 @login_required(login_url='/login')
-def ac_generator(request):
+def at_generator(request):
     if not request.user.is_superuser:
         return redirect('home')
 
@@ -22,10 +22,10 @@ def ac_generator(request):
             if not ac_is_exist:
                 AccessToken.objects.create(access_token=uid, by_superuser=True, representative=request.user)
                 messages.success(request, uid)
-                redirect('ac:ac_generator')
+                redirect('at:at_generator')
                 break
 
     context = {
 
     }
-    return render(request, 'ac/ac_generator.html', context)
+    return render(request, 'at/at_generator.html', context)

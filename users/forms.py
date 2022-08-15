@@ -4,6 +4,17 @@ from django.core import validators
 from access_token.models import AccessToken
 
 
+class ProfileForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={
+            'placeholder': 'example@gmail.com',
+            'name': 'email',
+            'id': 'email',
+            'class': 'form-control'
+        }
+    ))
+
+
 class LoginForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={
@@ -22,6 +33,8 @@ class LoginForm(forms.Form):
             'class': 'form-control'
         }
     ))
+
+    # todo: validate user email and password in here
 
 
 class RegisterForm(forms.Form):
