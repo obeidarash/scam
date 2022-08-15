@@ -15,10 +15,10 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def profile(request):
-    print(request.user.country.code)
     # todo: develop profile page
     profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,
                                                               'fullname': request.user.fullname})
+    print(request.user.country)
     context = {
         'profile_form': profile_form,
     }

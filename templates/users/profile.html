@@ -1,14 +1,13 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 {% load widget_tweaks %}
-{% load countries %}
+
 {% block title %}
     Deposit
 {% endblock %}
 {% block content %}
 
     <h2>Your Profile</h2>
-
-
 
     <form action="{% url 'users:profile' %}" method="POST">
         {% csrf_token %}
@@ -30,11 +29,22 @@
                 </div>
             {% endfor %}
         </div>
+
         <div class="mb-3">
-            <label for="{{ profile_form.country.id_for_label }}" class="form-label">Country: </label>
-            {{ profile_form.country|add_error_class:"is-invalid" }}
-            {% for error in profile_form.country.errors %}
-                <div id="{{ profile_form.country.id_for_label }}" class="invalid-feedback">
+            <label for="{{ profile_form.fullname.id_for_label }}" class="form-label">Fullname: </label>
+            <select class="form-control" aria-label="Default select example">
+                {% load countries %}
+                {% get_countries as countries %}
+                {% for country in countries %}
+                    <option value="{{ country.code }}"
+                            {% if request.user.country == country.code %}
+                            selected
+                            {% endif %}
+                    >{{ country.name }}</option>
+                {% endfor %}
+            </select>
+            {% for error in profile_form.fullname.errors %}
+                <div id="{{ profile_form.fullname.id_for_label }}" class="invalid-feedback">
                     {{ error }}
                 </div>
             {% endfor %}
