@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         {% if request.user.is_superuser %}
-            <a class="navbar-brand" href="admin">Admin</a>
+            <a class="navbar-brand" href="admin" target="_blank">Admin</a>
         {% else %}
             <a class="navbar-brand" href="/">Brand</a>
         {% endif %}
@@ -29,8 +29,8 @@
                         Dropdown link
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'core:manifest' %}">Manifest</a></li>
                         <li><a class="dropdown-item" href="{% url 'users:profile' %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'core:manifest' %}" target="_blank">Manifest</a></li>
                         <li><a class="dropdown-item" href="#">Another action</a></li>
                         <li><a class="dropdown-item text-danger" href="{% url 'users:logout' %}">Exit</a></li>
                     </ul>

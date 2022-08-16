@@ -18,11 +18,41 @@ def profile(request):
     # todo: develop profile page
     profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,
                                                               'fullname': request.user.fullname})
-    print(request.user.country)
+    if request.method == "POST":
+        if profile_form.is_valid():
+            email = profile_form.cleaned_data['email']
+            fullname = profile_form.cleaned_data['fullname']
+            phone = profile_form.cleaned_data['phone']
+            country = request.POST.get('country')
+
+            # todo: raise Validator-error if phone is not number
     context = {
         'profile_form': profile_form,
     }
     return render(request, 'users/profile.html', context)
+
+
+@login_required(login_url='/login')
+def change_password(request):
+    context = {
+
+    }
+    return render(request, 'users/change-password.html', context)
+
+
+def forget_password(request):
+    context = {
+
+    }
+    return render(request, 'users/forget-password.html', context)
+
+
+@login_required(login_url='/login')
+def change_email(request):
+    context = {
+
+    }
+    return render(request, 'users/change-email.html', context)
 
 
 def login_user(request):

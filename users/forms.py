@@ -11,7 +11,16 @@ class ProfileForm(forms.Form):
     #     model: User
     #     fields = ('country',)
     #     widgets = {'country': CountrySelectWidget()}
-    country = CountryField().formfield()
+    # country = CountryField().formfield()
+
+    phone = forms.IntegerField(widget=forms.NumberInput(
+        attrs={
+            'placeholder': '001',
+            'name': 'phone',
+            'id': 'phone',
+            'class': 'form-control'
+        }
+    ))
 
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={

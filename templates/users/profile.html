@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load countries %}
 {% load static %}
 {% load widget_tweaks %}
 
@@ -11,6 +12,7 @@
 
     <form action="{% url 'users:profile' %}" method="POST">
         {% csrf_token %}
+
         <div class="mb-3">
             <label for="{{ profile_form.email.id_for_label }}" class="form-label">Email (username): </label>
             {{ profile_form.email|add_error_class:"is-invalid" }}
@@ -20,6 +22,7 @@
                 </div>
             {% endfor %}
         </div>
+
         <div class="mb-3">
             <label for="{{ profile_form.fullname.id_for_label }}" class="form-label">Fullname: </label>
             {{ profile_form.fullname|add_error_class:"is-invalid" }}
@@ -31,16 +34,30 @@
         </div>
 
         <div class="mb-3">
-            <label for="{{ profile_form.fullname.id_for_label }}" class="form-label">Fullname: </label>
-            <select class="form-control" aria-label="Default select example">
-                {% load countries %}
+            <label for="{{ profile_form.phone.id_for_label }}" class="form-label">Phone: </label>
+            {{ profile_form.phone|add_error_class:"is-invalid" }}
+            {% for error in profile_form.phone.errors %}
+                <div id="{{ profile_form.phone.id_for_label }}" class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <div id="{{ profile_form.phone.id_for_label }}" class="form-text">We'll never share your email with anyone
+                else.
+            </div>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Country: </label>
+            <select name="country" id="country" class="form-control" aria-label="Default select example">
+
                 {% get_countries as countries %}
                 {% for country in countries %}
-                    <option value="{{ country.code }}"
-                            {% if request.user.country == country.code %}
-                            selected
-                            {% endif %}
-                    >{{ country.name }}</option>
+                    {% if request.user.country == country.code %}
+                        <option value="{{ country.code }}" selected>{{ country.name }}</option>
+                    {% else %}
+                        <option value="{{ country.code }}">{{ country.name }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
             {% for error in profile_form.fullname.errors %}
@@ -49,6 +66,7 @@
                 </div>
             {% endfor %}
         </div>
+        <button class="btn btn-primary" type="submit">Update Profile</button>
     </form>
 
 
