@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm, ProfileForm
+from .forms import LoginForm, RegisterForm, ProfileForm, ChangePasswordForm
 from django.contrib import messages
 from .models import User
 import uuid
@@ -34,8 +34,15 @@ def profile(request):
 
 @login_required(login_url='/login')
 def change_password(request):
-    context = {
+    change_password_form = ChangePasswordForm(request.POST or None)
 
+    if request.method == "POST":
+        if change_password_form.is_valid():
+            # todo: change password
+            pass
+
+    context = {
+        'change_password_form': change_password_form,
     }
     return render(request, 'users/change-password.html', context)
 

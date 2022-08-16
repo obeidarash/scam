@@ -6,6 +6,39 @@ from django_countries.widgets import CountrySelectWidget
 from django_countries.fields import CountryField
 
 
+class ChangePasswordForm(forms.Form):
+    old_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': '',
+            'name': 'old_password',
+            'id': 'old_password',
+            'class': 'form-control'
+        }
+    ))
+
+    new_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': '',
+            'name': 'new_password',
+            'id': 'new_password',
+            'class': 'form-control'
+        }
+    ))
+
+    re_new_password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': '',
+            'name': 're_new_password',
+            'id': 're_new_password',
+            'class': 'form-control'
+        }
+    ))
+
+    # todo: Validate change password form
+    # check for new pass - is it correct or no?
+    # check if both new and re_new password is match
+
+
 class ProfileForm(forms.Form):
     # class Meta:
     #     model: User
