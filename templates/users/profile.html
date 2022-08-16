@@ -21,8 +21,9 @@
                     {{ error }}
                 </div>
             {% endfor %}
-          <div id="{{ profile_form.email.id_for_label }}" class="form-text">
-              <a href="{% url 'users:change_email' %}">Change Email</a>
+            <div id="{{ profile_form.email.id_for_label }}" class="form-text">
+                you can change your email in
+                <a href="{% url 'users:change_email' %}">here</a>
             </div>
         </div>
 
@@ -70,6 +71,23 @@
                 </div>
             {% endfor %}
         </div>
+
+        <div class="mb-3">
+            <label for="{{ profile_form.password.id_for_label }}" class="form-label">Password: </label>
+            {{ profile_form.password|add_error_class:"is-invalid" }}
+            {% for error in profile_form.password.errors %}
+                <div id="{{ profile_form.password.id_for_label }}" class="invalid-feedback">
+                    {{ error }}
+                </div>
+            {% endfor %}
+            <div id="{{ profile_form.password.id_for_label }}" class="form-text">
+                <a href="{% url 'users:change_password' %}">Change</a>
+                or
+                <a href="{% url 'users:forget_password' %}">Reset</a>
+                your password
+            </div>
+        </div>
+
         <button class="btn btn-primary" type="submit">Update Profile</button>
     </form>
 

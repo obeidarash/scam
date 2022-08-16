@@ -40,12 +40,6 @@ class ChangePasswordForm(forms.Form):
 
 
 class ProfileForm(forms.Form):
-    # class Meta:
-    #     model: User
-    #     fields = ('country',)
-    #     widgets = {'country': CountrySelectWidget()}
-    # country = CountryField().formfield()
-
     phone = forms.IntegerField(widget=forms.NumberInput(
         attrs={
             'placeholder': '001',
@@ -60,9 +54,12 @@ class ProfileForm(forms.Form):
             'placeholder': 'example@gmail.com',
             'name': 'email',
             'id': 'email',
-            'class': 'form-control'
+            'class': 'form-control',
+
         }
-    ))
+    ), disabled=True)
+
+    # todo: validate email, should not be change in profile page
 
     fullname = forms.CharField(widget=forms.TextInput(
         attrs={
@@ -72,6 +69,15 @@ class ProfileForm(forms.Form):
             'class': 'form-control'
         }
     ), validators=[validators.MinLengthValidator(5), validators.MaxLengthValidator(30), ])
+
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': '***********',
+            'name': 'password',
+            'id': 'password',
+            'class': 'form-control'
+        }
+    ), disabled=True)
 
 
 class LoginForm(forms.Form):
