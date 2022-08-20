@@ -1,9 +1,12 @@
 from django import forms
+from django.contrib.auth.password_validation import password_changed
+
 from users.models import User
 from django.core import validators
 from access_token.models import AccessToken
 from django_countries.widgets import CountrySelectWidget
 from django_countries.fields import CountryField
+from django.contrib.auth import authenticate
 
 
 class ChangePasswordForm(forms.Form):
@@ -25,14 +28,30 @@ class ChangePasswordForm(forms.Form):
         }
     ))
 
-    re_new_password = forms.CharField(widget=forms.PasswordInput(
+    new_re_password = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'placeholder': '',
-            'name': 're_new_password',
-            'id': 're_new_password',
+            'name': 'new_re_password',
+            'id': 'new_re_password',
             'class': 'form-control'
         }
     ))
+
+    email = forms.CharField(widget=forms.HiddenInput())
+
+    def clean_new_re_password(self):
+        new_password = self.cleaned_data.get('new_password')
+        new_re_password = self.cleaned_data.get('new_re_password')
+        if new_re_password != new_password:
+            raise forms.ValidationError("Passwords does not match")
+        return new_re_password
+
+    def clean_old_password(self):
+        old_password = self.cleaned_data['old_password']
+        user = User.objects.filter(email__in=self.cleaned_data['email'], password=old_password).exists()
+        if not user:
+            raise forms.ValidationError('Wrong Pass')
+        return old_password
 
     # todo: Validate change password form
     # check for new pass - is it correct or no?

@@ -6,11 +6,27 @@ from .models import User
 import uuid
 from access_token.models import AccessToken
 from django.contrib.auth.decorators import login_required
+from django import forms
 
 
 # todo: develop change email
 # todo: develop change password
 # todo: develop change in other infos
+
+
+@login_required(login_url='/login')
+def change_password(request):
+    change_password_form = ChangePasswordForm(request.POST or None, initial={'email': request.user.email})
+
+    if request.method == "POST":
+        if change_password_form.is_valid():
+            email = change_password_form.cleaned_data['email']
+            print(email)
+
+    context = {
+        'change_password_form': change_password_form,
+    }
+    return render(request, 'users/change-password.html', context)
 
 
 @login_required(login_url='/login')
@@ -30,21 +46,6 @@ def profile(request):
         'profile_form': profile_form,
     }
     return render(request, 'users/profile.html', context)
-
-
-@login_required(login_url='/login')
-def change_password(request):
-    change_password_form = ChangePasswordForm(request.POST or None)
-
-    if request.method == "POST":
-        if change_password_form.is_valid():
-            # todo: change password
-            pass
-
-    context = {
-        'change_password_form': change_password_form,
-    }
-    return render(request, 'users/change-password.html', context)
 
 
 def forget_password(request):
