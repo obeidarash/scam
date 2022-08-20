@@ -9,55 +9,6 @@ from django_countries.fields import CountryField
 from django.contrib.auth import authenticate
 
 
-class ChangePasswordForm(forms.Form):
-    old_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'placeholder': '',
-            'name': 'old_password',
-            'id': 'old_password',
-            'class': 'form-control'
-        }
-    ))
-
-    new_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'placeholder': '',
-            'name': 'new_password',
-            'id': 'new_password',
-            'class': 'form-control'
-        }
-    ))
-
-    new_re_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'placeholder': '',
-            'name': 'new_re_password',
-            'id': 'new_re_password',
-            'class': 'form-control'
-        }
-    ))
-
-    email = forms.CharField(widget=forms.HiddenInput())
-
-    def clean_new_re_password(self):
-        new_password = self.cleaned_data.get('new_password')
-        new_re_password = self.cleaned_data.get('new_re_password')
-        if new_re_password != new_password:
-            raise forms.ValidationError("Passwords does not match")
-        return new_re_password
-
-    def clean_old_password(self):
-        old_password = self.cleaned_data['old_password']
-        user = User.objects.filter(email__in=self.cleaned_data['email'], password=old_password).exists()
-        if not user:
-            raise forms.ValidationError('Wrong Pass')
-        return old_password
-
-    # todo: Validate change password form
-    # check for new pass - is it correct or no?
-    # check if both new and re_new password is match
-
-
 class ProfileForm(forms.Form):
     phone = forms.IntegerField(widget=forms.NumberInput(
         attrs={

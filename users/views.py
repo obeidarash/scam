@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm, ProfileForm, ChangePasswordForm
+from .forms import LoginForm, RegisterForm, ProfileForm
 from django.contrib import messages
 from .models import User
 import uuid
@@ -9,24 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 
 
-# todo: develop change email
-# todo: develop change password
+# todo: develop reset password
 # todo: develop change in other infos
-
-
-@login_required(login_url='/login')
-def change_password(request):
-    change_password_form = ChangePasswordForm(request.POST or None, initial={'email': request.user.email})
-
-    if request.method == "POST":
-        if change_password_form.is_valid():
-            email = change_password_form.cleaned_data['email']
-            print(email)
-
-    context = {
-        'change_password_form': change_password_form,
-    }
-    return render(request, 'users/change-password.html', context)
 
 
 @login_required(login_url='/login')
@@ -53,14 +37,6 @@ def forget_password(request):
 
     }
     return render(request, 'users/forget-password.html', context)
-
-
-@login_required(login_url='/login')
-def change_email(request):
-    context = {
-
-    }
-    return render(request, 'users/change-email.html', context)
 
 
 def login_user(request):

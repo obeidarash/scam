@@ -22,8 +22,7 @@
                 </div>
             {% endfor %}
             <div id="{{ profile_form.email.id_for_label }}" class="form-text">
-                you can change your email in
-                <a href="{% url 'users:change_email' %}">here</a>
+                You can't change your email address
             </div>
         </div>
 
@@ -81,8 +80,6 @@
                 </div>
             {% endfor %}
             <div id="{{ profile_form.password.id_for_label }}" class="form-text">
-                <a href="{% url 'users:change_password' %}">Change</a>
-                or
                 <a href="{% url 'users:forget_password' %}">Reset</a>
                 your password
             </div>
