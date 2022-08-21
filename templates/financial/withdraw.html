@@ -12,9 +12,6 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-    {% if check_withdraw_status %}
-
-    {% endif %}
 
     {% if is_withdraw_ok and not is_withdraw_exist_approved %}
         <form action="{% url 'financial:withdraw' %}" method="POST">
@@ -53,7 +50,7 @@
                         {% if withdraw.hash is None %}
                             -
                         {% else %}
-                        {{ withdraw.hash }}
+                            {{ withdraw.hash }}
                         {% endif %}
                     </td>
                     <td>{{ withdraw.date }}</td>

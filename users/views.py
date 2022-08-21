@@ -74,6 +74,7 @@ def signup(request):
         if register_form.is_valid():
             email = register_form.cleaned_data.get('email')
             password = register_form.cleaned_data.get('password')
+            # fullname = register_form.cleaned_data.get('fullname')
             access_token = register_form.cleaned_data.get('access_token')
             User.objects.create_user(username=email, email=email, password=password)
 

@@ -1,11 +1,40 @@
 {# todo: list of aceesses token that doesnt belong to anyone #}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accesses Tokens list</title>
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <title>Accesses Tokens</title>
 </head>
 <body>
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-2"></div>
+        <div class="col-md-5">
+            <h1>Accesses Tokens</h1>
+            <hr>
+            <p>you can see list of AT's in this page</p>
+            <p>sometime to control our scity we generate some accesses token
+                witch you can see them in here</p>
+            <p></p>
 
+            {% if at_list %}
+                <ul>
+                    {% for at in at_list %}
+                        <li>{{ at.access_token }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>no token available</p>
+            {% endif %}
+
+
+        </div><!-- /col-md-5 Center of the site-->
+        <div class="col col-lg-2"></div>
+    </div><!-- /row justify-content-md-center -->
+</div><!-- /container -->
 </body>
 </html>

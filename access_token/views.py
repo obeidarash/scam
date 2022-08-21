@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from .models import AccessToken
 import uuid
 from access_token.models import AccessToken
 from django.contrib import messages
 
 
 def at(request):
-    return render(request, 'at/at.html', context={})
+    at_list = AccessToken.objects.filter(by_superuser=True)
+    print(at_list)
+    context = {
+        'at_list': at_list,
+    }
+    return render(request, 'at/at.html', context)
 
 
 @login_required(login_url='/login')
