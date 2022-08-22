@@ -80,14 +80,14 @@ class RegisterForm(forms.Form):
         }
     ))
 
-    # fullname = forms.CharField(widget=forms.TextInput(
-    #     attrs={
-    #         'placeholder': 'Benjamin Bottom',
-    #         'name': 'fullname',
-    #         'id': 'fullname',
-    #         'class': 'form-control'
-    #     }
-    # ))
+    fullname = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Benjamin Bottom',
+            'name': 'fullname',
+            'id': 'fullname',
+            'class': 'form-control'
+        }
+    ))
 
     access_token = forms.CharField(widget=forms.TextInput(
         attrs={
