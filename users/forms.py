@@ -19,8 +19,6 @@ class ProfileForm(forms.Form):
         }
     ), disabled=True)
 
-    # todo: validate email, should not be change in profile page
-
     fullname = forms.CharField(widget=forms.TextInput(
         attrs={
             'placeholder': 'Brad Pit',
@@ -28,7 +26,7 @@ class ProfileForm(forms.Form):
             'id': 'fullname',
             'class': 'form-control'
         }
-    ), validators=[validators.MinLengthValidator(5), validators.MaxLengthValidator(30), ])
+    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25), ])
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
@@ -37,7 +35,7 @@ class ProfileForm(forms.Form):
             'id': 'password',
             'class': 'form-control'
         }
-    ), disabled=True)
+    ), disabled=True, required=False)
 
 
 class LoginForm(forms.Form):

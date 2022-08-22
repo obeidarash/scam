@@ -15,17 +15,22 @@ from django import forms
 
 @login_required(login_url='/login')
 def profile(request):
-    # todo: develop profile page
     profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,
                                                               'fullname': request.user.fullname})
     if request.method == "POST":
         if profile_form.is_valid():
-            email = profile_form.cleaned_data['email']
             fullname = profile_form.cleaned_data['fullname']
-            phone = profile_form.cleaned_data['phone']
             country = request.POST.get('country')
+            user = User.objects.filter(username=request.user.username).first()
+            if user:
+                user.fullname = fullname
+                user.country = country
+                user.save()
+                messages.success(request, 'your profile hase been updated')
+                return redirect('home')
+            else:
+                messages.error(request, 'something went wrong')
 
-            # todo: raise Validator-error if phone is not number
     context = {
         'profile_form': profile_form,
     }

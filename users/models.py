@@ -53,9 +53,6 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     hide_email = models.BooleanField(default=True)
 
-    # todo: add phone number to user (should be uniqe)
-    # todo: add Dial Code to user
-
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
