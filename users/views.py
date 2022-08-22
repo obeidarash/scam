@@ -72,6 +72,8 @@ def signup(request):
     register_form = RegisterForm(request.POST or None)
     if request.method == "POST":
         if register_form.is_valid():
+
+            # Fetch form data
             email = register_form.cleaned_data.get('email')
             password = register_form.cleaned_data.get('password')
             fullname = register_form.cleaned_data.get('fullname')

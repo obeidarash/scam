@@ -87,7 +87,7 @@ class RegisterForm(forms.Form):
             'id': 'fullname',
             'class': 'form-control'
         }
-    ))
+    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25)])
 
     access_token = forms.CharField(widget=forms.TextInput(
         attrs={
@@ -123,6 +123,7 @@ class RegisterForm(forms.Form):
     #         'class': 'form-control'
     #     }
     # ))
+
 
     def clean_re_password(self):
         password = self.cleaned_data.get('password')
