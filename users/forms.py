@@ -1,6 +1,5 @@
 from django import forms
 from django.contrib.auth.password_validation import password_changed
-
 from users.models import User
 from django.core import validators
 from access_token.models import AccessToken
@@ -10,15 +9,6 @@ from django.contrib.auth import authenticate
 
 
 class ProfileForm(forms.Form):
-    phone = forms.IntegerField(widget=forms.NumberInput(
-        attrs={
-            'placeholder': '001',
-            'name': 'phone',
-            'id': 'phone',
-            'class': 'form-control'
-        }
-    ))
-
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={
             'placeholder': 'example@gmail.com',
@@ -71,6 +61,8 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.Form):
+    country = CountryField(blank=False).formfield()
+
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={
             'placeholder': 'example@gmail.com',
@@ -123,7 +115,6 @@ class RegisterForm(forms.Form):
     #         'class': 'form-control'
     #     }
     # ))
-
 
     def clean_re_password(self):
         password = self.cleaned_data.get('password')
