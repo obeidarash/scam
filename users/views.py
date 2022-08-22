@@ -75,11 +75,13 @@ def signup(request):
 
             # Fetch form data
             email = register_form.cleaned_data.get('email')
+            phone_number = register_form.cleaned_data.get('phone_number')
             country = register_form.cleaned_data.get('country')
             password = register_form.cleaned_data.get('password')
             fullname = register_form.cleaned_data.get('fullname')
             access_token = register_form.cleaned_data.get('access_token')
-            User.objects.create_user(username=email, email=email, password=password, fullname=fullname, country=country)
+            User.objects.create_user(username=email, email=email, password=password, fullname=fullname, country=country,
+                                     phone_number=phone_number)
 
             #  login user after registration
             user = authenticate(request, email=email, password=password)

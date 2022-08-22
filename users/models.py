@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django_countries.fields import CountryField
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # this project made based on this tutorial
@@ -9,7 +10,7 @@ from django_countries.fields import CountryField
 
 class UserManager(BaseUserManager):
 
-    def create_user(self, email, username, password=None, fullname=None, country=None):
+    def create_user(self, email, username, password=None, fullname=None, country=None, phone_number=None):
         if not email:
             raise ValueError('Users must have an email address.')
         if not username:
@@ -19,6 +20,7 @@ class UserManager(BaseUserManager):
             username=username,
             fullname=fullname,
             country=country,
+            phone_number=phone_number
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -40,9 +42,9 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='Email', max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
-    # todo: fullname null should be True or False?
-    fullname = models.CharField(max_length=30)
-    country = CountryField()
+    fullname = models.CharField(max_length=30, null=True)
+    country = CountryField(null=True)
+    phone_number = PhoneNumberField(unique=True)
     date_joined = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last login', auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -51,7 +53,7 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     hide_email = models.BooleanField(default=True)
 
-    # todo: add phone number to user
+    # todo: add phone number to user (should be uniqe)
     # todo: add Dial Code to user
 
     objects = UserManager()

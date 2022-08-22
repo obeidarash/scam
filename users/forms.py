@@ -61,6 +61,7 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.Form):
+    phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$')
     country = CountryField(blank=False).formfield()
 
     email = forms.EmailField(widget=forms.EmailInput(

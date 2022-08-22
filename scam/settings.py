@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'core',
     'access_token',
     'django_countries',
+    'phonenumber_field',
 ]
 
 MIDDLEWARE = [
