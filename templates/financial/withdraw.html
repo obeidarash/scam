@@ -5,7 +5,8 @@
 {% endblock %}
 {% block content %}
 
-    <h2>Withdraw</h2>
+    <h1>Withdraw</h1>
+    <hr>
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Well! </strong>{{ message }}
@@ -66,7 +67,8 @@
             </tbody>
         </table>
     {% else %}
-        <p>if you are eligible for withdraw you can see the button</p>
+        <p>if you are eligible for withdraw you can see the form. be sure Deposit of you and 3 other user are confirmed
+            for withdraw request</p>
     {% endif %}
 
 {% endblock %}

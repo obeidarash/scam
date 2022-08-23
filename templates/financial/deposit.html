@@ -5,62 +5,72 @@
 {% endblock %}
 {% block content %}
 
-    <h2>Deposit</h2>
-    {#    <h4>Transfer USDT to this wallet number and pust the HASH in input bellow:</h4>#}
-    {#    <h5>as64654gsd6f4ga5d4fg6</h5>#}
+    <h1>Deposit</h2>
+        <hr>
 
-    {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Well! </strong>{{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    {% endfor %}
-    {% if deposit_exist %}
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Amount</th>
-                <th scope="col">Hash</th>
-                <th scope="col">Date</th>
-                <th scope="col">Status</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for deposit in deposit_list %}
-                <tr>
-                    <th scope="row">#</th>
-                    <td>100 $</td>
-                    <td>{{ deposit.hash }}</td>
-                    <td>{{ deposit.date }}</td>
-                    {% if deposit.is_approved and not deposit.is_decline %}
-                        <td class="table-success">Confirm</td>
-                    {% elif not deposit.is_approved and deposit.is_decline %}
-                        <td class="table-danger">Rejected</td>
-                    {% else %}
-                        <td class="table-warning">Waiting</td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
-    {% if not is_deposit_exist_approved %}
-        <form action="{% url 'financial:deposit' %}" method="POST">
-            {% csrf_token %}
-            <div class="mb-3">
-                <label for="{{ deposit_form.hash.id_for_label }}" class="form-label">HASH or TXID Address: </label>
-                {{ deposit_form.hash|add_error_class:"is-invalid" }}
-                {% for error in deposit_form.hash.errors %}
-                    <div id="{{ deposit_form.hash.id_for_label }}" class="invalid-feedback">
-                        {{ error }}
-                    </div>
-                {% endfor %}
-                <div id="hash-help" class="form-text">We'll never share your email with anyone else.</div>
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Well! </strong>{{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            <button class="btn btn-success" type="submit">Submit</button>
-        </form>
-    {% endif %}
+        {% endfor %}
+        {% if deposit_exist %}
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Hash</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for deposit in deposit_list %}
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>100 $</td>
+                        <td>{{ deposit.hash }}</td>
+                        <td>{{ deposit.date }}</td>
+                        {% if deposit.is_approved and not deposit.is_decline %}
+                            <td class="table-success">Confirm</td>
+                        {% elif not deposit.is_approved and deposit.is_decline %}
+                            <td class="table-danger">Rejected</td>
+                        {% else %}
+                            <td class="table-warning">Waiting</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if not is_deposit_exist_approved %}
+
+            <p >Transfer <b>100 Tether (TRC20)</b> to wallet ID bellow and submit the form with
+                transaction HASH. sending any other coin may result in permanent loss </p>
+
+            <div class="text-center">
+                <h5 class="underline">
+                    <mark>TW4833o5EDR93aS56xjAYh8B8aELhRc2UH</mark>
+                </h5>
+            </div>
+            <br>
+
+            <form action="{% url 'financial:deposit' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="{{ deposit_form.hash.id_for_label }}" class="form-label">HASH or TXID Address: </label>
+                    {{ deposit_form.hash|add_error_class:"is-invalid" }}
+                    {% for error in deposit_form.hash.errors %}
+                        <div id="{{ deposit_form.hash.id_for_label }}" class="invalid-feedback">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+        {% endif %}
 
 
 

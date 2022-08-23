@@ -10,7 +10,6 @@ from django import forms
 
 
 # todo: develop reset password
-# todo: develop change in other infos
 
 
 @login_required(login_url='/login')
