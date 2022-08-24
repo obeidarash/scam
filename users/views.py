@@ -10,6 +10,7 @@ from django import forms
 
 
 # todo: develop reset password
+# todo: add recaptcha to login and register page
 
 
 @login_required(login_url='/login')
