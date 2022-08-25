@@ -6,16 +6,22 @@
 {% block content %}
 
     <h2>Accesses Token Generator</h2>
-    <hr>
+
+
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
+            Accesses Token
                 <strong>{{ message }}</strong> has been created
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     {% endif %}
-    <p>Click button bellow to generate new token who doesn't belong to anyone.</p>
+
+    <div class="alert alert-info">
+        Click button bellow to generate new token who doesn't belong to anyone.
+    </div>
+
     <form action="{% url 'at:at_generator' %}" method="POST">
         {% csrf_token %}
         <button class="btn btn-lg btn-primary">

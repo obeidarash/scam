@@ -19,17 +19,7 @@ def profile(request):
                                                               'fullname': request.user.fullname})
     if request.method == "POST":
         if profile_form.is_valid():
-            fullname = profile_form.cleaned_data['fullname']
-            country = request.POST.get('country')
-            user = User.objects.filter(username=request.user.username).first()
-            if user:
-                user.fullname = fullname
-                user.country = country
-                user.save()
-                messages.success(request, 'your profile hase been updated')
-                return redirect('home')
-            else:
-                messages.error(request, 'something went wrong')
+            pass
 
     context = {
         'profile_form': profile_form,

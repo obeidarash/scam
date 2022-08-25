@@ -16,16 +16,18 @@
         <div class="col-md-5">
 
             <h3>Signup to website name</h3>
+            <div class="alert alert-warning">
+                Check everything before registration, you can't change anything later
+            </div>
 
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="{{ register_form.email.id_for_label }}" class="form-label">Email address</label>
                     {{ register_form.email|add_error_class:"is-invalid" }}
-                    <div id="email" class="form-text">Be careful, can't change your email address later</div>
                     {% for error in register_form.email.errors %}
                         <div id="{{ register_form.email.id_for_label }}" class="invalid-feedback">
-                            {{ error }}
+                            {{ error|safe }}
                         </div>
                     {% endfor %}
                 </div>
@@ -62,7 +64,7 @@
                     {{ register_form.access_token|add_error_class:"is-invalid" }}
                     {% for error in register_form.access_token.errors %}
                         <div id="{{ register_form.access_token.id_for_label }}" class="invalid-feedback">
-                            {{ error }}
+                            {{ error|safe }}
                         </div>
                     {% endfor %}
                 </div>
@@ -90,7 +92,9 @@
             <hr>
 
             <div class="text-center">
-                <h5>if already have an account</h5>
+                <div class="alert alert-info">
+                    if already have an account
+                </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="{% url 'users:login' %}" class="btn btn-warning">
                         Login

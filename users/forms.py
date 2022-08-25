@@ -133,7 +133,7 @@ class RegisterForm(forms.Form):
         email = self.cleaned_data.get('email')
         is_exists_email_by_email = User.objects.filter(email=email).exists()
         if is_exists_email_by_email:
-            raise forms.ValidationError('This email exist')
+            raise forms.ValidationError("This email exist, <a href='login' target='_blank'>login here</a>")
         return email
 
     # check for valid token
@@ -141,5 +141,6 @@ class RegisterForm(forms.Form):
         access_token = self.cleaned_data.get('access_token')
         access_token_is_valid = AccessToken.objects.filter(access_token=access_token, is_used=False).exists()
         if not access_token_is_valid:
-            raise forms.ValidationError('this token is not valid')
+            raise forms.ValidationError(
+                "this token is not valid, if you don't have any token check <a href='at' target='_blank'>this page</a>")
         return access_token

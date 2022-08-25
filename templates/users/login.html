@@ -23,6 +23,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
+        <div class="alert alert-success">
+            Login to your account
+        </div>
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3 row">
@@ -41,10 +44,10 @@
             </form>
             <hr>
             <div class="text-center">
-                <h5>if you don't have account please click link below</h5>
+                <div class="alert alert-info">if you don't have account please click link below</div>
+
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Register</a>
-                    <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Reset Password</a>
                 </div>
             </div>
         </div><!-- /col-md-5 Center of the site-->

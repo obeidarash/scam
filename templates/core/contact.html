@@ -6,8 +6,10 @@
 {% block content %}
 
     <h2>{{ contact.title }}</h2>
-    <hr>
-    {{ contact.content|safe }}
+    <div class="alert alert-info">
+        {{ contact.content|safe }}
+    </div>
+
 
 
 
