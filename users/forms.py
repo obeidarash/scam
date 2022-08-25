@@ -26,7 +26,7 @@ class ProfileForm(forms.Form):
             'id': 'fullname',
             'class': 'form-control'
         }
-    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25), ])
+    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25), ], disabled=True)
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={

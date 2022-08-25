@@ -12,10 +12,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-# Send email settings
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
-EMAIL_FILE_PATH = str(BASE_DIR.joinpath('sent_emails'))
-
 # Custom user model settings
 AUTH_USER_MODEL = 'users.User'
 AUTHENTICATION_BACKENDS = (

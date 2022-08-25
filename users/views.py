@@ -37,13 +37,6 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-def forget_password(request):
-    context = {
-
-    }
-    return render(request, 'users/forget-password.html', context)
-
-
 def login_user(request):
     if request.user.is_authenticated:
         return redirect('home')
