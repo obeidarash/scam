@@ -36,6 +36,17 @@ class DepositManager(models.Manager):
                 return True
         return False
 
+    # todo: check deposit of 3 users (usage in index.html)
+    def check_deposit_3_users(self, user):
+        # fetch deposit of all 3 user based on tokens
+        ats = AccessToken.objects.filter(representative=user)
+        for at in ats:
+            deposits = Deposit.objects.filter(user__email=at.user)
+            for deposit in deposits:
+                if not deposit.is_approved:
+                    return False
+        return True
+
 
 # with this model user can charge his account
 class Deposit(models.Model):

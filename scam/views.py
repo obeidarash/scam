@@ -13,9 +13,13 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     access_tokens = AccessToken.objects.filter(representative=request.user, by_superuser=False)
     is_deposit_exist_approved = Deposit.objects.check_deposit(request.user)
+    check_deposit_3_users = Deposit.objects.check_deposit_3_users(request.user)
+
+
 
     context = {
         'access_tokens': access_tokens,
         'is_deposit_exist_approved': is_deposit_exist_approved,
+        'check_deposit_3_users': check_deposit_3_users,
     }
     return render(request, 'index.html', context)
