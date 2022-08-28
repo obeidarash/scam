@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 
 
-# todo: develop reset password
 # todo: add recaptcha to login and register page
 
 

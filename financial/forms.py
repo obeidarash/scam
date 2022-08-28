@@ -25,6 +25,12 @@ class DepositForm(forms.Form):
         }
     ))
 
+    def clean_hash(self):
+        deposit = Deposit.objects.filter(hash__exact=self.cleaned_data['hash']).exists()
+        if deposit:
+            raise forms.ValidationError('This HASH or TXID already exists!')
+        return self.cleaned_data['hash']
+
 
 class WithdrawAdminForm(forms.ModelForm):
     class Meta:

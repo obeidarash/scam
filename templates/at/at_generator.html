@@ -12,7 +12,8 @@
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             Accesses Token
-                <strong>{{ message }}</strong> has been created
+                <strong>{{ message }}</strong> has been created.
+                <a href="{% url 'at:at' %}" target="_blank"> Token list</a>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}

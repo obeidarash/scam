@@ -60,6 +60,10 @@ def deposit(request):
     if request.method == "POST":
         if not is_deposit_exist_approved:
             if deposit_form.is_valid():
+
+                d = Deposit.objects.filter(hash__exact=deposit_form.cleaned_data['hash']).exists()
+                print(d)
+
                 hash_id = deposit_form.cleaned_data['hash']
                 Deposit.objects.create(user=request.user, hash=hash_id)
                 messages.success(request, 'Transfer has been submitted')
