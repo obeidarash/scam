@@ -7,6 +7,9 @@
 
     <h1>Withdraw</h1>
 
+    <div class="alert alert-success">
+        Give us a valid wallet ID and we will transfer <strong>100$ + 100$</strong> to your name
+    </div>
 
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -36,8 +39,6 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Amount</th>
                 <th scope="col">Hash</th>
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
@@ -46,8 +47,6 @@
             <tbody>
             {% for withdraw in withdraw_list %}
                 <tr>
-                    <th scope="row">#</th>
-                    <td>200 $</td>
                     <td>
                         {% if withdraw.hash is None %}
                             -
@@ -55,7 +54,7 @@
                             {{ withdraw.hash }}
                         {% endif %}
                     </td>
-                    <td>{{ withdraw.date }}</td>
+                    <td>{{ withdraw.date|timesince }} ago</td>
                     {% if withdraw.is_approved and not withdraw.is_decline %}
                         <td class="table-success">Confirm</td>
                     {% elif not withdraw.is_approved and withdraw.is_decline %}

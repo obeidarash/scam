@@ -19,7 +19,7 @@
             <h4 class="alert-heading">Congratulation!</h4>
             <p>Now you are eligible for withdraw request</p>
             <hr>
-            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$</strong>
+            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ + 100$</strong>
             </p>
         </div>
     {% elif is_deposit_exist_approved %}
@@ -73,7 +73,7 @@
 
     {% else %}
         <div class="alert alert-warning">
-            you are few step away to <strong>earn your 100$</strong>!
+            you are few step away to <strong>earn your 100$ +100$</strong>!
             <a href="{% url 'financial:deposit' %}">Click here</a> to Charge your account.
             if you requested before please wait for conformation
         </div>

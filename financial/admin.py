@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.utils.html import format_html
+
 from .models import Withdraw, Deposit
 from .forms import DepositAdminForm, WithdrawAdminForm
 
@@ -6,12 +8,17 @@ from .forms import DepositAdminForm, WithdrawAdminForm
 @admin.register(Deposit)
 class DepositAdmin(admin.ModelAdmin):
     form = DepositAdminForm
-    list_display = ('user', 'hash', 'date', 'is_approved', 'is_decline')
+    list_display = ('user', 'tronscan', 'date', 'is_approved', 'is_decline')
     search_fields = ['user', ]
     autocomplete_fields = ('user',)
     sortable_by = ('-date',)
     list_filter = ('is_approved', 'is_decline',)
     readonly_fields = ('hash', 'user')
+
+    def tronscan(self, obj):
+        return format_html("<a href='https://tronscan.org/#/transaction/{}' target='_blank'>{}</a>", obj.hash, obj.hash)
+
+    tronscan.allow_tags = True
 
     def has_delete_permission(self, request, obj=None):
         return False
