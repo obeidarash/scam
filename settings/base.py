@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -14,8 +15,16 @@ AUTHENTICATION_BACKENDS = (
     'users.backend.CaseInsensitiveModelBackend'
 )
 
+# MULTI_CAPTCHA_ADMIN = {
+#     'engine': 'recaptcha2',
+# }
+# RECAPTCHA_PRIVATE_KEY = '6LdowLUhAAAAAA0JR577fAAfTxAHGFcLmmhKI2XP'
+# RECAPTCHA_PUBLIC_KEY = '6LdowLUhAAAAAApCB9qDHyaL67g7v1TWtXcxrUfD'
+
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'multi_captcha_admin',
+    # 'snowpenguin.django.recaptcha2',
+    'django.contrib.admin',  # this is default app too, never delete this line
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -31,7 +40,6 @@ INSTALLED_APPS = [
     'financial',
     'core',
     'access_token',
-
 ]
 
 MIDDLEWARE = [
@@ -64,7 +72,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'scam.wsgi.application'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

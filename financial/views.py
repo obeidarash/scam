@@ -28,6 +28,8 @@ def withdraw(request):
                     break
                 is_withdraw_ok = True
 
+    withdraw_approved_hash = Withdraw.objects.withdraw_approved_hash(request.user)
+    is_withdraw_approved = Withdraw.objects.is_withdraw_approved(request.user)
     withdraw_form = WithdrawForm(request.POST or None)
     if request.method == "POST" and is_withdraw_ok:
         if withdraw_form.is_valid():
@@ -47,6 +49,8 @@ def withdraw(request):
         'withdraw_form': withdraw_form,
         'is_withdraw_exist_approved': is_withdraw_exist_approved,
         'withdraw_list': withdraw_list,
+        'is_withdraw_approved': is_withdraw_approved,
+        'withdraw_approved_hash': withdraw_approved_hash,
     }
 
     return render(request, 'financial/withdraw.html', context)
@@ -60,7 +64,6 @@ def deposit(request):
     if request.method == "POST":
         if not is_deposit_exist_approved:
             if deposit_form.is_valid():
-
                 d = Deposit.objects.filter(hash__exact=deposit_form.cleaned_data['hash']).exists()
                 print(d)
 

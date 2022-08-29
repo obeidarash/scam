@@ -18,7 +18,16 @@
         </div>
     {% endfor %}
 
-    {% if is_withdraw_ok and not is_withdraw_exist_approved %}
+    {% if is_withdraw_approved %}
+     <div class="alert alert-dark" role="alert">
+            <h4 class="alert-heading">You are Rich now!</h4>
+            <p>We Transferd <strong>100$ + 100$</strong> to your wallet ID and the hash is <strong>{{ withdraw_approved_hash }}</strong>.</p>
+            <hr>
+            <p class="mb-0">
+                ban
+            </p>
+        </div>
+    {% elif is_withdraw_ok and not is_withdraw_exist_approved %}
         <form action="{% url 'financial:withdraw' %}" method="POST">
             {% csrf_token %}
             <div class="mb-3">

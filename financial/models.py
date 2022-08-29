@@ -15,6 +15,21 @@ class WithdrawManager(models.Manager):
                 return True
         return False
 
+    def is_withdraw_approved(self, user):
+        withdraw_list = Withdraw.objects.filter(user__email=user)
+        for withdraw in withdraw_list:
+            if withdraw.is_approved:
+                return True
+        return False
+
+    # return hash of approved withdraw
+    def withdraw_approved_hash(self, user):
+        withdraw_list = Withdraw.objects.filter(user__email=user)
+        for withdraw in withdraw_list:
+            if withdraw.is_approved:
+                return withdraw.hash
+        return False
+
 
 class DepositManager(models.Manager):
 
@@ -36,7 +51,6 @@ class DepositManager(models.Manager):
                 return True
         return False
 
-    # todo: check deposit of 3 users (usage in index.html)
     def check_deposit_3_users(self, user):
         # fetch deposit of all 3 user based on tokens
         ats = AccessToken.objects.filter(representative=user)

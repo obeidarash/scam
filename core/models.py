@@ -5,8 +5,8 @@ from tinymce.models import HTMLField
 class Qa(models.Model):
     question = models.CharField(max_length=256, blank=False, null=False)
     answer = HTMLField()
-    created = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
-    edited = models.DateTimeField(verbose_name="Date", auto_now=True, null=True)
+    created = models.DateTimeField(verbose_name="Create", auto_now_add=True, null=True)
+    edited = models.DateTimeField(verbose_name="Edit", auto_now=True, null=True)
 
     def __str__(self):
         return self.question

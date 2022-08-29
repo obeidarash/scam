@@ -3,6 +3,7 @@
     Title is in here
 {% endblock %}
 {% block content %}
+
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -13,8 +14,16 @@
     {% endif %}
 
 
-
-    {% if not check_deposit_3_users %}
+    {% if is_withdraw_approved %}
+        <div class="alert alert-dark" role="alert">
+            <h4 class="alert-heading">You are Rich now!</h4>
+            <p>We Transferd <strong>100$ + 100$</strong> to your wallet ID and the hash is <strong>{{ withdraw_approved_hash }}</strong>.</p>
+            <hr>
+            <p class="mb-0">
+                ban
+            </p>
+        </div>
+    {% elif not check_deposit_3_users %}
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Congratulation!</h4>
             <p>Now you are eligible for withdraw request</p>
