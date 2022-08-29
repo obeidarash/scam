@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Manifest, Contact
+from .models import Manifest, Contact, Qa
+
+
+@admin.register(Qa)
+class QaAdmin(admin.ModelAdmin):
+    list_display = ('question',)
 
 
 @admin.register(Contact)

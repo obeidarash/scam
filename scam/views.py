@@ -4,10 +4,11 @@ from financial.models import Deposit
 from django.contrib.auth.decorators import login_required
 
 
-# todo: don't show accesses tokens if deposit of user isn't approve
-# todo: show users AT, if has any
-# todo: if deposit of user isn't true show guid what to do
-# todo: if deposit and all 3 users are ok show withdraw request
+# don't show accesses tokens if deposit of user isn't approve
+# show users AT, if has any
+# if deposit of user isn't true show guid what to do
+# if deposit and all 3 users are ok show withdraw request
+# todo: if withdraw is true show message
 
 @login_required(login_url='/login')
 def index(request):
