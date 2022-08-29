@@ -6,20 +6,21 @@
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Good!</strong>{{ message }}
+                <strong>{{ request.user.fullname }}!</strong> {{ message }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         {% endfor %}
     {% endif %}
 
 
-
-    {% if check_deposit_3_users %}
+    {# todo: {bug} it shows Congratulation! message when user is not eligible for withdraw and it wont show 3 ATs#}
+    {% if not check_deposit_3_users %}
         <div class="alert alert-success" role="alert">
             <h4 class="alert-heading">Congratulation!</h4>
             <p>Now you are eligible for withdraw request</p>
             <hr>
-            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ + 100$</strong>
+            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ +
+                100$</strong>
             </p>
         </div>
     {% elif is_deposit_exist_approved %}
