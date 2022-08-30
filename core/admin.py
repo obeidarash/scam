@@ -4,7 +4,8 @@ from .models import Manifest, Contact, Qa
 
 @admin.register(Qa)
 class QaAdmin(admin.ModelAdmin):
-    list_display = ('question',)
+    list_display = ('question', 'publish')
+    list_filter = ('publish',)
 
 
 @admin.register(Contact)

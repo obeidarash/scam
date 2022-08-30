@@ -13,62 +13,71 @@
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-7">
+
+
+            <!-- Who we are section -->
+            <h1>Who we are?</h1>
+            {#    in here explain about your team, who you are? where are you and ETC    #}
             {{ mani.content|safe }}
 
-            <!-- Sample card -->
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional
-                                content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- What do we do? -->
+            <h1>What this site does?</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+
+
+            <!-- How it works? -->
+            <h1>How it Works?</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
 
             <!-- Q&A section -->
             <h3>Most frequent Questions</h3>
             <hr>
             <div class="accordion" id="accordionExample">
                 {% for qa in qas %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading{{ qa.id }}">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
-                                    aria-controls="collapse{{ qa.id }}">
-                                {{ qa.question }}
-                            </button>
-                        </h2>
-                        <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
-                             aria-labelledby="heading{{ qa.id }}"
-                             data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                {{ qa.answer|safe }}
+                    {% if qa.publish %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading{{ qa.id }}">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
+                                        aria-controls="collapse{{ qa.id }}">
+                                    {{ qa.question }}
+                                </button>
+                            </h2>
+                            <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
+                                 aria-labelledby="heading{{ qa.id }}"
+                                 data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    {{ qa.answer|safe }}
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <br>
 
             <!-- Links -->
-            {% if not request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="/admin" class="btn btn-success" type="button">Admin</a>
+                </div>
+            {% elif not request.user.is_authenticated %}
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
                     <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Sign up</a>
+                </div>
+            {% else %}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'home' %}" class="btn btn-outline-primary" type="button">Home</a>
+                    <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
                 </div>
             {% endif %}
 
