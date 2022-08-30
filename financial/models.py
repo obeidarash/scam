@@ -43,7 +43,7 @@ class DepositManager(models.Manager):
                 return True
         return False
 
-    # used id withdraw view
+
     def check_deposit(self, user):
         deposit_list = Deposit.objects.filter(user__email=user)
         for deposit in deposit_list:

@@ -7,15 +7,21 @@
 
     <h1>Deposit</h1>
 
-
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Well! </strong>{{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-    {% if deposit_exist %}
 
+    {% if deposit_is_approved %}
+        <div class="alert alert-success ">
+            <h4 class="alert-heading">Deposit is Approved</h4>
+            <p>Now you can share your Token to your friend and earn
+                <strong>100$ + 100$</strong>
+            </p>
+        </div>
+    {% elif deposit_exist %}
         <table class="table">
             <thead>
             <tr>
@@ -42,7 +48,6 @@
         </table>
     {% endif %}
     {% if not is_deposit_exist_approved %}
-
         <div class="alert alert-info ">
             Transfer <b>100 Tether (TRC20)</b> to wallet ID bellow and submit the form with
             transaction HASH. sending any other coin may result in permanent loss
@@ -53,7 +58,6 @@
             </h5>
         </div>
         <br>
-
         <form action="{% url 'financial:deposit' %}" method="POST">
             {% csrf_token %}
             <div class="mb-3">

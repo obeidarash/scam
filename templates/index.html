@@ -3,7 +3,6 @@
     Title is in here
 {% endblock %}
 {% block content %}
-
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -12,15 +11,15 @@
             </div>
         {% endfor %}
     {% endif %}
-
-
     {% if is_withdraw_approved %}
         <div class="alert alert-dark" role="alert">
             <h4 class="alert-heading">You are Rich now!</h4>
-            <p>We Transferd <strong>100$ + 100$</strong> to your wallet ID and the hash is <strong>{{ withdraw_approved_hash }}</strong>.</p>
+            <p>We Transferd <strong>100$ + 100$</strong> to your wallet ID and the hash is <a
+                    href="https://tronscan.org/#/transaction/{{ withdraw_approved_hash }}"
+                    target="_blank">{{ withdraw_approved_hash }}</a>.</p>
             <hr>
             <p class="mb-0">
-                ban
+                The sequence has been complete, this account is not usable no more.
             </p>
         </div>
     {% elif not check_deposit_3_users %}
@@ -80,7 +79,6 @@
                 <div class="col-md-2"></div>
             </div>
         {% endfor %}
-
     {% else %}
         <div class="alert alert-warning">
             you are few step away to <strong>earn your 100$ +100$</strong>!
@@ -88,5 +86,4 @@
             if you requested before please wait for conformation
         </div>
     {% endif %}
-
 {% endblock %}

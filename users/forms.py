@@ -44,7 +44,8 @@ class LoginForm(forms.Form):
             'placeholder': 'example@gmail.com',
             'name': 'email',
             'id': 'email',
-            'class': 'form-control'
+            'class': 'form-control',
+            'autofocus': 'True'
         }
     ))
 
@@ -67,7 +68,8 @@ class RegisterForm(forms.Form):
             'placeholder': 'example@gmail.com',
             'name': 'email',
             'id': 'email',
-            'class': 'form-control'
+            'class': 'form-control',
+            'autofocus': 'True'
         }
     ))
 

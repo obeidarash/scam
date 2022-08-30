@@ -8,10 +8,6 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login')
 def withdraw(request):
-    # check if deposit is okay? Done!
-    # Fetch all 3 user related. check ac token. Done!
-    # check if all 3 user deposit okay? Done
-    # and let user request a withdrawal Done
     is_withdraw_ok = False
 
     # Check representative Deposit Status
@@ -64,15 +60,13 @@ def deposit(request):
     if request.method == "POST":
         if not is_deposit_exist_approved:
             if deposit_form.is_valid():
-                d = Deposit.objects.filter(hash__exact=deposit_form.cleaned_data['hash']).exists()
-                print(d)
-
                 hash_id = deposit_form.cleaned_data['hash']
                 Deposit.objects.create(user=request.user, hash=hash_id)
                 messages.success(request, 'Transfer has been submitted')
                 return redirect('financial:deposit')
 
     # show deposit list to users
+    deposit_is_approved = Deposit.objects.check_deposit(request.user)
     deposit_exist = Deposit.objects.filter(user__email=request.user).exists()
     deposit_list = Deposit.objects.filter(user__email=request.user)
 
@@ -81,5 +75,6 @@ def deposit(request):
         'deposit_form': deposit_form,
         'deposit_exist': deposit_exist,
         'deposit_list': deposit_list,
+        'deposit_is_approved': deposit_is_approved,
     }
     return render(request, 'financial/deposit.html', context)

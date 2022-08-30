@@ -4,11 +4,7 @@ from financial.models import Deposit, Withdraw
 from django.contrib.auth.decorators import login_required
 
 
-# don't show accesses tokens if deposit of user isn't approve
-# show users AT, if has any
-# if deposit of user isn't true show guid what to do
-# if deposit and all 3 users are ok show withdraw request
-# if withdraw is true show message
+# todo: add map to manifest page
 
 @login_required(login_url='/login')
 def index(request):

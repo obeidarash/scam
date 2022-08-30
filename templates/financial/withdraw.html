@@ -7,9 +7,6 @@
 
     <h1>Withdraw</h1>
 
-    <div class="alert alert-success">
-        Give us a valid wallet ID and we will transfer <strong>100$ + 100$</strong> to your name
-    </div>
 
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -19,15 +16,15 @@
     {% endfor %}
 
     {% if is_withdraw_approved %}
-     <div class="alert alert-dark" role="alert">
-            <h4 class="alert-heading">You are Rich now!</h4>
-            <p>We Transferd <strong>100$ + 100$</strong> to your wallet ID and the hash is <strong>{{ withdraw_approved_hash }}</strong>.</p>
-            <hr>
-            <p class="mb-0">
-                ban
-            </p>
+        <div class="alert alert-dark" role="alert">
+            <h4 class="alert-heading">Withdraw completed</h4>
+            <p>Transformation ID is <a href="https://tronscan.org/#/transaction/{{ withdraw_approved_hash }}"
+               target="_blank">{{ withdraw_approved_hash }}</a>. for more detail click on it</p>
         </div>
     {% elif is_withdraw_ok and not is_withdraw_exist_approved %}
+        <div class="alert alert-success">
+            Give us a valid wallet ID and we will transfer <strong>100$ + 100$</strong> to your name
+        </div>
         <form action="{% url 'financial:withdraw' %}" method="POST">
             {% csrf_token %}
             <div class="mb-3">
@@ -45,6 +42,10 @@
             </button>
         </form>
     {% elif is_withdraw_exist_approved and is_withdraw_ok %}
+        <div class="alert alert-warning">
+            you can the withdrawal status in list below
+        </div>
+
         <table class="table">
             <thead>
             <tr>
