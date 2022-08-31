@@ -1,4 +1,5 @@
 {% extends 'shared/base.html' %}
+{% load static %}
 {% block title %}
     Title is in here
 {% endblock %}
@@ -36,8 +37,8 @@
             <h4 class="alert-heading">Amazing!</h4>
             <p>Your Deposit has been approved. now you can share your Accesses Tokens to your friend to signup</p>
             <hr>
-            <p class="mb-0">After Deposit conformation of all 3 of your users you're eligible to <strong>eran
-                100$</strong>
+            <p class="mb-0">After Deposit conformation of all your users you're eligible to <strong>eran
+                100$ + 100$</strong>
             </p>
         </div>
         {% for access_token in access_tokens %}
@@ -59,6 +60,7 @@
                                         <div class="col-3 text-right"><span class="badge bg-danger">Not Used</span>
                                         </div>
                                     {% else %}
+                                        {{ access_token.user }}
                                         <div class="col-3 text-right"><span class="badge bg-primary">Used</span>
                                         </div>
                                     {% endif %}
@@ -86,4 +88,10 @@
             if you requested before please wait for conformation
         </div>
     {% endif %}
+
+    <div class="text-center">
+        <img src="{% static 'media/pic2.jpg' %}" alt="" style="width: 80%">
+    </div>
+    <br>
+
 {% endblock %}

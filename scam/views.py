@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 
 # todo: add map to manifest page
-
+# todo: show how website works in index.html
+# todo: show deposit status of 3 user in index.html (can user custom filter)
 @login_required(login_url='/login')
 def index(request):
     access_tokens = AccessToken.objects.filter(representative=request.user, by_superuser=False)
