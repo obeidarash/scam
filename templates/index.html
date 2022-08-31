@@ -1,5 +1,6 @@
 {% extends 'shared/base.html' %}
 {% load static %}
+{% load financial_tags %}
 {% block title %}
     Title is in here
 {% endblock %}
@@ -43,27 +44,32 @@
         </div>
         {% for access_token in access_tokens %}
             <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-lg-8">
-                    <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-9">
-                                        {% if access_token.user is None %}
-                                            <h5 class="card-title">not set</h5>
-                                        {% else %}
-                                            <h5 class="card-title">{{ access_token.user.fullname }}</h5>
-                                        {% endif %}
-                                    </div>
+            <div class="col-md-2"></div>
+            <div class="col-lg-8">
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-9">
                                     {% if access_token.user is None %}
-                                        <div class="col-3 text-right"><span class="badge bg-danger">Not Used</span>
-                                        </div>
+                                        <h5 class="card-title">not set</h5>
                                     {% else %}
-                                        {{ access_token.user }}
-                                        <div class="col-3 text-right"><span class="badge bg-primary">Used</span>
-                                        </div>
+                                        <h5 class="card-title">{{ access_token.user.fullname }}</h5>
                                     {% endif %}
+                                </div>
+                                {% if access_token.user is None %}
+                                    <div class="col-3 text-right"><span class="badge bg-danger">Not Set</span>
+                                    </div>
+                                {% else %}
+                                    {% if access_token.user|deposit_check %}
+                                        <div class="col-3 text-right">
+                                        <span class="badge bg-success">Deposit Confirm</span>
+                                    {% else %}
+                                        <div class="col-3 text-right">
+                                        <span class="badge bg-primary">Registered</span>
+                                    {% endif %}
+                                </div>
+                                {% endif %}
                                 </div>
                                 <h6 class="card-subtitle text-muted">Accesses Token:
                                     <mark>{{ access_token.access_token }}</mark>
@@ -89,9 +95,9 @@
         </div>
     {% endif %}
 
-    <div class="text-center">
-        <img src="{% static 'media/pic2.jpg' %}" alt="" style="width: 80%">
-    </div>
-    <br>
+<div class="text-center">
+    <img src="{% static 'media/pic2.jpg' %}" alt="" style="width: 80%">
+</div>
+<br>
 
 {% endblock %}
