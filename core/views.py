@@ -12,8 +12,6 @@ def contact(request):
 
 
 def manifest(request):
-    # todo: if login show account link, home and .... to user
-    # todo: if not login how login, register, at_list link .... to user
     qas = Qa.objects.all()
     mani = Manifest.objects.all().first()
     context = {

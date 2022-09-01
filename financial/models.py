@@ -43,7 +43,6 @@ class DepositManager(models.Manager):
                 return True
         return False
 
-
     def check_deposit(self, user):
         deposit_list = Deposit.objects.filter(user__email=user)
         for deposit in deposit_list:
@@ -56,9 +55,16 @@ class DepositManager(models.Manager):
         ats = AccessToken.objects.filter(representative=user)
         for at in ats:
             deposits = Deposit.objects.filter(user__email=at.user)
-            for deposit in deposits:
-                if not deposit.is_approved:
+            if len(deposits) > 1:
+                deposit_status = []
+                for deposit in deposits:
+                    deposit_status.append(deposit.is_approved)
+                if True not in deposit_status:
                     return False
+            else:
+                for deposit in deposits:
+                    if not deposit.is_approved:
+                        return False
         return True
 
 
