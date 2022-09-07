@@ -25,15 +25,15 @@
             </p>
         </div>
 {#        todo: check every senario, there is a problem in here#}
-    {% elif check_deposit_3_users %}
-        <div class="alert alert-success" role="alert">
-            <h4 class="alert-heading">Congratulation!</h4>
-            <p>Now you are eligible for withdraw request</p>
-            <hr>
-            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ +
-                100$</strong>
-            </p>
-        </div>
+{#    {% elif check_deposit_3_users %}#}
+{#        <div class="alert alert-success" role="alert">#}
+{#            <h4 class="alert-heading">Congratulation!</h4>#}
+{#            <p>Now you are eligible for withdraw request</p>#}
+{#            <hr>#}
+{#            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ +#}
+{#                100$</strong>#}
+{#            </p>#}
+{#        </div>#}
     {% elif is_deposit_exist_approved %}
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Amazing!</h4>
@@ -43,6 +43,10 @@
                 100$ + 100$</strong>
             </p>
         </div>
+        <span class="badge bg-danger">Not Set</span>
+        <span class="badge bg-primary">Registered</span>
+        <span class="badge bg-success">Deposit Confirm</span>
+
         {% for access_token in access_tokens %}
             <div class="row">
             <div class="col-md-2"></div>

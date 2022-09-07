@@ -17,21 +17,28 @@
 
 
             <div class="alert alert-success" role="alert">
-                <h4 class="alert-heading">Well done!</h4>
-                <p>you can see list of AT's in this page</p>
+                <p>you can see list of Tokens in this page</p>
                 <hr>
                 <p class="mb-0">sometime to control our scity we generate some accesses token
                     witch you can see them in here</p>
             </div>
 
 
-
-            <div class="text-center">
-                <a class="btn btn-outline-secondary" href="{% url 'users:signup' %}">Register with Accesses
-                    Token</a>
-                <a class="btn btn-outline-primary" href="{% url 'users:login' %}">Login</a>
-                <a class="btn btn-outline-dark" href="{% url 'core:manifest' %}">Manifest</a>
-            </div>
+            {% if request.user.is_superuser %}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="/admin" class="btn btn-success" type="button">Admin</a>
+                </div>
+            {% elif not request.user.is_authenticated %}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
+                    <a href="{% url 'users:signup' %}" class="btn btn-warning" type="button">Sign up</a>
+                </div>
+            {% else %}
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <a href="{% url 'home' %}" class="btn btn-outline-primary" type="button">Home</a>
+                    <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
+                </div>
+            {% endif %}
 
             <br>
 
@@ -43,7 +50,7 @@
                 </ul>
             {% else %}
                 <div class="alert alert-danger">
-                <strong>Sorry</strong> there is no token available! check this page later.
+                    <strong>Sorry</strong> there is no token available! check this page later.
                 </div>
             {% endif %}
 

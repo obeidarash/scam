@@ -50,6 +50,7 @@ class DepositManager(models.Manager):
                 return True
         return False
 
+    # this function has not been used, and it's not working correctly
     def check_deposit_3_users(self, user):
         # fetch deposit of all 3 user based on tokens
         ats = AccessToken.objects.filter(representative=user)

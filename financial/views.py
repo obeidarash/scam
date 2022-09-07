@@ -31,7 +31,7 @@ def withdraw(request):
         if withdraw_form.is_valid():
             wallet_id = withdraw_form.cleaned_data['wallet_id']
             Withdraw.objects.create(user=request.user, wallet_id=wallet_id)
-            messages.success(request, 'Withdraw request hase been sent')
+            messages.success(request, 'Withdraw request has been sent')
             return redirect('financial:withdraw')
 
     # check withdraw status to prevent user send multiple request
