@@ -9,7 +9,7 @@
 
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Well! </strong>{{ message }}
+            {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
@@ -17,7 +17,7 @@
     {% if deposit_is_approved %}
         <div class="alert alert-success ">
             <h4 class="alert-heading">Deposit is Approved</h4>
-            <p>Now you can share your Token to your friend and earn
+            <p>Now you can share your Tokens to your friend and earn
                 <strong>100$ + 100$</strong>
             </p>
         </div>

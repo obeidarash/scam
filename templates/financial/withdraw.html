@@ -7,10 +7,9 @@
 
     <h1>Withdraw</h1>
 
-
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Well! </strong>{{ message }}
+            {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
@@ -19,7 +18,7 @@
         <div class="alert alert-dark" role="alert">
             <h4 class="alert-heading">Withdraw completed</h4>
             <p>Transformation ID is <a href="https://tronscan.org/#/transaction/{{ withdraw_approved_hash }}"
-               target="_blank">{{ withdraw_approved_hash }}</a>. for more detail click on it</p>
+                                       target="_blank">{{ withdraw_approved_hash }}</a>. for more detail click on it</p>
         </div>
     {% elif is_withdraw_ok and not is_withdraw_exist_approved %}
         <div class="alert alert-success">
@@ -77,8 +76,9 @@
             </tbody>
         </table>
     {% else %}
-        <div class="alert alert-info">
-            if you are eligible for withdraw you can see the form. be sure Deposit of you and 3 other user are confirmed
+        <div class="alert alert-warning">
+            if you are eligible for withdraw request you can see the form. please before that be sure Deposit of you and
+            3 other users are confirmed
             for withdraw request
         </div>
     {% endif %}

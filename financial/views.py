@@ -31,7 +31,7 @@ def withdraw(request):
         if withdraw_form.is_valid():
             wallet_id = withdraw_form.cleaned_data['wallet_id']
             Withdraw.objects.create(user=request.user, wallet_id=wallet_id)
-            messages.success(request, 'Withdraw request has been sent')
+            messages.success(request, 'Withdraw request sent! please be patient')
             return redirect('financial:withdraw')
 
     # check withdraw status to prevent user send multiple request
@@ -62,7 +62,7 @@ def deposit(request):
             if deposit_form.is_valid():
                 hash_id = deposit_form.cleaned_data['hash']
                 Deposit.objects.create(user=request.user, hash=hash_id)
-                messages.success(request, 'Transfer has been submitted')
+                messages.success(request, 'Transfer id sent! please be patient')
                 return redirect('financial:deposit')
 
     # show deposit list to users

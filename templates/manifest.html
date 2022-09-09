@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Manifest</title>
+    <title>Manifesto</title>
 </head>
 <body>
 <div class="container">
@@ -23,6 +23,13 @@
             <div class="text-center">
                 <img src="{% static 'media/pic3.jpg' %}" alt="" class="img-circle" style="width: 100%; height: 90%">
             </div>
+
+            <!-- How does the site work? -->
+            <h3>How does the site work?</h3>
+            <p>As soon as you charge up your account, our robots will start investing your money in different
+                cryptocurrencies. The same thing happens to the three people who registered with your token. Where and
+                how much to invest depends entirely on the artificial intelligence of robots. Finally, $100 of
+                profit will be transfer to your wallet id.</p>
 
 
             <!-- How it works? -->
@@ -47,12 +54,13 @@
             </ol>
             <p>p.s: your friends can do the same to earn 100 Theater</p>
             <div class="text-center">
-                <img src="{% static 'media/pic1.png' %}" alt="" class="img-circle" style="width: 100%">
+                <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%">
             </div>
 
+            <hr>
             <!-- Q&A section -->
             <h3>Most frequent Questions</h3>
-            <hr>
+
             <div class="accordion" id="accordionExample">
                 {% for qa in qas %}
                     {% if qa.publish %}
@@ -77,6 +85,7 @@
             </div>
             <br>
 
+            <hr>
             <!-- Links -->
             {% if request.user.is_superuser %}
                 <div class="d-grid gap-2 col-6 mx-auto">
@@ -93,50 +102,51 @@
                     <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
                 </div>
             {% endif %}
+            <hr>
 
             <!-- participation -->
             <h3>Show number of participation</h3>
-            <hr>
             <p>show a fake number + number of real users</p>
 
             <!-- Our Team -->
             <h3>Our Team</h3>
-            <hr>
+
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/4.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/1.jpeg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
-                            <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                            <h5 class="card-title">Tuwa Sandström</h5>
+                            <h6 class="card-subtitle text-muted">CEO</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/5.jpeg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/2.jpeg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
-                            <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                            <h5 class="card-title">Sebastian Ek</h5>
+                            <h6 class="card-subtitle text-muted">CTO</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/6.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/3.jpeg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Reza Golzar</h5>
-                            <h6 class="card-subtitle text-muted">Graphic Designer</h6>
+                            <h5 class="card-title">Eric Strömberg</h5>
+                            <h6 class="card-subtitle text-muted">Blockchain Expert</h6>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col">
                     <div class="card">
                         <img src="{% static 'media/4.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
+                            <h5 class="card-title">Backend Developer</h5>
                             <h6 class="card-subtitle text-muted">Data Analyser</h6>
                         </div>
                     </div>
@@ -145,8 +155,8 @@
                     <div class="card">
                         <img src="{% static 'media/5.jpeg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
-                            <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                            <h5 class="card-title">Rodek Varnak</h5>
+                            <h6 class="card-subtitle text-muted">DevOps</h6>
                         </div>
                     </div>
                 </div>
@@ -154,45 +164,50 @@
                     <div class="card">
                         <img src="{% static 'media/6.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Reza Golzar</h5>
-                            <h6 class="card-subtitle text-muted">Graphic Designer</h6>
+                            <h5 class="card-title">Elisa Ström</h5>
+                            <h6 class="card-subtitle text-muted">Frontend developer</h6>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/4.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/7.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
-                            <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                            <h5 class="card-title">Robert Fransson</h5>
+                            <h6 class="card-subtitle text-muted">Artificial Intelligence</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/5.jpeg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/8.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Sara amirian</h5>
-                            <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                            <h5 class="card-title">Dominic Olsson</h5>
+                            <h6 class="card-subtitle text-muted">Software Engineer</h6>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <img src="{% static 'media/6.jpg' %}" class="card-img-top" alt="...">
+                        <img src="{% static 'media/9.jpg' %}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Reza Golzar</h5>
-                            <h6 class="card-subtitle text-muted">Graphic Designer</h6>
+                            <h5 class="card-title">Teodor Lindholm</h5>
+                            <h6 class="card-subtitle text-muted">Bot developer</h6>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <hr>
             <!-- Location -->
             <h3>Our Location</h3>
             <p>Slottsbacken 8, 111 30 Stockholm, Sweden </p>
+            <div class="text-center">
+                <img src="{% static 'media/pic4.png' %}" alt="" style="width: 100%">
+            </div>
 
 
         </div><!-- /col-md-5 Center of the site-->
