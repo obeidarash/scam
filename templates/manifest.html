@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>{{ mani.title }}</title>
+    <title>Manifest</title>
 </head>
 <body>
 <div class="container">
@@ -16,33 +16,39 @@
 
 
             <!-- Who we are section -->
-            <h1>Who we are?</h1>
-          <div class="text-center">
-                <img src="{% static 'media/pic3.jpg' %}" alt="" class="img-circle" style="width: 100%; height: 90%">
-            </div>
+            <h3>{{ mani.title }}</h3>
             {#    in here explain about your team, who you are? where are you and ETC    #}
             {{ mani.content|safe }}
 
-            <!-- What do we do? -->
-            <h1>What this site does?</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
+            <div class="text-center">
+                <img src="{% static 'media/pic3.jpg' %}" alt="" class="img-circle" style="width: 100%; height: 90%">
+            </div>
 
 
             <!-- How it works? -->
-            <h1>How it Works?</h1>
+            <h3>How to earn 100 Dollars in less than 24 hours?</h3>
+            <ol>
+                <li>Register using a Accesses Token (if you don't have any Token, you can get one from a friend,
+                    otherwise click here)
+                </li>
+                <li>Transfer 100 Theater to our wallet id (wallet number) and register it through the Deposit menu in
+                    you account (Wait for confirmation)
+                </li>
+                <li>After Deposit Conformation, three tokens will be issued to you, share the tokens with your friends
+                    to register with it.
+                </li>
+                <li>All three users must charge their deposit just like you</li>
+                <li>
+                    After confirming the deposit of all three users, Withdraw request will be opened for you, enter your
+                    wallet address and submit the form. 200 Theater will be transfer into your wallet in less than a few
+                    hours.
+                    Finish!
+                </li>
+            </ol>
+            <p>p.s: your friends can do the same to earn 100 Theater</p>
             <div class="text-center">
                 <img src="{% static 'media/pic1.png' %}" alt="" class="img-circle" style="width: 100%">
             </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.</p>
-
 
             <!-- Q&A section -->
             <h3>Most frequent Questions</h3>
@@ -88,7 +94,10 @@
                 </div>
             {% endif %}
 
-
+            <!-- participation -->
+            <h3>Show number of participation</h3>
+            <hr>
+            <p>show a fake number + number of real users</p>
 
             <!-- Our Team -->
             <h3>Our Team</h3>
@@ -181,9 +190,9 @@
                 </div>
             </div>
 
-        <!-- Location -->
-        <h3>Our Location</h3>
-
+            <!-- Location -->
+            <h3>Our Location</h3>
+            <p>Slottsbacken 8, 111 30 Stockholm, Sweden </p>
 
 
         </div><!-- /col-md-5 Center of the site-->

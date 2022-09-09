@@ -23,9 +23,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
-        <div class="alert alert-success">
-            Login to your account
-        </div>
+            <div class="alert alert-success">
+                Login to your account. you are one step away to earn 100$
+            </div>
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3 row">
@@ -50,9 +50,10 @@
                 </div>
             </div>
             <br>
-        <div class="text-center">
+            <div class="text-center">
                 <div class="d-grid gap-2 col-7 mx-auto">
-                    <a href="{% url 'core:manifest' %}" class="btn btn-outline-success" type="button">Who we are? and what do we do?</a>
+                    <a href="{% url 'core:manifest' %}" class="btn btn-outline-success" type="button">Who we are? and
+                        what do we do?</a>
                 </div>
             </div>
         </div><!-- /col-md-5 Center of the site-->

@@ -31,3 +31,7 @@ class Manifest(models.Model):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Who are we?'
+        verbose_name_plural = 'Who are we?'

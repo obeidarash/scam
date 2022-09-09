@@ -18,6 +18,12 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{% url 'financial:withdraw' %}">Withdraw</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'users:profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'core:contact' %}">Contact Us</a>
+                </li>
                 {% if request.user.is_superuser %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'at:at_generator' %}">AT Generator</a>
@@ -26,12 +32,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown link
+                        More
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'users:profile' %}">Profile</a></li>
                         <li><a class="dropdown-item" href="{% url 'core:manifest' %}" target="_blank">Manifest</a></li>
-                        <li><a class="dropdown-item" href="{% url 'core:contact' %}">Contact Us</a></li>
                         <li><a class="dropdown-item text-danger" href="{% url 'users:logout' %}">Exit</a></li>
                     </ul>
                 </li>

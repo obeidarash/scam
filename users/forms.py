@@ -87,7 +87,8 @@ class RegisterForm(forms.Form):
             'placeholder': '465fh688s679',
             'name': 'access_token',
             'id': 'access_token',
-            'class': 'form-control'
+            'class': 'form-control',
+            'label': 'Token'
         }
     ))
 

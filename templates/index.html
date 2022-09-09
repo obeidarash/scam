@@ -24,28 +24,24 @@
                 The sequence has been complete, this account is not usable no more.
             </p>
         </div>
-{#        todo: check every senario, there is a problem in here#}
-{#    {% elif check_deposit_3_users %}#}
-{#        <div class="alert alert-success" role="alert">#}
-{#            <h4 class="alert-heading">Congratulation!</h4>#}
-{#            <p>Now you are eligible for withdraw request</p>#}
-{#            <hr>#}
-{#            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ +#}
-{#                100$</strong>#}
-{#            </p>#}
-{#        </div>#}
+        {#    {% elif check_deposit_3_users %}#}
+        {#        <div class="alert alert-success" role="alert">#}
+        {#            <h4 class="alert-heading">Congratulation!</h4>#}
+        {#            <p>Now you are eligible for withdraw request</p>#}
+        {#            <hr>#}
+        {#            <p class="mb-0"><a href="{% url 'financial:withdraw' %}">Click here</a> to earn your <strong>100$ +#}
+        {#                100$</strong>#}
+        {#            </p>#}
+        {#        </div>#}
     {% elif is_deposit_exist_approved %}
         <div class="alert alert-info" role="alert">
             <h4 class="alert-heading">Amazing!</h4>
             <p>Your Deposit has been approved. now you can share your Accesses Tokens to your friend to signup</p>
             <hr>
-            <p class="mb-0">After Deposit conformation of all your users you're eligible to <strong>eran
+            <p>After Deposit conformation of all your users you're eligible to <strong>eran
                 100$ + 100$</strong>
             </p>
         </div>
-        <span class="badge bg-danger">Not Set</span>
-        <span class="badge bg-primary">Registered</span>
-        <span class="badge bg-success">Deposit Confirm</span>
 
         {% for access_token in access_tokens %}
             <div class="row">
@@ -57,7 +53,7 @@
                             <div class="row">
                                 <div class="col-9">
                                     {% if access_token.user is None %}
-                                        <h5 class="card-title">not set</h5>
+                                        <h5 class="card-title">*********</h5>
                                     {% else %}
                                         <h5 class="card-title">{{ access_token.user.fullname }}</h5>
                                     {% endif %}
@@ -76,8 +72,12 @@
                                 </div>
                                 {% endif %}
                                 </div>
-                                <h6 class="card-subtitle text-muted">Accesses Token:
-                                    <mark>{{ access_token.access_token }}</mark>
+                                <h6 class="card-subtitle text-muted">Token:
+                                    {% if access_token.user|deposit_check %}
+                                        <mark>**********</mark>
+                                    {% else %}
+                                        <mark>{{ access_token.access_token }}</mark>
+                                    {% endif %}
                                 </h6>
                                 {% if access_token.user.date_joined %}
                                     <p class="card-text"><small class="text-muted">
@@ -92,6 +92,12 @@
                 <div class="col-md-2"></div>
             </div>
         {% endfor %}
+        <div class="alert alert-secondary">
+            <h6 class="alert-heading">Status badge hint</h6>
+            <p><span class="badge bg-danger">Not Set</span> This Token has not been used</p>
+            <p><span class="badge bg-primary">Registered</span> User is register, but deposit is not confirmed</p>
+            <p><span class="badge bg-success">Deposit Confirm</span> Deposit is okay and everything is good to go</p>
+        </div>
     {% else %}
         <div class="alert alert-warning">
             you are few step away to <strong>earn your 100$ +100$</strong>!
