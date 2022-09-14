@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'financial',
     'core',
     'access_token',
-
 ]
 
 MIDDLEWARE = [

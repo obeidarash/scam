@@ -24,7 +24,7 @@ class Contact(models.Model):
     def __str__(self):
         return self.title
 
-
+# todo: it is better to delete manifest model
 class Manifest(models.Model):
     title = models.CharField(max_length=512)
     content = HTMLField()

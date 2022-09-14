@@ -2,7 +2,7 @@
 {% load static %}
 {% load financial_tags %}
 {% block title %}
-    Title is in here
+    Home
 {% endblock %}
 {% block content %}
     {% if messages %}
@@ -73,7 +73,7 @@
                                 {% endif %}
                                 </div>
                                 <p class="card-subtitle text-muted">Token:
-                                        <mark>{{ access_token.access_token }}</mark>
+                                    <mark>{{ access_token.access_token }}</mark>
                                 </p>
                                 {% if access_token.user.date_joined %}
                                     <p class="card-text"><small class="text-muted">
@@ -101,6 +101,13 @@
             if you requested before please wait for conformation
         </div>
     {% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log(Math.random() * 100)
+    })
+</script>
+
 
 <div class="text-center">
     <img src="{% static 'media/pic2.jpg' %}" alt="" style="width: 80%">

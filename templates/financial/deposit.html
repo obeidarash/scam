@@ -33,8 +33,8 @@
             <tbody>
             {% for deposit in deposit_list %}
                 <tr>
-                    <td>{{ deposit.hash|truncatechars:5 }}</td>
-                    <td>{{ deposit.date|timesince }}</td>
+                    <td>{{ deposit.hash|truncatechars:10 }}</td>
+                    <td>{{ deposit.date|timesince }} ago</td>
                     {% if deposit.is_approved and not deposit.is_decline %}
                         <td class="table-success">Confirm</td>
                     {% elif not deposit.is_approved and deposit.is_decline %}
