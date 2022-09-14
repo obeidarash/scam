@@ -72,9 +72,9 @@
                                 </div>
                                 {% endif %}
                                 </div>
-                                <h6 class="card-subtitle text-muted">Token:
+                                <p class="card-subtitle text-muted">Token:
                                         <mark>{{ access_token.access_token }}</mark>
-                                </h6>
+                                </p>
                                 {% if access_token.user.date_joined %}
                                     <p class="card-text"><small class="text-muted">
                                         joined: {{ access_token.user.date_joined|timesince }} ago</small>
