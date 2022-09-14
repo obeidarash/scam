@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Manifest, Contact
+from .models import  Contact
 from core.models import Qa
 from django.contrib.auth.decorators import login_required
 
@@ -15,9 +15,7 @@ def contact(request):
 
 def manifest(request):
     qas = Qa.objects.all()
-    mani = Manifest.objects.all().first()
     context = {
-        'mani': mani,
         'qas': qas,
     }
     return render(request, 'manifest.html', context)
