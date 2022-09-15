@@ -5,13 +5,17 @@
 {% endblock %}
 {% block content %}
 
-    <h2>Accesses Token Generator</h2>
+    <br>
 
+    <div class="alert alert-info">
+        <h2 class="alert-heading">Accesses Token Generator</h2>
+        Click button bellow to generate new token who doesn't belong to anyone.
+    </div>
 
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-            Accesses Token
+                Accesses Token
                 <strong>{{ message }}</strong> has been created.
                 <a href="{% url 'at:at' %}" target="_blank"> Token list</a>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -19,9 +23,6 @@
         {% endfor %}
     {% endif %}
 
-    <div class="alert alert-info">
-        Click button bellow to generate new token who doesn't belong to anyone.
-    </div>
 
     <form action="{% url 'at:at_generator' %}" method="POST">
         {% csrf_token %}

@@ -5,6 +5,7 @@
     Home
 {% endblock %}
 {% block content %}
+    <br>
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -102,12 +103,17 @@
         </div>
     {% endif %}
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log(Math.random() * 100)
-    })
-</script>
+<br>
 
+<div class="text-center">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jszEr-hwU_I"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+</div>
+
+<br>
 
 <div class="text-center">
     <img src="{% static 'media/pic2.jpg' %}" alt="" style="width: 80%">

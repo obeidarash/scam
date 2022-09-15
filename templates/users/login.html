@@ -7,14 +7,14 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Short invest in coin technology - login </title>
+    <title>Login | Short invest in coin technology</title>
 </head>
 <body>
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col col-lg-2"></div>
         <div class="col-md-5">
-            <h3>Short invest in coin technology</h3>
+            <br>
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -23,7 +23,9 @@
                     </div>
                 {% endfor %}
             {% endif %}
+
             <div class="alert alert-success">
+                <h4 class="alert-heading">Login | Short invest in coin technology</h4>
                 Login to your account. you are one step away to earn 100$
             </div>
             <form action="{% url 'users:login' %}" method="POST">
@@ -52,10 +54,14 @@
             <br>
             <div class="text-center">
                 <div class="d-grid gap-2 col-7 mx-auto">
-                    <a href="{% url 'core:manifest' %}" class="btn btn-outline-success" type="button" target="_blank">Who we are? and
+                    <a href="{% url 'core:manifest' %}" class="btn btn-outline-success" type="button" target="_blank">Who
+                        we are? and
                         what do we do?</a>
                 </div>
             </div>
+
+            <br>
+
         </div><!-- /col-md-5 Center of the site-->
         <div class="col col-lg-2"></div>
     </div><!-- /row justify-content-md-center -->

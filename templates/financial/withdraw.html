@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
 
-    <h1>Withdraw</h1>
+    <br>
 
     {% for message in messages %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -22,6 +22,7 @@
         </div>
     {% elif is_withdraw_ok and not is_withdraw_exist_approved %}
         <div class="alert alert-success">
+            <h3 class="alert-heading">Withdraw</h3>
             Give us a valid wallet ID and we will transfer <strong>100$ + 100$</strong> to your name
         </div>
         <form action="{% url 'financial:withdraw' %}" method="POST">
@@ -77,6 +78,7 @@
         </table>
     {% else %}
         <div class="alert alert-warning">
+            <h3 class="alert-heading">Withdraw</h3>
             if you are eligible for withdraw request you can see the form. please before that be sure Deposit of you and
             3 other users are confirmed
             for withdraw request
