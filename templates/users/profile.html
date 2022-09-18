@@ -7,22 +7,11 @@
     Deposit
 {% endblock %}
 {% block content %}
-
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Well! </strong>{{ message }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        {% endfor %}
-    {% endif %}
-
-    <h2>Your Profile</h2>
-
-
+    <br>
 
     <div class="alert alert-warning">
-    You can't change anything, if there is a problem please <a href="{% url 'core:contact' %}">contact us</a>
+        <h3 class="alert-heading">Your Profile</h3>
+        You can't change anything, if there is a problem please <a href="{% url 'core:contact' %}">contact us</a>
     </div>
 
 

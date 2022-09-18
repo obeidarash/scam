@@ -1,5 +1,6 @@
 {% load static %}
 {% load widget_tweaks %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,6 +29,12 @@
                 <h4 class="alert-heading">Login | Short invest in coin technology</h4>
                 Login to your account. you are one step away to earn 100$
             </div>
+
+            <div class="text-center">
+                <img src="{% static 'media/pic5.png' %}" alt="" style="width: 100%">
+            </div>
+
+            <br>
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
                 <div class="mb-3 row">
@@ -44,6 +51,7 @@
                 </div>
                 <button class="btn btn-success" type="submit">Login</button>
             </form>
+
             <hr>
             <div class="text-center">
                 <div class="alert alert-info">if you don't have account please click link below</div>
@@ -59,6 +67,7 @@
                         what do we do?</a>
                 </div>
             </div>
+
 
             <br>
 

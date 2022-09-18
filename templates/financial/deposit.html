@@ -22,6 +22,10 @@
             </p>
         </div>
     {% elif deposit_exist %}
+        <div class="alert alert-warning">
+            <p>Your request has been received. Please wait for confirmation</p>
+        </div>
+
         <table class="table">
             <thead>
             <tr>
@@ -49,7 +53,7 @@
     {% endif %}
     {% if not is_deposit_exist_approved %}
         <div class="alert alert-info ">
-          <h3 class="alert-heading">Deposit</h3>
+            <h3 class="alert-heading">Deposit</h3>
             Transfer <b>100 Tether (TRC20)</b> to wallet ID bellow and submit the form with
             transaction HASH. sending any other coin may result in permanent loss
         </div>
