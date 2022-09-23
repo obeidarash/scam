@@ -9,8 +9,8 @@ from .forms import DepositAdminForm, WithdrawAdminForm
 class DepositAdmin(admin.ModelAdmin):
     form = DepositAdminForm
     list_display = ('user', 'tronscan', 'date', 'is_approved', 'is_decline')
-    search_fields = ['user', ]
-    autocomplete_fields = ('user',)
+    search_fields = ['hash', ]
+    search_help_text = 'Search in Hash'
     sortable_by = ('-date',)
     list_filter = ('is_approved', 'is_decline',)
     readonly_fields = ('hash', 'user')
@@ -31,8 +31,8 @@ class DepositAdmin(admin.ModelAdmin):
 class WithdrawAdmin(admin.ModelAdmin):
     form = WithdrawAdminForm
     list_display = ('user', 'date', 'is_decline', 'is_approved')
-    search_fields = ['user', ]
-    autocomplete_fields = ('user',)
+    search_fields = ['wallet_id', 'hash', ]
+    search_help_text = 'Search in Wallet ID and HASH'
     sortable_by = ('-date',)
     list_filter = ('is_decline', 'is_approved',)
     readonly_fields = ('user', 'wallet_id',)

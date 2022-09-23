@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  Contact
+from .models import Contact
 from core.models import Qa
 from django.contrib.auth.decorators import login_required
 

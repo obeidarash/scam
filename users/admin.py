@@ -3,12 +3,14 @@ from django.contrib.auth.admin import UserAdmin
 from users.models import User
 
 
+# todo: unregister Default Group Model in here
+
 @admin.register(User)
 class AccountAdmin(UserAdmin):
-    list_display = ('email', 'username', 'date_joined', 'is_superuser', 'is_admin', 'is_staff', 'is_active')
-    search_fields = ('email', 'username', 'country')
+    list_display = ('email', 'fullname', 'country', 'date_joined', 'is_superuser', 'is_admin', 'is_staff', 'is_active')
+    search_fields = ('email', 'country', 'fullname')
+    search_help_text = 'Search in Email, Country and Fullname'
     readonly_fields = ('id', 'date_joined', 'last_login')
     filter_horizontal = ()
     list_filter = ('is_superuser',)
     fieldsets = ()
-    # autocomplete_fields = ('country',)

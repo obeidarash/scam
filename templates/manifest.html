@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex">
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <title>Manifesto of Short invest in coin technology </title>
+    <title>Manifesto of Short invest in coin technology</title>
 </head>
 <body>
 <div class="container">
@@ -14,17 +14,16 @@
         <div class="col col-lg-2"></div>
         <div class="col-md-7">
 
-            <h1>Short invest in coin technology</h1>
 
             <!-- Who we are section -->
             <div class="alert alert-secondary">
-                <h3 class="alert-heading">Who we are?</h3>
+                <h3 class="alert-heading">Who we are? <strong>(Short invest in coin technology)</strong></h3>
                 We are a programming team with programmers all over the world that works in the field of cryptocurrency.
                 we have provided a lot of profit for our company and users day by day by writing advanced robots to
                 invest in cryptocurrencies.
 
                 <div class="text-center">
-                    <img src="{% static 'media/pic3.jpg' %}" alt="" class="img-circle" style="width: 100%; height: 90%">
+                    <img src="{% static 'media/pic5.png' %}" alt="" style="width: 100%; height: 90%">
                 </div>
             </div>
 
@@ -61,6 +60,9 @@
                     </li>
                 </ol>
                 <p>p.s: your friends can do the same to earn 100 Theater</p>
+                <p>p.s: because of our policy on one time registration per each person you can't use your own sub token
+                    to register, it might result
+                    in permanent loss.</p>
 
                 <div class="text-center">
                     <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%">
@@ -68,32 +70,31 @@
             </div>
 
 
-
             <!-- Q&A section -->
             <div class="alert alert-primary">
                 <h3 class="alert-heading">Most frequent Questions</h3>
-            <div class="accordion" id="accordionExample">
-                {% for qa in qas %}
-                    {% if qa.publish %}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="heading{{ qa.id }}">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
-                                        aria-controls="collapse{{ qa.id }}">
-                                    {{ qa.question }}
-                                </button>
-                            </h2>
-                            <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
-                                 aria-labelledby="heading{{ qa.id }}"
-                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    {{ qa.answer|safe }}
+                <div class="accordion" id="accordionExample">
+                    {% for qa in qas %}
+                        {% if qa.publish %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading{{ qa.id }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
+                                            aria-controls="collapse{{ qa.id }}">
+                                        {{ qa.question }}
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
+                                     aria-labelledby="heading{{ qa.id }}"
+                                     data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{ qa.answer|safe }}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
             </div>
             <br>
 
@@ -125,7 +126,7 @@
                             <img src="{% static 'media/1.jpeg' %}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Tuwa Sandström</h5>
-                                <h6 class="card-subtitle text-muted">CEO</h6>
+                                <h6 class="card-subtitle text-muted">Blockchain Expert</h6>
                             </div>
                         </div>
                     </div>
@@ -143,7 +144,7 @@
                             <img src="{% static 'media/3.jpeg' %}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">Eric Strömberg</h5>
-                                <h6 class="card-subtitle text-muted">Blockchain Expert</h6>
+                                <h6 class="card-subtitle text-muted">CEO</h6>
                             </div>
                         </div>
                     </div>
@@ -211,7 +212,6 @@
             </div>
 
 
-
             <!-- Location -->
             <div class="alert alert-primary">
                 <h3 class="alert-heading">Our Location</h3>
@@ -219,7 +219,6 @@
                 <div class="text-center">
                     <img src="{% static 'media/pic4.png' %}" alt="" style="width: 100%">
                 </div>
-
             </div>
 
 

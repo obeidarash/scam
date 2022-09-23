@@ -6,6 +6,7 @@ from .models import Contact, Qa
 class QaAdmin(admin.ModelAdmin):
     list_display = ('question', 'publish')
     list_filter = ('publish',)
+    search_fields = ('question',)
 
 
 @admin.register(Contact)

@@ -80,7 +80,7 @@ def signup(request):
             access_token_find.is_used = True
             access_token_find.save()
 
-            # create 3 token when user is created, and avoid create duplicate token
+            # create 3 token when user is created and avoid create duplicate token
             counter = 1
             while counter <= 3:
                 uid = str(uuid.uuid4().hex)[:10]
