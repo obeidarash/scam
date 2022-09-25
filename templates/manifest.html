@@ -14,12 +14,11 @@
         <div class="col col-lg-2"></div>
         <div class="col-md-7">
 
-
             <!-- Who we are section -->
             <div class="alert alert-secondary">
                 <h3 class="alert-heading">Who we are? <strong>(Short invest in coin technology)</strong></h3>
                 We are a programming team with programmers all over the world that works in the field of cryptocurrency.
-                we have provided a lot of profit for our company and users day by day by writing advanced robots to
+                we have provided a lot of profit for our company and users by writing advanced robots to
                 invest in cryptocurrencies.
 
                 <div class="text-center">
@@ -27,48 +26,44 @@
                 </div>
             </div>
 
-
             <br>
             <!-- How does the site work? -->
             <div class="alert alert-primary">
                 <h3>How our robots work?</h3>
                 <p>As soon as you charge up your account, our robots will start investing your money in different
                     cryptocurrencies. The same thing happens to the three other people who registered with your token.
-                    Where and how much to invest depends entirely on the artificial intelligence of robots. Finally,
-                    $100 + 100$ will be transfer to your wallet id.</p>
+                    Where and how much to invest depends entirely on the artificial intelligence of robots. Finally
+                    $100 + 100$ (original money and profit) will be transfer to your wallet id.</p>
             </div>
-
 
             <!-- How it works? -->
             <div class="alert alert-secondary">
-                <h3 class="alert-heading">How to earn 100$ in less than 24 hours?</h3>
+                <h3 class="alert-heading">How to earn 100$ + 100$ in less than 24 hours?</h3>
                 <ol>
                     <li>Register using a Token (if you don't have any Token, you can get one from a friend,
-                        otherwise click here)
+                        otherwise <a href="{% url 'ac:at' %}" target="_blank">click here</a>)
                     </li>
-                    <li>Transfer 100 Theater to our wallet id (wallet number) and register it through the Deposit menu
-                        in you account (Wait for confirmation)
+                    <li>Transfer 100 + 100 Theater to our wallet id and submit HASH id through the Deposit menu
+                        in your account and wait for confirmation
                     </li>
                     <li>After Deposit Conformation, three tokens will be issued to you, share the tokens with your
-                        friends to register with it.
+                        friends to register.
                     </li>
                     <li>All three users must charge their deposit just like you</li>
                     <li>
                         After confirming the deposit of all three users, Withdraw request will be opened for you, enter
-                        your wallet address and submit the form. 200 Theater will be transfer into your wallet in less
+                        your wallet address and submit the form. 100 + 100 Theater will be transfer into your wallet in less
                         than a few hours. Finish!
                     </li>
                 </ol>
-                <p>p.s: your friends can do the same to earn 100 Theater</p>
+                <p>p.s: your friends should do the same to earn 100 + 100 Theater, unless they can't request Withdraw</p>
                 <p>p.s: because of our policy on one time registration per each person you can't use your own sub token
-                    to register, it might result
-                    in permanent loss.</p>
+                    to register, it might result in permanent loss and ban you from website.</p>
 
                 <div class="text-center">
                     <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%">
                 </div>
             </div>
-
 
             <!-- Q&A section -->
             <div class="alert alert-primary">
@@ -97,7 +92,6 @@
                 </div>
             </div>
             <br>
-
 
             <!-- Links -->
             {% if request.user.is_superuser %}
@@ -211,7 +205,6 @@
                 </div>
             </div>
 
-
             <!-- Location -->
             <div class="alert alert-primary">
                 <h3 class="alert-heading">Our Location</h3>
@@ -220,7 +213,6 @@
                     <img src="{% static 'media/pic4.png' %}" alt="" style="width: 100%">
                 </div>
             </div>
-
 
         </div><!-- /col-md-5 Center of the site-->
         <div class="col col-lg-2"></div>

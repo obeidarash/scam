@@ -1,9 +1,11 @@
-from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from users.models import User
+from django.contrib import admin
+from django.contrib.auth.models import Group
 
+# Unregister default group model
+admin.site.unregister(Group)
 
-# todo: unregister Default Group Model in here
 
 @admin.register(User)
 class AccountAdmin(UserAdmin):

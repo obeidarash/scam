@@ -4,11 +4,10 @@ from .views import index
 from django.conf import settings
 from django.conf.urls.static import static
 
-# todo: change admin path for more security
 # todo: add recaptcha to admin login page
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('panelarea/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', index, name='home'),
     path('', include('users.urls', namespace='users')),
