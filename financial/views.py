@@ -7,6 +7,27 @@ from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/login')
+def balance(request):
+    # check if user is admin otherwise return him to home page
+    if not request.user.is_superuser:
+        return redirect('home')
+
+    confirm_deposits_count = Deposit.objects.filter(is_approved=True).count()
+    confirm_deposits = Deposit.objects.filter(is_approved=True)
+    confirm_withdraw_count = Withdraw.objects.filter(is_approved=True).count()
+    confirm_withdraw = Withdraw.objects.filter(is_approved=True)
+    balance = (confirm_deposits_count - confirm_withdraw_count) * 100
+    context = {
+        'confirm_deposits': confirm_deposits,
+        'confirm_deposits_count': confirm_deposits_count,
+        'confirm_withdraw': confirm_withdraw,
+        'confirm_withdraw_count': confirm_withdraw_count,
+        'balance': balance
+    }
+    return render(request, 'financial/balance.html', context)
+
+
+@login_required(login_url='/login')
 def withdraw(request):
     is_withdraw_ok = False
 
