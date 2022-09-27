@@ -1,13 +1,11 @@
 from django import forms
-from django.contrib.auth.password_validation import password_changed
 from users.models import User
 from django.core import validators
 from access_token.models import AccessToken
-from django_countries.widgets import CountrySelectWidget
 from django_countries.fields import CountryField
-from django.contrib.auth import authenticate
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Invisible
+
 
 class ProfileForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(
@@ -62,6 +60,7 @@ class LoginForm(forms.Form):
 
 
 class RegisterForm(forms.Form):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible)
     phone_number = forms.RegexField(regex=r'^\+?1?\d{9,15}$')
     country = CountryField(blank=False).formfield()
 

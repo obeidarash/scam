@@ -9,9 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 
 
-# todo: add recaptcha to login and register page
-
-
 @login_required(login_url='/login')
 def profile(request):
     profile_form = ProfileForm(request.POST or None, initial={'email': request.user.email,

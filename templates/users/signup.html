@@ -22,6 +22,7 @@
 
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
+                 {{ register_form.captcha }}
                 <div class="mb-3">
                     <label for="{{ register_form.email.id_for_label }}" class="form-label">Email address</label>
                     {{ register_form.email|add_error_class:"is-invalid" }}
@@ -99,7 +100,8 @@
 
             <div class="d-grid gap-2 col-7 mx-auto">
                 <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
-                <a href="{% url 'core:manifest' %}" class="btn btn-outline-primary" type="button" target="_blank">Who we are? and what do
+                <a href="{% url 'core:manifest' %}" class="btn btn-outline-primary" type="button" target="_blank">Who we
+                    are? and what do
                     we do?</a>
             </div>
             <br>

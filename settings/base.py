@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,7 +14,7 @@ AUTHENTICATION_BACKENDS = (
     'users.backend.CaseInsensitiveModelBackend'
 )
 
-
+# google recaptcha keys https://www.google.com/recaptcha/admin/site/558370688
 RECAPTCHA_PUBLIC_KEY = '6LfBceshAAAAAEsxxDLzgDG4P1KIo-lrmofIQnJS'
 RECAPTCHA_PRIVATE_KEY = '6LfBceshAAAAAPdqBMt1TTV9zpeJJ46uXl4iccNz'
 
@@ -31,7 +30,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'widget_tweaks',
     'tinymce',
-    'captcha',
+    'captcha',  # https://pypi.org/project/django-recaptcha/
     # Apps
     'users',
     'financial',
