@@ -6,7 +6,8 @@ from access_token.models import AccessToken
 from django_countries.widgets import CountrySelectWidget
 from django_countries.fields import CountryField
 from django.contrib.auth import authenticate
-
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Invisible
 
 class ProfileForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(
@@ -39,6 +40,7 @@ class ProfileForm(forms.Form):
 
 
 class LoginForm(forms.Form):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible)
     email = forms.EmailField(widget=forms.EmailInput(
         attrs={
             'placeholder': 'example@gmail.com',

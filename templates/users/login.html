@@ -42,6 +42,7 @@
             <br>
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
+                {{ login_form.captcha }}
                 <div class="mb-3 row">
                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-md-10">

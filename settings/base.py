@@ -15,15 +15,11 @@ AUTHENTICATION_BACKENDS = (
     'users.backend.CaseInsensitiveModelBackend'
 )
 
-# MULTI_CAPTCHA_ADMIN = {
-#     'engine': 'recaptcha2',
-# }
-# RECAPTCHA_PRIVATE_KEY = '6LdowLUhAAAAAA0JR577fAAfTxAHGFcLmmhKI2XP'
-# RECAPTCHA_PUBLIC_KEY = '6LdowLUhAAAAAApCB9qDHyaL67g7v1TWtXcxrUfD'
+
+RECAPTCHA_PUBLIC_KEY = '6LfBceshAAAAAEsxxDLzgDG4P1KIo-lrmofIQnJS'
+RECAPTCHA_PRIVATE_KEY = '6LfBceshAAAAAPdqBMt1TTV9zpeJJ46uXl4iccNz'
 
 INSTALLED_APPS = [
-    # 'multi_captcha_admin',
-    # 'snowpenguin.django.recaptcha2',
     'django.contrib.admin',  # this is default app too, never delete this line
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -35,6 +31,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'widget_tweaks',
     'tinymce',
+    'captcha',
     # Apps
     'users',
     'financial',
