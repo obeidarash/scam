@@ -17,12 +17,13 @@ def balance(request):
     confirm_withdraw_count = Withdraw.objects.filter(is_approved=True).count()
     confirm_withdraw = Withdraw.objects.filter(is_approved=True)
     balance = (confirm_deposits_count - confirm_withdraw_count) * 100
+
     context = {
         'confirm_deposits': confirm_deposits,
-        'confirm_deposits_count': confirm_deposits_count,
+        'confirm_deposits_count': confirm_deposits_count * 100,
         'confirm_withdraw': confirm_withdraw,
-        'confirm_withdraw_count': confirm_withdraw_count,
-        'balance': balance
+        'confirm_withdraw_count': confirm_withdraw_count * 100,
+        'balance': balance,
     }
     return render(request, 'financial/balance.html', context)
 
