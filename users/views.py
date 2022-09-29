@@ -1,12 +1,40 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, RegisterForm, ProfileForm
+from .forms import LoginForm, RegisterForm, ProfileForm, SearchForm
 from django.contrib import messages
 from .models import User
 import uuid
 from access_token.models import AccessToken
 from django.contrib.auth.decorators import login_required
 from django import forms
+from django.http import JsonResponse
+
+
+# return search page
+@login_required(login_url='/login')
+def search(request):
+    if not request.user.is_superuser:
+        return redirect('home')
+
+    search_form = SearchForm(request.POST or None)
+
+    context = {
+        'search_form': search_form,
+    }
+    return render(request, 'users/search.html', context)
+
+
+# return data of search form
+@login_required(login_url='/login')
+def q(request):
+    if not request.user.is_superuser:
+        return redirect('home')
+
+    users = User.objects.all()[0:5]
+    test = [1, 2, 3, 4, 5, request.GET['search']]
+    return JsonResponse({
+        'users': test
+    })
 
 
 @login_required(login_url='/login')
@@ -36,7 +64,7 @@ def login_user(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, 'your are login')
+                messages.success(request, ' Wellcome')
                 return redirect('home')
             else:
                 messages.error(request, 'Email or Password is wrong')
@@ -100,5 +128,5 @@ def signup(request):
 @login_required(login_url='/login')
 def log_out(request):
     logout(request)
-    messages.info(request, 'You are out now')
+    messages.info(request, ' See you soon')
     return redirect('users:login')

@@ -22,7 +22,7 @@
 
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
-                 {{ register_form.captcha }}
+                {{ register_form.captcha }}
                 <div class="mb-3">
                     <label for="{{ register_form.email.id_for_label }}" class="form-label">Email address</label>
                     {{ register_form.email|add_error_class:"is-invalid" }}
@@ -44,7 +44,9 @@
                 <div class="mb-3">
                     <label for="{{ register_form.phone_number.id_for_label }}" class="form-label">Phone Number</label>
                     {{ register_form.phone_number|add_error_class:"is-invalid"|add_class:'form-control' }}
-                    <div id="email" class="form-text">phone number with dial code (e.g. +12125552368).</div>
+                    <div id="{{ register_form.phone_number.id_for_label }}" class="form-text">phone number with dial
+                        code (e.g. +12125552368).
+                    </div>
                     {% for error in register_form.phone_number.errors %}
                         <div id="{{ register_form.phone_number.id_for_label }}" class="invalid-feedback">
                             {{ error }}
@@ -63,6 +65,10 @@
                 <div class="mb-3">
                     <label for="{{ register_form.access_token.id_for_label }}" class="form-label">Token</label>
                     {{ register_form.access_token|add_error_class:"is-invalid" }}
+                    <div id="{{ register_form.access_token.id_for_label }}" class="form-text">
+                        If you don't have token, check <a href="{% url 'at:at' %}" target="_blank">this page</a> you
+                        might get lucky
+                    </div>
                     {% for error in register_form.access_token.errors %}
                         <div id="{{ register_form.access_token.id_for_label }}" class="invalid-feedback">
                             {{ error|safe }}
@@ -88,7 +94,7 @@
                         </div>
                     {% endfor %}
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit / Register</button>
             </form>
             <hr>
 
@@ -100,7 +106,7 @@
 
             <div class="d-grid gap-2 col-7 mx-auto">
                 <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
-                <a href="{% url 'core:manifest' %}" class="btn btn-outline-primary" type="button" target="_blank">Who we
+                <a href="{% url 'core:manifest' %}" class="btn btn-outline-warning" type="button" target="_blank">Who we
                     are? and what do
                     we do?</a>
             </div>

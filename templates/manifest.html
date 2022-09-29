@@ -16,7 +16,7 @@
 
             <!-- Who we are section -->
             <div class="alert alert-secondary">
-                <h3 class="alert-heading">Who we are? <strong>(Short invest in coin technology)</strong></h3>
+                <h3 class="alert-heading">Who we are? <strong>(Short invest in coin technology) - Beta version</strong></h3>
                 We are a programming team with programmers all over the world that works in the field of cryptocurrency.
                 we have provided a lot of profit for our company and users by writing advanced robots to
                 invest in cryptocurrencies.
@@ -102,12 +102,12 @@
                 </div>
             {% elif not request.user.is_authenticated %}
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
-                    <a href="{% url 'users:signup' %}" class="btn btn-outline-warning" type="button">Register</a>
+                    <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
+                    <a href="{% url 'users:login' %}" class="btn btn-outline-success" type="button">Login</a>
                 </div>
             {% else %}
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <a href="{% url 'home' %}" class="btn btn-outline-primary" type="button">Home</a>
+                    <a href="{% url 'home' %}" class="btn btn-primary" type="button">Home</a>
                     <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
                 </div>
             {% endif %}
@@ -210,7 +210,8 @@
             <!-- Location -->
             <div class="alert alert-primary">
                 <h3 class="alert-heading">Our Location</h3>
-                <a target="_blank" href="https://www.google.com/maps/place/Slottsbacken+8,+111+30+Stockholm,+Sweden/@59.3260651,18.0734835,17z/data=!4m5!3m4!1s0x465f9d58736e8a99:0x4251fce39eb41f35!8m2!3d59.3261308!4d18.0739448">
+                <a target="_blank"
+                   href="https://www.google.com/maps/place/Slottsbacken+8,+111+30+Stockholm,+Sweden/@59.3260651,18.0734835,17z/data=!4m5!3m4!1s0x465f9d58736e8a99:0x4251fce39eb41f35!8m2!3d59.3261308!4d18.0739448">
                     <p>Slottsbacken 8, 111 30 Stockholm, Sweden </p></a>
 
                 <div class="text-center">

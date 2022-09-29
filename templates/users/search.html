@@ -1,0 +1,49 @@
+{% extends 'shared/base.html' %}
+{% load countries %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+    Search
+{% endblock %}
+{% block content %}
+    <br>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', load)
+
+        function load() {
+            document.querySelector('form').onsubmit = function () {
+                let search = document.querySelector('#search')
+                fetch(`q?search=${search}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.users.forEach(add_user)
+                    })
+                return false
+            }
+        }
+
+        function add_user(users) {
+            const user = document.createElement('div')
+            user.className = 'user' // change class name
+            user.innerHTML = users
+
+            document.querySelector('#content').append(user)
+        }
+
+
+    </script>
+
+    <h3>Search for a user</h3>
+
+    <form action="" method="GET">
+        {{ search_form.search }}
+        <button type="submit" class="btn btn-primary" id="btn">Search</button>
+    </form>
+
+    <div id="content"></div>
+
+
+
+{% endblock %}

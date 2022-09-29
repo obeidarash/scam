@@ -4,37 +4,19 @@ from django.core import validators
 from access_token.models import AccessToken
 from django_countries.fields import CountryField
 from captcha.fields import ReCaptchaField
-from captcha.widgets import ReCaptchaV2Invisible
+from captcha.widgets import ReCaptchaV2Invisible, ReCaptchaV2Checkbox, ReCaptchaV3
 
 
-class ProfileForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(
+class SearchForm(forms.Form):
+    search = forms.CharField(widget=forms.TextInput(
         attrs={
-            'placeholder': 'example@gmail.com',
-            'name': 'email',
-            'id': 'email',
+            'placeholder': 'Search for a user',
+            'name': 'search',
+            'id': 'search',
             'class': 'form-control',
-
+            'autofocus': 'True'
         }
-    ), disabled=True)
-
-    fullname = forms.CharField(widget=forms.TextInput(
-        attrs={
-            'placeholder': 'Brad Pit',
-            'name': 'fullname',
-            'id': 'fullname',
-            'class': 'form-control'
-        }
-    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25), ], disabled=True)
-
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={
-            'placeholder': '***********',
-            'name': 'password',
-            'id': 'password',
-            'class': 'form-control'
-        }
-    ), disabled=True, required=False)
+    ))
 
 
 class LoginForm(forms.Form):
@@ -51,7 +33,7 @@ class LoginForm(forms.Form):
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={
-            'placeholder': '*****',
+            'placeholder': '**********',
             'name': 'password',
             'id': 'password',
             'class': 'form-control'
@@ -95,7 +77,7 @@ class RegisterForm(forms.Form):
 
     password = forms.CharField(required=True, widget=forms.PasswordInput(
         attrs={
-            'placeholder': '*****',
+            'placeholder': '**********',
             'name': 'password',
             'id': 'password',
             'class': 'form-control'
@@ -103,7 +85,7 @@ class RegisterForm(forms.Form):
     ), validators=[validators.MinLengthValidator(6), validators.MaxLengthValidator(20)])
     re_password = forms.CharField(widget=forms.PasswordInput(
         attrs={
-            'placeholder': '*****',
+            'placeholder': '**********',
             'name': 're_password',
             'id': 're_password',
             'class': 'form-control'
@@ -148,3 +130,33 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError(
                 "this token is not valid, if you don't have any token check <a href='at' target='_blank'>this page</a>")
         return access_token
+
+
+class ProfileForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={
+            'placeholder': 'example@gmail.com',
+            'name': 'email',
+            'id': 'email',
+            'class': 'form-control',
+
+        }
+    ), disabled=True)
+
+    fullname = forms.CharField(widget=forms.TextInput(
+        attrs={
+            'placeholder': 'Brad Pit',
+            'name': 'fullname',
+            'id': 'fullname',
+            'class': 'form-control'
+        }
+    ), validators=[validators.MinLengthValidator(3), validators.MaxLengthValidator(25), ], disabled=True)
+
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={
+            'placeholder': '**********',
+            'name': 'password',
+            'id': 'password',
+            'class': 'form-control'
+        }
+    ), disabled=True, required=False)
