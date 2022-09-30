@@ -2,18 +2,18 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['obeidarash.ir', 'www.obeidarash.ir']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_database',
-        'USER': 'root',
-        'PASSWORD': 'your_password',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-        # 'OPTIONS': {
-        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        # }
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'obeidara_thisisatest',  # database name
+        'USER': 'obeidara_testuser',
+        'PASSWORD': 'auLE&mu~Zd.W',
+        'HOST': 'obeidarash.ir',
+        'PORT': '3306',
+        'OPTIONS': {
+            'autocommit': True
+        }
     }
 }
