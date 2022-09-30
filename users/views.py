@@ -8,6 +8,9 @@ from access_token.models import AccessToken
 from django.contrib.auth.decorators import login_required
 from django import forms
 from django.http import JsonResponse
+from django.db.models import Q
+import json
+from django.http import HttpResponse
 
 
 # return search page
@@ -30,11 +33,13 @@ def q(request):
     if not request.user.is_superuser:
         return redirect('home')
 
-    users = User.objects.all()[0:5]
-    test = [1, 2, 3, 4, 5, request.GET['search']]
+    search = request.GET['search']
+    users = User.objects.filter(
+        Q(fullname__icontains=search) | Q(email__exact=search) | Q(username__exact=search))
+    print(users)
     return JsonResponse({
-        'users': test
-    })
+        'users': list(users.values())
+    }, safe=False)
 
 
 @login_required(login_url='/login')

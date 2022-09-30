@@ -15,20 +15,21 @@
         function load() {
             document.querySelector('form').onsubmit = function () {
                 let search = document.querySelector('#search')
-                fetch(`q?search=${search}`)
+                fetch(`q?search=${search.value}`)
                     .then(response => response.json())
                     .then(data => {
                         data.users.forEach(add_user)
                     })
+                document.querySelector('#content').innerHTML = ""
                 return false
             }
+
         }
 
         function add_user(users) {
             const user = document.createElement('div')
             user.className = 'user' // change class name
             user.innerHTML = users
-
             document.querySelector('#content').append(user)
         }
 
