@@ -13,6 +13,12 @@ import json
 from django.http import HttpResponse
 
 
+# return specific user
+@login_required(login_url='/login')
+def find_user(request):
+    return HttpResponse('hello')
+
+
 # return search page
 @login_required(login_url='/login')
 def search(request):
@@ -29,7 +35,7 @@ def search(request):
 
 # return data of search form
 @login_required(login_url='/login')
-def q(request):
+def search_query(request):
     if not request.user.is_superuser:
         return redirect('home')
 

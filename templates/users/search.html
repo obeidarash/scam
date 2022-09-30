@@ -15,22 +15,33 @@
         function load() {
             document.querySelector('form').onsubmit = function () {
                 let search = document.querySelector('#search')
-                fetch(`q?search=${search.value}`)
+                fetch(`search_query?search=${search.value}`)
                     .then(response => response.json())
                     .then(data => {
+                        console.log(data.users)
                         data.users.forEach(add_user)
                     })
                 document.querySelector('#content').innerHTML = ""
                 return false
             }
-
         }
 
         function add_user(users) {
-            const user = document.createElement('div')
-            user.className = 'user' // change class name
-            user.innerHTML = users
+            const user = document.createElement('button')
+            user.className = 'btn btn-link' // change class name
+            user.dataset.id = users.id
+            user.innerHTML = users.fullname
             document.querySelector('#content').append(user)
+        }
+
+        function find_user() {
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('[data-id]').forEach(button => {
+                    button.onclick = function () {
+                        alert('hello')
+                    }
+                })
+            })
         }
 
 
