@@ -4,8 +4,9 @@ from .views import index
 from django.conf import settings
 from django.conf.urls.static import static
 
+# todo: Add Recaptcha to admin login page
 urlpatterns = [
-    path('panelarea/', admin.site.urls),
+    path('thisispanelarea/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
     path('', index, name='home'),
     path('', include('users.urls', namespace='users')),

@@ -3,6 +3,7 @@ from django.utils.html import format_html
 from .models import Withdraw, Deposit
 from .forms import DepositAdminForm, WithdrawAdminForm
 
+
 # todo: Check Tronscan link
 
 @admin.register(Deposit)
