@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.utils.html import format_html
-
 from .models import Withdraw, Deposit
 from .forms import DepositAdminForm, WithdrawAdminForm
 
+# todo: Check Tronscan link
 
 @admin.register(Deposit)
 class DepositAdmin(admin.ModelAdmin):
@@ -30,12 +30,18 @@ class DepositAdmin(admin.ModelAdmin):
 @admin.register(Withdraw)
 class WithdrawAdmin(admin.ModelAdmin):
     form = WithdrawAdminForm
-    list_display = ('user', 'date', 'is_decline', 'is_approved')
+    list_display = ('user', 'tronscan', 'date', 'is_decline', 'is_approved')
     search_fields = ['wallet_id', 'hash', ]
     search_help_text = 'Search in Wallet ID and HASH'
     sortable_by = ('-date',)
     list_filter = ('is_decline', 'is_approved',)
     readonly_fields = ('user', 'wallet_id',)
+
+    def tronscan(self, obj):
+        if obj.hash:
+            return format_html("<a href='https://tronscan.org/#/transaction/{}' target='_blank'>{}</a>", obj.hash,
+                               obj.hash)
+        return 'None'
 
     def has_delete_permission(self, request, obj=None):
         return False
