@@ -35,9 +35,6 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
-        user.fullname = 'none'
-        user.phone_number = '+1223366554'
-        user.country = 'US'
         user.save(using=self._db)
         return user
 
@@ -45,9 +42,9 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(verbose_name='Email', max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
-    fullname = models.CharField(max_length=30)
-    country = CountryField(null=True)
-    phone_number = PhoneNumberField(unique=True)
+    fullname = models.CharField(max_length=30, null=True, default='default')
+    country = CountryField(null=True, default='US')
+    phone_number = PhoneNumberField(unique=True, null=True, default='+19993335577')
     date_joined = models.DateTimeField(verbose_name='Date Joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='Last login', auto_now=True)
     is_active = models.BooleanField(default=True)

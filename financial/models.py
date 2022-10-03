@@ -73,7 +73,7 @@ class DepositManager(models.Manager):
 class Deposit(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField(verbose_name="Date", auto_now_add=True, null=True)
-    hash = models.CharField(max_length=1000, verbose_name='Transaction HASH or TXID', null=True, blank=True,
+    hash = models.CharField(max_length=255, verbose_name='Transaction HASH or TXID', null=True, blank=True,
                             unique=True, help_text='proof of transaction')
     is_approved = models.BooleanField(default=False)
     is_decline = models.BooleanField(default=False)
