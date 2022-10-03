@@ -6,6 +6,7 @@ django-recaptcha==3.0.0
 django-tinymce==3.5.0
 django-widget-tweaks==1.4.12
 mysql-connector-python==8.0.30
+mysql==0.0.3
 phonenumbers==8.12.56
 protobuf==3.20.1
 sqlparse==0.4.3
