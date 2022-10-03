@@ -14,10 +14,10 @@ ALLOWED_HOSTS = ['isitnowruz.ir', 'www.isitnowruz.ir']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'obeidara_thisisatest',  # database name
-        'USER': 'obeidara_testuser',
+        'NAME': 'isitnowr_thenewprojectdata',  # database name
+        'USER': 'isitnowr_thisissuperuserusername',
         'PASSWORD': 'auLE&mu~Zd.W',
-        'HOST': 'obeidarash.ir',
+        'HOST': 'isitnowruz.ir',
         'PORT': '3306',
         'OPTIONS': {
             'autocommit': True
