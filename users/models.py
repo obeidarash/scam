@@ -35,6 +35,9 @@ class UserManager(BaseUserManager):
         user.is_admin = True
         user.is_staff = True
         user.is_superuser = True
+        user.fullname = 'none'
+        user.phone_number = '+1223366554'
+        user.country = 'US'
         user.save(using=self._db)
         return user
 
