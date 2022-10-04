@@ -4,8 +4,6 @@ from .models import Withdraw, Deposit
 from .forms import DepositAdminForm, WithdrawAdminForm
 
 
-# todo: Check Tronscan link
-
 @admin.register(Deposit)
 class DepositAdmin(admin.ModelAdmin):
     form = DepositAdminForm

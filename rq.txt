@@ -5,9 +5,10 @@ django-phonenumber-field==7.0.0
 django-recaptcha==3.0.0
 django-tinymce==3.5.0
 django-widget-tweaks==1.4.12
-mysql-connector-python==8.0.30
 mysql==0.0.3
 phonenumbers==8.12.56
 protobuf==3.20.1
 sqlparse==0.4.3
 typing_extensions==4.3.0
+whitenoise==3.3.1
+mysqlclient==2.1.1
