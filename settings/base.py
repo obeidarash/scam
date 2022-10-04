@@ -19,6 +19,7 @@ RECAPTCHA_PUBLIC_KEY = '6LfBceshAAAAAEsxxDLzgDG4P1KIo-lrmofIQnJS'
 RECAPTCHA_PRIVATE_KEY = '6LfBceshAAAAAPdqBMt1TTV9zpeJJ46uXl4iccNz'
 
 INSTALLED_APPS = [
+    "whitenoise.runserver_nostatic",  # http://whitenoise.evans.io/en/stable/index.html
     'django.contrib.admin',  # this is default app too, never delete this line
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -36,10 +37,12 @@ INSTALLED_APPS = [
     'financial',
     'core',
     'access_token',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,6 +108,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
+# for compressing static files - whitenoise
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
