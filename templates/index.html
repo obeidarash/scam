@@ -67,7 +67,7 @@
                                 {% else %}
                                     {% if access_token.user|deposit_check %}
                                         <div class="col-3 text-right">
-                                        <span class="badge bg-success">Deposit Confirm</span>
+                                        <span class="badge bg-success">Confirm</span>
                                     {% else %}
                                         <div class="col-3 text-right">
                                         <span class="badge bg-primary">Registered</span>
@@ -95,7 +95,7 @@
             <h6 class="alert-heading">Status badge hint</h6>
             <p><span class="badge bg-danger">Not Used</span> Token has not been used</p>
             <p><span class="badge bg-primary">Registered</span> User is register, but deposit is not confirmed</p>
-            <p><span class="badge bg-success">Deposit Confirm</span> Deposit is okay and everything is good to go</p>
+            <p><span class="badge bg-success">Confirm</span> Deposit is okay and everything is good to go</p>
         </div>
     {% else %}
         <div class="alert alert-warning">
