@@ -15,15 +15,12 @@
         <div class="col-md-12 col-xl-6">
 
             <br>
-
             <div class="alert alert-secondary" role="alert">
                 <h1 class="alert-heading">Tokens</h1>
-                <p>We create random tokens to control increase of our users, this prevents
+                <p>We Generate random tokens to control increase of our users, this prevents
                     excessive registration and pressure on the project infrastructure. You can see the list of tokens on
                     this page.</p>
             </div>
-
-
             {% if request.user.is_superuser %}
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="thisispanelarea/" class="btn btn-success" type="button">Admin</a>
@@ -39,9 +36,7 @@
                     <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
                 </div>
             {% endif %}
-
             <br>
-
             {% if at_list %}
                 <ul>
                     {% for at in at_list %}
@@ -54,9 +49,8 @@
                 </div>
             {% endif %}
 
-
         </div><!-- /col-md-5 Center of the site-->
-        <div class="col-md-12 col-xl-6"></div>
+        <div class="col-sm"></div>
     </div><!-- /row justify-content-md-center -->
 </div><!-- /container -->
 </body>

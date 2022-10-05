@@ -18,8 +18,3 @@ urlpatterns = [
 admin.site.site_header = "Admin Area"
 admin.site.site_title = "Short Invest in Coin Technology"
 admin.site.index_title = "Welcome to Short Invest in Coin Technology"
-
-# todo: because of change in settings file, late we may have problem in here
-# if settings.DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

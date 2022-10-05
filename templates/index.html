@@ -36,12 +36,13 @@
         {#        </div>#}
     {% elif is_deposit_exist_approved %}
         <div class="alert alert-info" role="alert">
-            {#        todo: show withdraw link in this message#}
             <h4 class="alert-heading">Amazing!</h4>
-            <p>Your Deposit has been approved. now you can share your Tokens to your friend to Register</p>
+            <p>Your Deposit has been approved. now you can share your Tokens with your friends</p>
             <hr>
-            <p>After conformation of all your user's deposits you are eligible to earn<strong>
-                100$ + 100$</strong>
+            <p>After confirmation of all your users deposits you are eligible to request for <a
+                    href="{% url 'financial:withdraw' %}">withdraw</a>
+                <strong>
+                    100$ + 100$</strong>.
             </p>
         </div>
 
@@ -92,15 +93,15 @@
         {% endfor %}
         <div class="alert alert-secondary">
             <h6 class="alert-heading">Status badge hint</h6>
-            <p><span class="badge bg-danger">Not Used</span> This Token has not been used</p>
+            <p><span class="badge bg-danger">Not Used</span> Token has not been used</p>
             <p><span class="badge bg-primary">Registered</span> User is register, but deposit is not confirmed</p>
             <p><span class="badge bg-success">Deposit Confirm</span> Deposit is okay and everything is good to go</p>
         </div>
     {% else %}
         <div class="alert alert-warning">
-            you are few step away to <strong>earn your 100$ +100$</strong>!
-            <a href="{% url 'financial:deposit' %}">Click here</a> to Charge your account.
-            if you requested before please wait for conformation
+            You are few step away to <strong>earn your 100$ +100$</strong>!
+            <a href="{% url 'financial:deposit' %}">Click here</a> to Confirm your account.
+            please wait for confirmation if requested before
         </div>
     {% endif %}
 
