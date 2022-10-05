@@ -20,7 +20,7 @@ RECAPTCHA_PRIVATE_KEY = '6LfBceshAAAAAPdqBMt1TTV9zpeJJ46uXl4iccNz'
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",  # http://whitenoise.evans.io/en/stable/index.html
-    'django.contrib.admin',  # this is default app too, never delete this line
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
