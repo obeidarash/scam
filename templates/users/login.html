@@ -18,14 +18,7 @@
         <div class="col-sm"></div>
         <div class="col-md-12 col-lg-7">
             <br>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Well! </strong>{{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
+
 
             <div class="alert alert-success">
                 <h4 class="alert-heading">Login | Short invest in coin technology</h4>
@@ -33,14 +26,21 @@
             </div>
 
 
-            {#<img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">#}
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen style="width: 100%"></iframe>
+            <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">
+{#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
+{#                    title="YouTube video player"#}
+{#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
+{#                    allowfullscreen style="width: 100%"></iframe>#}
 
-            <br>
-
+            <hr>
+ {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Well! </strong>{{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
             <br>
             <form action="{% url 'users:login' %}" method="POST">
                 {% csrf_token %}
