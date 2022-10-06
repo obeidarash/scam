@@ -1,6 +1,5 @@
 {% load static %}
 {% load widget_tweaks %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +17,7 @@
         <div class="col-sm"></div>
         <div class="col-md-12 col-xl-6">
             <br>
-
+            {# todo: add a short description in login page #}
 
             <div class="alert alert-success">
                 <h4 class="alert-heading">Login | Short invest in coin technology</h4>
@@ -27,13 +26,13 @@
 
 
             <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">
-{#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
-{#                    title="YouTube video player"#}
-{#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
-{#                    allowfullscreen style="width: 100%"></iframe>#}
+            {#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
+            {#                    title="YouTube video player"#}
+            {#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
+            {#                    allowfullscreen style="width: 100%"></iframe>#}
 
             <hr>
- {% if messages %}
+            {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <strong>Well! </strong>{{ message }}
@@ -64,16 +63,13 @@
             <div class="d-grid gap-2 col-7 mx-auto">
                 <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
                 <a href="{% url 'core:manifest' %}" class="btn btn-outline-warning" type="button" target="_blank">Who we
-                    are? and what do we
-                    do?</a>
+                    are? and what do we do?</a>
                 <a href="{% url 'at:at' %}" class="btn btn-outline-secondary" type="button" target="_blank">
                     Free Token! you might get lucky.
                 </a>
             </div>
 
-
             <br>
-
 
         </div><!-- /col-md-5 Center of the site-->
         <div class="col-sm"></div>
