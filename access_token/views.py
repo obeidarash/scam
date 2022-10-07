@@ -7,7 +7,6 @@ import uuid
 
 def at(request):
     at_list = AccessToken.objects.filter(by_superuser=True, is_used=False)
-    print(at_list)
     context = {
         'at_list': at_list,
     }

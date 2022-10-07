@@ -15,6 +15,12 @@
     <div class="row">
         <div class="col-sm"></div>
         <div class="col-md-12 col-lg-7">
+            {% if request.user.is_authenticated %}
+                {% include 'shared/navbar.html' %}
+            {% else %}
+                {% include 'shared/tabs.html' %}
+            {% endif %}
+
 
             <!-- Who we are section -->
             <div class="alert alert-secondary">

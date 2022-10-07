@@ -12,14 +12,17 @@
 </head>
 <body>
 <div class="container">
+
+
     <div class="row">
         <div class="col-sm"></div>
         <div class="col-md-12 col-xl-6">
 
-            <br>
+            {% include 'shared/tabs.html' %}
+
             <div class="alert alert-secondary" role="alert">
-                <h1 class="alert-heading">Tokens</h1>
-                <p>We Generate random tokens to control increase of our users, this prevents
+                <h1 class="alert-heading">Free Tokens</h1>
+                <p>We Generate random free tokens to control increase of our users, this prevents
                     excessive registration and pressure on the project infrastructure. You can see the list of tokens on
                     this page.</p>
             </div>
@@ -30,7 +33,6 @@
             {% elif not request.user.is_authenticated %}
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
-                    <a href="{% url 'users:login' %}" class="btn btn-outline-success" type="button">Login</a>
                 </div>
             {% else %}
                 <div class="d-grid gap-2 col-6 mx-auto">
@@ -47,7 +49,7 @@
                 </ul>
             {% else %}
                 <div class="alert alert-danger">
-                    <strong>Sorry</strong> there is no token available! check this page later.
+                    <strong>Sorry</strong> there is no free token available! check this page later.
                 </div>
             {% endif %}
 
