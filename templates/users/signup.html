@@ -21,7 +21,6 @@
                 <h4 class="alert-heading">Register | Short invest in coin technology</h4>
                 Check everything before registration, you can't change your information later on
             </div>
-
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
                 {{ register_form.captcha }}
@@ -98,21 +97,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit / Register</button>
             </form>
-            <hr>
-
-            <div class="text-center">
-                <div class="alert alert-info">
-                    if already have an account
-                </div>
-            </div>
-
-            <div class="d-grid gap-2 col-7 mx-auto">
-                <a href="{% url 'users:login' %}" class="btn btn-success" type="button">Login</a>
-                <a href="{% url 'core:manifest' %}" class="btn btn-outline-warning" type="button" target="_blank">Who we
-                    are? and what do we do?</a>
-            </div>
             <br>
-
         </div><!-- /col-md-5 Center of the site-->
         <div class="col-sm"></div>
     </div><!-- /row justify-content-md-center -->
