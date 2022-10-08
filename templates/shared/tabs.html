@@ -6,16 +6,17 @@
     </li>
     <li class="nav-item">
         {% url 'users:signup' as signup %}
-        <a class="nav-link {% if request.path == signup %}active{% endif %}" href="{% url 'users:signup' %}">Register</a>
+        <a class="nav-link {% if request.path == signup %}active{% endif %}"
+           href="{% url 'users:signup' %}">Register</a>
+    </li>
+    <li class="nav-item">
+        {% url 'at:at' as at %}
+        <a class="nav-link {% if request.path == at %}active{% endif %}" href="{% url 'at:at' %}">Token</a>
     </li>
     <li class="nav-item">
         {% url 'core:manifest' as manifest %}
         <a class="nav-link {% if request.path == manifest %}active{% endif %}"
            href="{% url 'core:manifest' %}">Manifesto</a>
-    </li>
-    <li class="nav-item">
-        {% url 'at:at' as at %}
-        <a class="nav-link {% if request.path == at %}active{% endif %}" href="{% url 'at:at' %}">Token</a>
     </li>
 </ul>
 <br>

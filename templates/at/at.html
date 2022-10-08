@@ -27,7 +27,7 @@
 
             <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
 
-            {#        todo: short discrtiption about website#}
+
 
             {#            <div class="alert alert-secondary" role="alert">#}
             {#                <h1 class="alert-heading">Free Tokens</h1>#}
@@ -35,36 +35,40 @@
             {#                    excessive registration and pressure on the project infrastructure. You can see the list of tokens on#}
             {#                    this page.</p>#}
             {#            </div>#}
+
+            <div class="alert alert-info">
+                We Generate random free tokens to control increase of our users, this prevents
+                excessive registration and pressure on the project infrastructure. You can see the list of
+                tokens on this page.
+            </div>
+
             <div class="card">
                 <h4 class="card-header">Free Tokens</h4>
                 <div class="card-body">
-                    <p>We Generate random free tokens to control increase of our users, this prevents
-                        excessive registration and pressure on the project infrastructure. You can see the list of
-                        tokens on
-                        this page.</p>
+                    {% if at_list %}
+
+                        <ul>
+                            {% for at in at_list %}
+                                <li>{{ at.access_token }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        {% if not request.user.is_authenticated %}
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
+                            </div>
+                        {% endif %}
+
+                    {% else %}
+                        <div class="alert alert-danger">
+                            <strong>Sorry</strong> there is no free token available! check this page later.
+                        </div>
+                    {% endif %}
                 </div>
             </div>
 
             <br>
-            {% if at_list %}
 
-                <ul>
-                    {% for at in at_list %}
-                        <li>{{ at.access_token }}</li>
-                    {% endfor %}
-                </ul>
-
-                {% if not request.user.is_authenticated %}
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
-                    </div>
-                {% endif %}
-
-            {% else %}
-                <div class="alert alert-danger">
-                    <strong>Sorry</strong> there is no free token available! check this page later.
-                </div>
-            {% endif %}
 
         </div><!-- /col-md-5 Center of the site-->
         <div class="col-sm"></div>

@@ -22,11 +22,13 @@
 
             <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
 
-            <div class="alert alert-success">
-                Make your money double in less than 24 hours - Easy Money.
+            <div class="alert alert-info">
+                <h6 class="alert-heading">Make your money double in less than 24 hours.</h6>
                 <b>Login</b> to your account you are one step away to earn <b>100$ + 100$</b>
             </div>
 
+            {#        todo: short discrtiption about website#}
+            {#        write about investing your money easily#}
 
             {#            <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">#}
             {#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
@@ -34,10 +36,7 @@
             {#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
             {#                    allowfullscreen style="width: 100%"></iframe>#}
 
-            <hr>
 
-
-            {#            <h2 class="text-center">Login to your account</h2>#}
             <div class="card">
                 <h4 class="card-header">Login to your account</h4>
                 <div class="card-body">
@@ -53,15 +52,15 @@
                     <form action="{% url 'users:login' %}" method="POST">
                         {% csrf_token %}
                         {{ login_form.captcha }}
-                        <div class="mb-3 row">
+                        <div class="mb-4 row">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-md-10">
                                 {{ login_form.email }}
                             </div>
                         </div>
-                        <div class="mb-3 row">
+                        <div class="mb-4 row">
                             <label for="password" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
+                            <div class="col-md-10">
                                 {{ login_form.password }}
                             </div>
                         </div>
