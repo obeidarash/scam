@@ -17,9 +17,10 @@
         <div class="col-sm"></div>
         <div class="col-md-12 col-xl-6">
             {% include 'shared/tabs.html' %}
+            <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
             <div class="alert alert-info">
-                <h4 class="alert-heading">Register | Short invest in coin technology</h4>
-                Check everything before registration, you can't change your information later on
+                <a href="{% url 'core:manifest' %}">Read</a> about us before you get involved
+                Check everything before registration, you can't edit your information later on.
             </div>
             <form method="POST" action="{% url 'users:signup' %}">
                 {% csrf_token %}
@@ -67,7 +68,7 @@
                     <label for="{{ register_form.access_token.id_for_label }}" class="form-label">Token</label>
                     {{ register_form.access_token|add_error_class:"is-invalid" }}
                     <div id="{{ register_form.access_token.id_for_label }}" class="form-text">
-                        If you don't have token, check <a href="{% url 'at:at' %}" target="_blank">this page</a> you
+                        If you don't have token, check <a href="{% url 'at:at' %}">this page</a> you
                         might get lucky
                     </div>
                     {% for error in register_form.access_token.errors %}

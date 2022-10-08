@@ -24,6 +24,8 @@
                 {% include 'shared/tabs.html' %}
             {% endif %}
 
+            <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
+
             <div class="alert alert-secondary" role="alert">
                 <h1 class="alert-heading">Free Tokens</h1>
                 <p>We Generate random free tokens to control increase of our users, this prevents
@@ -40,7 +42,7 @@
                     {% endfor %}
                 </ul>
 
-                   {% if not request.user.is_authenticated %}
+                {% if not request.user.is_authenticated %}
                     <div class="d-grid gap-2 col-6 mx-auto">
                         <a href="{% url 'users:signup' %}" class="btn btn-primary" type="button">Register</a>
                     </div>
