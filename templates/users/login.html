@@ -27,40 +27,48 @@
             </div>
 
 
-                        <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">
+            {#            <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">#}
             {#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
             {#                    title="YouTube video player"#}
             {#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
             {#                    allowfullscreen style="width: 100%"></iframe>#}
 
             <hr>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Well! </strong>{{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
 
-{#            <h2 class="text-center">Login to your account</h2>#}
-            <form action="{% url 'users:login' %}" method="POST">
-                {% csrf_token %}
-                {{ login_form.captcha }}
-                <div class="mb-3 row">
-                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                    <div class="col-md-10">
-                        {{ login_form.email }}
-                    </div>
+
+            {#            <h2 class="text-center">Login to your account</h2>#}
+            <div class="card">
+                <div class="card-header">Login to your account</div>
+                <div class="card-body">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Well! </strong>{{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form action="{% url 'users:login' %}" method="POST">
+                        {% csrf_token %}
+                        {{ login_form.captcha }}
+                        <div class="mb-3 row">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-md-10">
+                                {{ login_form.email }}
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
+                            <div class="col-sm-10">
+                                {{ login_form.password }}
+                            </div>
+                        </div>
+                        <button class="btn btn-success" type="submit">Login</button>
+                    </form>
                 </div>
-                <div class="mb-3 row">
-                    <label for="password" class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
-                        {{ login_form.password }}
-                    </div>
-                </div>
-                <button class="btn btn-success" type="submit">Login</button>
-            </form>
+            </div>
+
 
             {#            <hr>#}
             {#            <div class="d-grid gap-2 col-7 mx-auto">#}
