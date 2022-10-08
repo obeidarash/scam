@@ -7,9 +7,11 @@
 
     <br>
 
-    <div class="alert alert-secondary">
-        <h3 class="alert-heading">{{ contact.title }}</h3>
-        {{ contact.content|safe }}
+    <div class="card">
+        <h4 class="card-header">{{ contact.title }}</h4>
+        <div class="card-body">
+            {{ contact.content|safe }}
+        </div>
     </div>
 
 
