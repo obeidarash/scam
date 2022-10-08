@@ -25,85 +25,91 @@
             <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
 
             <!-- Who we are section -->
-            <div class="alert alert-secondary">
-                <h2 class="alert-heading">Who we are? </h2>
-                We are a programming team with programmers all over the world that works in the field of cryptocurrency.
-                we have provided a lot of profit for our company and users by writing advanced robots to
-                invest in cryptocurrencies
-                <div class="text-center">
-                    <img src="{% static 'media/pic5.png' %}" alt="" style="width: 100%; height: 90%">
+            <div class="card">
+                <h4 class="card-header">Who we are? </h4>
+                <img src="{% static 'media/pic5.png' %}" alt="" style="width: 100%; height: 90%" class="card-img-top">
+                <div class="card-body">
+                    We are a programming team with programmers all over the world that works in the field of
+                    cryptocurrency.
+                    we have provided a lot of profit for our company and users by writing advanced robots to
+                    invest in cryptocurrencies
                 </div>
             </div>
+
 
             <br>
             <!-- How does the site work? -->
-            <div class="alert alert-primary">
-                <h2>How our robots work?</h2>
-                <p>As soon as you charge up your account, our robots will start investing your money in different
+            <div class="card">
+                <h4 class="card-header">How our robots work?</h4>
+                <div class="card-body">
+                    As soon as you charge up your account, our robots will start investing your money in different
                     cryptocurrencies. The same thing happens to the three other people who registered with your token.
                     Where and how much to invest depends entirely on the artificial intelligence of robots. Finally
-                    $100 + 100$ (original money and profit) will be transfer to your wallet id.</p>
-            </div>
-
-            <!-- How it works? -->
-            <div class="alert alert-secondary">
-                <h2 class="alert-heading">How to earn 100$ + 100$ in less than 24 hours?</h2>
-                <ol>
-                    <li>Register using a Token (if you don't have any Token, you can get one from a friend,
-                        otherwise <a href="{% url 'ac:at' %}" target="_blank">click here</a>)
-                    </li>
-                    <li>Transfer 100 + 100 Theater to our wallet id and submit HASH id through the Deposit menu
-                        in your account and wait for confirmation
-                    </li>
-                    <li>After Deposit Conformation, three tokens will be issued to you, share the tokens with your
-                        friends to register.
-                    </li>
-                    <li>All three users must charge their deposit just like you</li>
-                    <li>
-                        After confirming the deposit of all three users, Withdraw request will be opened for you, enter
-                        your wallet address and submit the form. 100 + 100 Theater will be transfer into your wallet in
-                        less
-                        than a few hours. Finish!
-                    </li>
-                </ol>
-                <p>p.s: your friends should do the same to earn 100 + 100 Theater, unless they can't request
-                    Withdraw</p>
-                <p>p.s: because of our policy on one time registration per each person you can't use your own sub token
-                    to register, it might result in permanent loss and ban you from website.</p>
-
-                <div class="text-center">
-                    <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%">
+                    $100 + 100$ (original money and profit) will be transfer to your wallet id.
                 </div>
             </div>
 
+            <br>
+            <!-- How it works? -->
+            <div class="card">
+                <h4 class="card-header">How to earn 100$ + 100$ in less than 24 hours?</h4>
+                <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%" class="card-img-top">
+                <div class="card-body">
+                    <ol>
+                        <li>Register using a Token (if you don't have any Token, you can get one from a friend,
+                            otherwise <a href="{% url 'ac:at' %}" target="_blank">click here</a>)
+                        </li>
+                        <li>Transfer 100 + 100 Theater to our wallet id and submit HASH id through the Deposit menu
+                            in your account and wait for confirmation
+                        </li>
+                        <li>After Deposit Conformation, three tokens will be issued to you, share the tokens with your
+                            friends to register.
+                        </li>
+                        <li>All three users must charge their deposit just like you</li>
+                        <li>
+                            After confirming the deposit of all three users, Withdraw request will be opened for you,
+                            enter your wallet address and submit the form. 100 + 100 Theater will be transfer into your
+                            wallet in less than a few hours. Finish!
+                        </li>
+                    </ol>
+                    <p>p.s: your friends should do the same to earn 100 + 100 Theater, unless they can't request
+                        Withdraw</p>
+                    <p>p.s: because of our policy on one time registration per each person you can't use your own sub
+                        token to register, it might result in permanent loss and ban you from website.</p>
+
+                </div>
+            </div>
             <!-- Q&A section -->
-            <div class="alert alert-primary">
-                <h2 class="alert-heading">Most frequent Questions</h2>
-                <div class="accordion" id="accordionExample">
-                    {% for qa in qas %}
-                        {% if qa.publish %}
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading{{ qa.id }}">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
-                                            aria-controls="collapse{{ qa.id }}">
-                                        {{ qa.question }}
-                                    </button>
-                                </h2>
-                                <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
-                                     aria-labelledby="heading{{ qa.id }}"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        {{ qa.answer|safe }}
+            <div class="card">
+                <h4 class="card-header">Most frequent Questions</h4>
+                <div class="card-body">
+                    <div class="accordion" id="accordionExample">
+                        {% for qa in qas %}
+                            {% if qa.publish %}
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="heading{{ qa.id }}">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#collapse{{ qa.id }}" aria-expanded="true"
+                                                aria-controls="collapse{{ qa.id }}">
+                                            {{ qa.question }}
+                                        </button>
+                                    </h2>
+                                    <div id="collapse{{ qa.id }}" class="accordion-collapse collapse"
+                                         aria-labelledby="heading{{ qa.id }}"
+                                         data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            {{ qa.answer|safe }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            <br>
 
+            <br>
             <!-- Links -->
             {% if request.user.is_superuser %}
                 <div class="d-grid gap-2 col-6 mx-auto">
@@ -123,108 +129,110 @@
 
             <br>
             <!-- Our Team -->
-            <div class="alert alert-secondary">
-                <h2 class="alert-heading">Our Team</h2>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/1.jpeg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Tuwa Sandström</h5>
-                                <h6 class="card-subtitle text-muted">Blockchain Expert</h6>
+            <div class="card">
+                <h4 class="card-header">Our Team</h4>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/1.jpeg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tuwa Sandström</h5>
+                                    <h6 class="card-subtitle text-muted">Blockchain Expert</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/2.jpeg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Sebastian Ek</h5>
+                                    <h6 class="card-subtitle text-muted">CTO</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/3.jpeg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Eric Strömberg</h5>
+                                    <h6 class="card-subtitle text-muted">CEO</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/2.jpeg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Sebastian Ek</h5>
-                                <h6 class="card-subtitle text-muted">CTO</h6>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/4.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Kimi Magnusson</h5>
+                                    <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/5.jpeg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Rodek Varnak</h5>
+                                    <h6 class="card-subtitle text-muted">DevOps</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/6.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Elisa Ström</h5>
+                                    <h6 class="card-subtitle text-muted">Frontend developer</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/3.jpeg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Eric Strömberg</h5>
-                                <h6 class="card-subtitle text-muted">CEO</h6>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/7.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Robert Fransson</h5>
+                                    <h6 class="card-subtitle text-muted">Artificial Intelligence</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/4.jpg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Kimi Magnusson</h5>
-                                <h6 class="card-subtitle text-muted">Data Analyser</h6>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/8.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Dominic Olsson</h5>
+                                    <h6 class="card-subtitle text-muted">Software Engineer</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/5.jpeg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Rodek Varnak</h5>
-                                <h6 class="card-subtitle text-muted">DevOps</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/6.jpg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Elisa Ström</h5>
-                                <h6 class="card-subtitle text-muted">Frontend developer</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/7.jpg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Robert Fransson</h5>
-                                <h6 class="card-subtitle text-muted">Artificial Intelligence</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/8.jpg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Dominic Olsson</h5>
-                                <h6 class="card-subtitle text-muted">Software Engineer</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <img src="{% static 'media/9.jpg' %}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Teodor Lindholm</h5>
-                                <h6 class="card-subtitle text-muted">Bot developer</h6>
+                        <div class="col">
+                            <div class="card">
+                                <img src="{% static 'media/9.jpg' %}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Teodor Lindholm</h5>
+                                    <h6 class="card-subtitle text-muted">Bot developer</h6>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <br>
             <!-- Location -->
-            <div class="alert alert-primary">
-                <h2 class="alert-heading">Our Location</h2>
-                <a target="_blank"
-                   href="https://www.google.com/maps/place/Slottsbacken+8,+111+30+Stockholm,+Sweden/@59.3260651,18.0734835,17z/data=!4m5!3m4!1s0x465f9d58736e8a99:0x4251fce39eb41f35!8m2!3d59.3261308!4d18.0739448">
-                    <p>Slottsbacken 8, 111 30 Stockholm, Sweden </p></a>
-
-                <div class="text-center">
-                    <img src="{% static 'media/pic4.png' %}" alt="" style="width: 100%">
+            <div class="card">
+                <h4 class="card-header">Our Location</h4>
+                <img src="{% static 'media/pic4.png' %}" alt="" style="width: 100%" class="card-img-top">
+                <div class="card-body">
+                    <a target="_blank"
+                       href="https://www.google.com/maps/place/Slottsbacken+8,+111+30+Stockholm,+Sweden/@59.3260651,18.0734835,17z/data=!4m5!3m4!1s0x465f9d58736e8a99:0x4251fce39eb41f35!8m2!3d59.3261308!4d18.0739448">
+                        <p>Slottsbacken 8, 111 30 Stockholm, Sweden </p></a>
                 </div>
             </div>
 

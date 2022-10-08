@@ -23,7 +23,7 @@
                 Check everything before registration, you can't edit your information later on.
             </div>
             <div class="card">
-                <div class="card-header">Create new account</div>
+                <h4 class="card-header">Create new account</h4>
                 <div class="card-body">
                     <form method="POST" action="{% url 'users:signup' %}">
                         {% csrf_token %}
