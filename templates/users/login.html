@@ -10,6 +10,7 @@
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="icon" href="{% static 'media/logo.png' %}">
     <title>Login | Short invest in coin technology</title>
 </head>
 <body>
@@ -22,20 +23,16 @@
 
             <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
 
-            <div class="alert alert-info">
-                <h6 class="alert-heading">Make your money double in less than 24 hours.</h6>
-                <b>Login</b> to your account you are one step away to earn <b>100$ + 100$</b>
+            <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">
+
+            <div class="alert alert-success">
+                <p class="justify-content">
+                    We will Invest for you with 100% insurance in Crypto Currency. You are one step away to make your
+                    <b>money double (100$ + 100$)</b> in less than <b>24 hours</b> without any knowledge about
+                    Crypto. only those who have <a href="{% url 'at:at' %}">token</a> can register on the website. read our <a
+                        href="{% url 'core:manifest' %}">manifesto</a> for more details.
+                </p>
             </div>
-
-            {#        todo: short discrtiption about website#}
-            {#        write about investing your money easily#}
-
-            {#            <img src="{% static 'media/pic3.jpg' %}" alt="" style="width: 100%">#}
-            {#            <iframe width="560" height="315" src="https://www.youtube.com/embed/LMmg9tRNmrU"#}
-            {#                    title="YouTube video player"#}
-            {#                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"#}
-            {#                    allowfullscreen style="width: 100%"></iframe>#}
-
 
             <div class="card">
                 <h4 class="card-header">Login to your account</h4>

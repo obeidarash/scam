@@ -27,7 +27,6 @@ class LoginForm(forms.Form):
             'name': 'email',
             'id': 'email',
             'class': 'form-control',
-            'autofocus': 'True'
         }
     ))
 

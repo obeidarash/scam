@@ -15,8 +15,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 # google recaptcha keys https://www.google.com/recaptcha/admin/site/558370688
-RECAPTCHA_PUBLIC_KEY = '6LfBceshAAAAAEsxxDLzgDG4P1KIo-lrmofIQnJS'
-RECAPTCHA_PRIVATE_KEY = '6LfBceshAAAAAPdqBMt1TTV9zpeJJ46uXl4iccNz'
+RECAPTCHA_PUBLIC_KEY = '6LfEYWkiAAAAAIe-Eivd85U9dHAjKX3jB7um5Fd-'
+RECAPTCHA_PRIVATE_KEY = '6LfEYWkiAAAAAIP0jV1UDSDtPevCah2p-gp2JYaC'
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",  # http://whitenoise.evans.io/en/stable/index.html

@@ -14,9 +14,9 @@ ALLOWED_HOSTS = ['shortinvestincoin.com', 'www.shortinvestincoin.com']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'isitnowr_thenewprojectdata',  # database name
+        'NAME': 'isitnowr_thenewprojectdata',
         'USER': 'isitnowr_thisissuperuserusername',
-        'PASSWORD': 'auLE&mu~Zd.W',
+        'PASSWORD': 'auLE?&mujkh!~Zd.W',
         'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {

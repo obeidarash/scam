@@ -9,6 +9,7 @@
     <meta name="googlebot" content="noindex">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="icon" href="{% static 'media/logo.png' %}">
     <title>Manifesto of Short invest in coin technology</title>
 </head>
 <body>
@@ -30,9 +31,8 @@
                 <h4 class="card-header">Who we are? </h4>
                 <img src="{% static 'media/pic5.png' %}" alt="" style="width: 100%; height: 90%" class="card-img-top">
                 <div class="card-body">
-                    We are a programming team with programmers all over the world that works in the field of
-                    cryptocurrency.
-                    we have provided a lot of profit for our company and users by writing advanced robots to
+                    We are a programming team with programmers all over the world that works in cryptocurrency.
+                    we have provided a lot of profit for our company and partners by coding advanced robots who
                     invest in cryptocurrencies
                 </div>
             </div>
@@ -43,10 +43,10 @@
             <div class="card">
                 <h4 class="card-header">How our robots work?</h4>
                 <div class="card-body">
-                    As soon as you charge up your account, our robots will start investing your money in different
-                    cryptocurrencies. The same thing happens to the three other people who registered with your token.
+                    As soon as you confirm your account (Confirm Deposit), our robots will start investing your money in different
+                    cryptocurrencies. The same thing happens to the three other people who registered with .
                     Where and how much to invest depends entirely on the artificial intelligence of robots. Finally
-                    $100 + 100$ (original money and profit) will be transfer to your wallet id.
+                    $100 + 100$ (original money and profit) will be transfer to your wallet.
                 </div>
             </div>
 
@@ -57,20 +57,20 @@
                 <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%" class="card-img-top">
                 <div class="card-body">
                     <ol>
-                        <li>Register using a Token (if you don't have any Token, you can get one from a friend,
+                        <li><a href="{% url 'users:signup' %}">Register</a> using a Token (if you don't have any Token, you can get one from a friend,
                             otherwise <a href="{% url 'ac:at' %}">click here</a>)
                         </li>
                         <li>Transfer 100 + 100 Theater to our wallet id and submit HASH id through the Deposit menu
                             in your account and wait for confirmation
                         </li>
-                        <li>After Deposit Conformation, three tokens will be issued to you, share the tokens with your
+                        <li>After Deposit Conformation, three tokens will be issued to you, share them with your
                             friends to register.
                         </li>
-                        <li>All three users must charge their deposit just like you</li>
+                        <li>All three users must Confirm their deposit just like you</li>
                         <li>
-                            After confirming the deposit of all three users, Withdraw request will be opened for you,
+                            After confirming deposit of all three users, Withdraw request will be opened for you,
                             enter your wallet address and submit the form. 100 + 100 Theater will be transfer into your
-                            wallet in less than a few hours. Finish!
+                            wallet in less than a few hours. Done!
                         </li>
                     </ol>
                     <p>p.s: your friends should do the same to earn 100 + 100 Theater, unless they can't request
