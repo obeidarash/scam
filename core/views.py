@@ -14,8 +14,10 @@ def contact(request):
 
 
 def manifest(request):
+    contact = Contact.objects.all().first()
     qas = Qa.objects.all()
     context = {
         'qas': qas,
+        'contact': contact,
     }
     return render(request, 'manifest.html', context)

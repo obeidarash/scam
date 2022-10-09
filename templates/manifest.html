@@ -43,7 +43,8 @@
             <div class="card">
                 <h4 class="card-header">How our robots work?</h4>
                 <div class="card-body">
-                    As soon as you confirm your account (Confirm Deposit), our robots will start investing your money in different
+                    As soon as you confirm your account (Confirm Deposit), our robots will start investing your money in
+                    different
                     cryptocurrencies. The same thing happens to the three other people who registered with .
                     Where and how much to invest depends entirely on the artificial intelligence of robots. Finally
                     $100 + 100$ (original money and profit) will be transfer to your wallet.
@@ -57,7 +58,8 @@
                 <img src="{% static 'media/pic1.png' %}" alt="" style="width: 100%" class="card-img-top">
                 <div class="card-body">
                     <ol>
-                        <li><a href="{% url 'users:signup' %}">Register</a> using a Token (if you don't have any Token, you can get one from a friend,
+                        <li><a href="{% url 'users:signup' %}">Register</a> using a Token (if you don't have any Token,
+                            you can get one from a friend,
                             otherwise <a href="{% url 'ac:at' %}">click here</a>)
                         </li>
                         <li>Transfer 100 + 100 Theater to our wallet id and submit HASH id through the Deposit menu
@@ -127,6 +129,17 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <a href="{% url 'home' %}" class="btn btn-primary" type="button">Home</a>
                     <a href="{% url 'financial:deposit' %}" class="btn btn-outline-success" type="button">Deposit</a>
+                </div>
+            {% endif %}
+
+            <br>
+            <!-- Contact Us -->
+            {% if contact %}
+                <div class="card">
+                    <h4 class="card-header">{{ contact.title }}</h4>
+                    <div class="card-body">
+                        {{ contact.content|safe }}
+                    </div>
                 </div>
             {% endif %}
 

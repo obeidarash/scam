@@ -126,7 +126,7 @@ class RegisterForm(forms.Form):
         access_token_is_valid = AccessToken.objects.filter(access_token=access_token, is_used=False).exists()
         if not access_token_is_valid:
             raise forms.ValidationError(
-                "this token is not valid, if you don't have any token check <a href='at'>this page</a>")
+                "this token is not valid, if you don't have any token check <a href='at:at'>this page</a>")
         return access_token
 
 
