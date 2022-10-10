@@ -105,6 +105,9 @@
                                          data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             {{ qa.answer|safe }}
+                                            {% if request.user.is_superuser %}
+                                                <a href="thisispanelarea/core/qa/{{ qa.id }}/change/">Change</a>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
