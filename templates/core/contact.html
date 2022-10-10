@@ -12,10 +12,10 @@
         <div class="card-body">
             {{ contact.content|safe }}
         </div>
+        {% if request.user.is_superuser %}
+            <a href="thisispanelarea/core/contact/1/change/">Change</a>
+        {% endif %}
     </div>
-
-
-
 
 
 {% endblock %}
