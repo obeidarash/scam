@@ -75,6 +75,9 @@ def login_user(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
+                # Return to Admin area if user is admin
+                if request.user.is_superuser:
+                    return redirect('/thisispanelarea')
                 messages.success(request, ' Wellcome')
                 return redirect('home')
             else:
