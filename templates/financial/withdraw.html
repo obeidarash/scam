@@ -17,12 +17,12 @@
     {% if is_withdraw_approved %}
         <div class="alert alert-success" role="alert">
             <h3 class="alert-heading">Withdraw completed</h3>
-            <p>Transformation ID is <a href="https://tronscan.org/#/transaction/{{ withdraw_approved_hash }}"
-                                       target="_blank">{{ withdraw_approved_hash }}</a>. </p>
+            <p>Transaction ID is <a href="https://tronscan.org/#/transaction/{{ withdraw_approved_hash }}"
+                                    target="_blank">{{ withdraw_approved_hash|truncatechars:30 }}</a>. </p>
         </div>
     {% elif is_withdraw_ok and not is_withdraw_exist_approved %}
         {#        todo: (Bug) if admin approve users withdraw request and after decline it, user cant request again! #}
-{#        this problem happens on localhost not the server#}
+        {#        this problem happens on localhost not the server#}
         <div class="card text-bg-primary">
             <h4 class="card-header">Withdraw</h4>
             <div class="card-body">
