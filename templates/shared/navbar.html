@@ -50,6 +50,9 @@
                         More
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        {% url 'at:at' as a %}
+                        <li><a class="dropdown-item {% if request.path == a %}active{% endif %}"
+                               href="{% url 'at:at' %}">Free Token</a></li>
                         {% url 'core:manifest' as manifest %}
                         <li><a class="dropdown-item {% if request.path == manifest %}active{% endif %}"
                                href="{% url 'core:manifest' %}">Manifesto</a></li>
