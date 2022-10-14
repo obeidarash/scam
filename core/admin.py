@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Qa
+from .models import Contact, Qa, News
 
 
 @admin.register(Qa)
@@ -21,3 +21,9 @@ class ContactAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'publish',)
+    prepopulated_fields = {'slug': ['title', ]}

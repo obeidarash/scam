@@ -23,3 +23,20 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class News(models.Model):
+    title = models.CharField(max_length=512)
+    slug = models.SlugField(unique=True)
+    content = HTMLField()
+    publish = models.BooleanField(default=True)
+    created = models.DateTimeField(verbose_name="Create", auto_now_add=True, null=True)
+    edited = models.DateTimeField(verbose_name="Edit", auto_now=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'News'
+
+
