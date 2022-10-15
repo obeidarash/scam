@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Qa, News
+from .models import Contact, Qa, News, Tag
 
 
 @admin.register(Qa)
@@ -26,4 +26,12 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'publish',)
+    prepopulated_fields = {'slug': ['title', ]}
+    autocomplete_fields = ('tag',)
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
     prepopulated_fields = {'slug': ['title', ]}
