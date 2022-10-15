@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Qa
+from .models import Contact, Qa, Tag, News
 
 
 @admin.register(Qa)
@@ -21,3 +21,18 @@ class ContactAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('title',)
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ['title', ]}
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'publish',)
+    search_fields = ('title',)
+    autocomplete_fields = ('tag',)
+    prepopulated_fields = {'slug': ['title', ]}
