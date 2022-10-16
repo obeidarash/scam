@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, Qa, Tag, News
+from .models import Contact, Qa, Tag, Post, Category
 
 
 @admin.register(Qa)
@@ -23,16 +23,25 @@ class ContactAdmin(admin.ModelAdmin):
         return False
 
 
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug',)
+    search_fields = ('title',)
+    prepopulated_fields = {'slug': ['title', ]}
+
+
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'slug',)
     search_fields = ('title',)
     prepopulated_fields = {'slug': ['title', ]}
 
 
-@admin.register(News)
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publish',)
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'publish',)
+    list_filter = ('publish',)
     search_fields = ('title',)
-    autocomplete_fields = ('tag',)
+    autocomplete_fields = ('tag', 'category',)
     prepopulated_fields = {'slug': ['title', ]}
+    ordering = ('-created',)

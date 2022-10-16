@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'shared/head.html' %}
+    <title>Blog of Short invest in coin technology</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-md-12 col-xl-6">
+            {#todo: finish blog page#}
+            {% if request.user.is_authenticated %}
+                {% include 'shared/navbar.html' %}
+            {% else %}
+                {% include 'shared/tabs.html' %}
+            {% endif %}
+
+            <h1 class="text-center h1">Blog of Short invest in coin Tech.</h1>
+
+            {% for post in posts %}
+                <p> {{ post.created|timesince }}</p>
+            {% endfor %}
+
+        </div><!-- /col-md-5 Center of the site-->
+        <div class="col-sm"></div>
+    </div><!-- /row justify-content-md-center -->
+</div><!-- /container -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

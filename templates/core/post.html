@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'shared/head.html' %}
+    <title>Post of Short invest in coin technology</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+        <div class="col-md-12 col-xl-6">
+            {#todo: finish post page#}
+            {% if request.user.is_authenticated %}
+                {% include 'shared/navbar.html' %}
+            {% else %}
+                {% include 'shared/tabs.html' %}
+            {% endif %}
+
+            <br>
+            <div class="card">
+                <h3 class="card-header">
+                    {{ post.title }}
+                </h3>
+                <div class="card-body">
+                    {{ post.content|safe }}
+                    {% if request.user.is_authenticated %}
+                        <a href="/thisispanelarea/core/post/{{ post.id }}/change/">Change</a>
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    Catagory: {{ post.category }} - Date: {{ post.created }}
+                </div>
+            </div>
+            <br>
+
+        </div><!-- /col-md-5 Center of the site-->
+        <div class="col-sm"></div>
+    </div><!-- /row justify-content-md-center -->
+</div><!-- /container -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

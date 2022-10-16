@@ -113,4 +113,23 @@
 </div>
 <br>
 
+{# if there is at least one post in database show this section to the user #}
+{% if posts %}
+    <div class="card">
+        <h3 class="card-header">Latest news </h3>
+        <div class="card-body">
+            {% for post in posts %}
+                <h4>
+                    <a href="{% url 'core:post' post.slug %}">{{ post.title }}</a>
+                </h4>
+            {% endfor %}
+            {#        todo: link to blog and show the users all of the posts#}
+            {#            <a href="{% url 'core:blog' %}">Show All</a>#}
+        </div>
+    </div>
+    <br>
+{% endif %}
+
+
+
 {% endblock %}

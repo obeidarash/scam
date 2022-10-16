@@ -2,14 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link rel="icon" href="{% static 'media/logo.png' %}">
+    {% include 'shared/head.html' %}
     <title>Accesses Tokens | Short Invest in Coin Technology</title>
 </head>
 <body>
@@ -27,7 +20,6 @@
             {% endif %}
 
             <h1 class="text-center h1">Short Invest in Coin Tech.</h1>
-
 
 
             {#            <div class="alert alert-secondary" role="alert">#}

@@ -24,6 +24,9 @@ class Contact(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural = 'Contact'
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=64, unique=True)
@@ -34,18 +37,33 @@ class Tag(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Hashtag'
+        verbose_name_plural = 'Hashtags'
 
-class News(models.Model):
+
+class Category(models.Model):
+    title = models.CharField(max_length=64, unique=True)
+    slug = models.SlugField(max_length=128, unique=True)
+    created = models.DateTimeField(verbose_name="Create", auto_now_add=True, null=True)
+    edited = models.DateTimeField(verbose_name="Edit", auto_now=True, null=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+
+
+class Post(models.Model):
     title = models.CharField(max_length=64, unique=True)
     content = HTMLField()
-    tag = models.ManyToManyField(Tag)
+    tag = models.ManyToManyField(Tag, blank=True, verbose_name='Hashtags', help_text='You can pick more than one')
+    category = models.ForeignKey(Category, help_text='You pick only 1 category', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=128, unique=True)
     publish = models.BooleanField(default=True)
     created = models.DateTimeField(verbose_name="Create", auto_now_add=True, null=True)
     edited = models.DateTimeField(verbose_name="Edit", auto_now=True, null=True)
-
-    class Meta:
-        verbose_name_plural = 'News'
 
     def __str__(self):
         return self.title
