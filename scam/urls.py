@@ -3,6 +3,7 @@ from django.urls import path, include
 from .views import index
 from django.conf import settings
 from django.conf.urls.static import static
+# from django.conf.urls import handler404
 
 # todo: Add Recaptcha to admin login page
 urlpatterns = [
@@ -18,3 +19,4 @@ urlpatterns = [
 admin.site.site_header = "Admin Area"
 admin.site.site_title = "Short Invest in Coin Technology"
 admin.site.index_title = "Welcome to Short Invest in Coin Technology"
+handler404 = 'core.views.error_404'
